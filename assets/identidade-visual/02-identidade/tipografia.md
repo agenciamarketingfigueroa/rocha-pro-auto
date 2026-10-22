@@ -1,0 +1,1 @@
+Montserrat Bold/ExtraBold (títulos e logotipo aproximado); Montserrat Regular/Medium (textos). Confirmar fonte da marca com designer antes da vetorização final. Não distribuir arquivos de fontes no pacote.

@@ -1,0 +1,7 @@
+private/
+.tmp/
+assets/img/Fotos dos Kits/
+__pycache__/
+*.pyc
+.DS_Store
+

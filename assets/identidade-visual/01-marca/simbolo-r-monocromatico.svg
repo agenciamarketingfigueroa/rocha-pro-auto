@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 290" role="img" aria-label="Símbolo RochaPro, R com rastros de pneus"><defs>
+<linearGradient id="redg" x1="0" y1="0" x2="0.7" y2="1"><stop offset="0" stop-color="#FF1E1E"/><stop offset="0.55" stop-color="#E10606"/><stop offset="1" stop-color="#9C060A"/></linearGradient>
+<linearGradient id="metalg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#EEEEEE"/><stop offset="0.55" stop-color="#B8BCC1"/><stop offset="1" stop-color="#7F848A"/></linearGradient>
+<clipPath id="legs"><path d="M87 129 H133 L67 207 H20 Z"/><path d="M112 156 H156 L77 246 H30 Z"/><path d="M138 184 H181 L108 276 H60 Z"/></clipPath>
+<pattern id="tread" width="25" height="25" patternUnits="userSpaceOnUse" patternTransform="rotate(13)"><path d="M1 1 L15 12 M10 1 L24 12 M1 14 L15 25 M10 14 L24 25" fill="none" stroke="#080808" stroke-width="3.3" opacity=".75"/></pattern>
+</defs>
+<path d="M56 36 H201 C256 36 285 68 285 107 C285 137 266 157 244 167 L213 130 C230 120 235 112 235 104 C235 89 223 80 199 80 H91 Z" fill="#FFFFFF"/>
+<g fill="#FFFFFF"><path d="M87 129 H133 L67 207 H20 Z"/><path d="M112 156 H156 L77 246 H30 Z"/><path d="M138 184 H181 L108 276 H60 Z"/></g>
+<g clip-path="url(#legs)" fill="url(#tread)"><rect x="-10" y="110" width="245" height="195"/></g>
+<path d="M150 138 H205 L289 247 H234 Z" fill="#FFFFFF"/><path d="M201 138 L289 247 H278 L192 138 Z" fill="#4F5158" opacity=".4"/>
+</svg>

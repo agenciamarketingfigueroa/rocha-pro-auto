@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Expedição local · RochaPro</title>
+<style>
+:root{font:16px/1.5 system-ui,sans-serif;color:#171717;background:#f3f3f3}*{box-sizing:border-box}body{margin:0}header{background:#111;color:#fff;padding:24px max(20px,calc((100vw - 1080px)/2))}h1{margin:0;font-size:1.8rem}header p{margin:4px 0 0;color:#bbb}main{max-width:1080px;margin:32px auto;padding:0 20px}.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:end}.field{display:grid;gap:6px;flex:1;min-width:220px}label{font-weight:700}input{border:1px solid #aaa;border-radius:8px;padding:13px;font:inherit;width:100%}input:focus,button:focus{outline:3px solid #e10606;outline-offset:2px}button{border:0;border-radius:8px;background:#e10606;color:white;font:700 1rem system-ui;padding:14px 20px;cursor:pointer}button.secondary{background:#272727}button:disabled{opacity:.55;cursor:not-allowed}.card{background:white;border:1px solid #ddd;border-radius:12px;padding:24px;margin-top:24px;box-shadow:0 5px 20px #0000000b}.muted{color:#555}.warn{background:#fff2d2;color:#673e00;border-left:4px solid #b56a00;padding:12px;margin:18px 0}.photos{display:flex;gap:10px;overflow:auto;padding:8px 0}.photos img{width:150px;height:150px;object-fit:contain;background:#eee;border-radius:8px}.list{padding-left:24px}.list li{margin:10px 0}.tag{display:inline-block;background:#eee;padding:2px 8px;border-radius:5px;font-size:.8rem;margin-left:8px}.tag.external{background:#ffe2df;color:#920000}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.original{white-space:pre-wrap;overflow-wrap:anywhere;background:#f7f7f7;padding:14px;border-radius:8px}footer{max-width:1080px;margin:24px auto;padding:0 20px;color:#555;font-size:.9rem}@media print{header,.bar,.actions,footer{display:none}main{margin:0;max-width:none}.card{border:0;box-shadow:none;padding:0}}
+.head-shell{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}.head-brand img{display:block;width:210px;height:auto}.head-copy{text-align:right}.head-copy h1{margin:4px 0}.head-copy p{font-size:.9rem}.head-copy .label{color:#ff4b4b;font-weight:800;letter-spacing:.12em;font-size:.72rem}.back{display:inline-block;color:#fff;margin-top:12px}.local-note{background:#fff7e7;border-left:4px solid #b56a00;padding:12px 16px;margin:0 0 24px;color:#553500}.whatsapp{display:inline-flex;align-items:center;border-radius:8px;background:#128c4b;color:#fff;text-decoration:none;font-weight:800;padding:14px 20px}.whatsapp:hover{background:#0b713b}@media(max-width:620px){.head-shell{align-items:flex-start;flex-direction:column}.head-copy{text-align:left}.head-brand img{width:185px}.bar input{font-size:16px}}
+</style></head><body><header><div class="head-shell"><a class="head-brand" href="../index.html" aria-label="Voltar ao catálogo RochaPro"><img src="../assets/identidade-visual/01-marca/logo-horizontal-claro.svg" width="210" height="53" alt="RochaPro Auto Peças"></a><div class="head-copy"><span class="label">ÁREA INTERNA · USO LOCAL</span><h1>Separar kit</h1><p>Consulta da composição para a expedição</p><a class="back" href="../index.html">Voltar ao catálogo</a></div></div></header>
+<main><p class="local-note">Esta versão funciona somente neste computador. Não publique este arquivo: a autenticação da área interna na web ainda precisa ser configurada.</p><div class="bar"><div class="field"><label for="search">Código do kit</label><input id="search" placeholder="Ex.: KIT10006" autocomplete="off" autofocus></div><div class="field" style="max-width:160px"><label for="quantity">Quantidade de kits</label><input id="quantity" type="number" min="1" max="999" value="1"></div><button id="find">Consultar</button></div><div id="result" aria-live="polite"></div></main><footer>Arquivo local de uso interno. Composições vazias ou de interpretação incerta exigem conferência na planilha original. Nenhuma separação é registrada automaticamente.</footer>
+<script>
+const KITS = /*__KITS__*/;
+const WHATSAPP_TEST = '5531973589165';
+const byCode = new Map(KITS.map(k=>[k.codigo.toUpperCase(),k]));
+const q = document.querySelector('#search'), amount = document.querySelector('#quantity'), out = document.querySelector('#result');
+function text(tag,value,cls){const e=document.createElement(tag);e.textContent=value;if(cls)e.className=cls;return e}
+function whatsappMessage(kit,qty){
+ const lines=['Por favor, preciso dos kits com as peças:','',`${kit.codigo} — ${kit.descricao}`,`Quantidade: ${qty} kit${qty>1?'s':''}`,'','Peças para separar:'];
+ for(const part of kit.composicao.split(/\s+\/\s+/).map(x=>x.trim()).filter(Boolean)){
+  const match=part.match(/^\s*(?:PAUSE\s*:?)?\s*([\w.-]+)\s*:\s*(\d+)\s*(PC|PÇ|UN|PAR|KIT)\b/i);
+  lines.push(match?`• ${match[1]}: ${Number(match[2])*qty} ${match[3].toUpperCase()}`:`• ${part} (conferir quantidade)`);
+ }
+ lines.push('','Composição original por kit: '+kit.composicao,'Por favor, confirmem a separação.');
+ return lines.join('\n');
+}
+function show(){
+ const code=q.value.trim().toUpperCase().replace(/\s+/g,'');const qty=Number(amount.value);
+ out.replaceChildren();
+ if(!code){out.append(text('p','Digite um código de kit para consultar.','muted'));return}
+ if(!Number.isInteger(qty)||qty<1||qty>999){out.append(text('p','Informe uma quantidade de 1 a 999.','warn'));return}
+ const kit=byCode.get(code);
+ if(!kit){out.append(text('p','Kit não encontrado na planilha. Confira o código.','warn'));return}
+ const box=text('section','', 'card');box.textContent='';box.append(text('h2',`${kit.codigo} · ${kit.descricao}`));
+ box.append(text('p',`${qty} kit${qty>1?'s':''} · ${kit.linha ? `linha ${kit.linha} da planilha XLS` : 'sem registro na planilha XLS de kits'}`,'muted'));
+ if(kit.imagens.length){const gallery=text('div','', 'photos');gallery.textContent='';for(const path of kit.imagens){const img=document.createElement('img');img.src='../'+path;img.alt='Foto do kit '+kit.codigo;img.loading='lazy';gallery.append(img)}box.append(gallery)}
+ else box.append(text('p','Sem foto vinculada.','muted'));
+ if(kit.pastas_fotos.length>1)box.append(text('p','Fotos provenientes de múltiplas pastas: '+kit.pastas_fotos.join(', ')+'. Confira se todas pertencem a este kit.','warn'));
+ if(!kit.composicao){box.append(text('p','Composição não informada na planilha XLS. Não separar sem conferência.','warn'));if(kit.anotacao_csv){box.append(text('h3','Anotação auxiliar no CSV de produtos'));box.append(text('div',kit.anotacao_csv,'original'));box.append(text('p','Esta anotação vem de outra coluna e ainda não substitui a composição confirmada do kit.','muted'))}}
+ else{
+  box.append(text('h3','Composição informada na coluna N'));
+  box.append(text('div',kit.composicao,'original'));
+  const parts=kit.composicao.split(/\s+\/\s+/).map(x=>x.trim()).filter(Boolean);
+  const list=text('ol','', 'list');list.textContent='';
+  for(const part of parts){const li=text('li',part);const external=/\b(PN\s*\d+|PAUSE|SOB\s+MEDIDA)\b/i.test(part);if(external)li.append(text('span','Outra marca / sob medida','tag external'));
+   const m=part.match(/^\s*(?:PAUSE\s*:?)?\s*([\w.-]+)\s*:\s*(\d+)\s*(PC|PÇ|UN|PAR|KIT)\b/i);
+   if(m)li.append(text('span',`${Number(m[2])*qty} ${m[3].toUpperCase()} para ${qty} kit${qty>1?'s':''}`,'tag'));
+   else li.append(text('span','Quantidade ou formato: conferir','tag'));
+   list.append(li)}box.append(list);
+  if(qty>1)box.append(text('p','Confira manualmente as anotações adicionais e as unidades antes de separar.','warn'));
+ }
+ const actions=text('div','', 'actions');actions.textContent='';
+ const copy=text('button','Copiar ficha');copy.className='secondary';copy.onclick=async()=>{const content=`${kit.codigo} — ${kit.descricao}\nQuantidade: ${qty} kit(s)\nComposição XLS: ${kit.composicao||'NÃO INFORMADA — CONFERIR'}${kit.anotacao_csv?'\nAnotação auxiliar CSV: '+kit.anotacao_csv:''}`;try{await navigator.clipboard.writeText(content)}catch{const area=document.createElement('textarea');area.value=content;area.style.position='fixed';area.style.opacity='0';document.body.append(area);area.select();document.execCommand('copy');area.remove()}copy.textContent='Copiado'};actions.append(copy);
+ const print=text('button','Imprimir');print.className='secondary';print.onclick=()=>window.print();actions.append(print);
+ if(kit.composicao){const whatsapp=text('a','Enviar peças pelo WhatsApp ↗','whatsapp');whatsapp.href=`https://wa.me/${WHATSAPP_TEST}?text=${encodeURIComponent(whatsappMessage(kit,qty))}`;whatsapp.target='_blank';whatsapp.rel='noopener noreferrer';actions.append(whatsapp)}
+ box.append(actions);out.append(box)
+}
+document.querySelector('#find').addEventListener('click',show);q.addEventListener('keydown',e=>{if(e.key==='Enter')show()});amount.addEventListener('change',show);
+</script></body></html>
