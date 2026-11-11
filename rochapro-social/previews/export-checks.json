@@ -1,0 +1,44 @@
+[
+  {
+    "name": "01-automotive-hero",
+    "font": true,
+    "art": {
+      "width": 1080,
+      "height": 1350
+    },
+    "images": true,
+    "textOutside": [],
+    "width": 1080,
+    "height": 1350,
+    "space": "srgb",
+    "icc": true
+  },
+  {
+    "name": "02-industrial-product",
+    "font": true,
+    "art": {
+      "width": 1080,
+      "height": 1350
+    },
+    "images": true,
+    "textOutside": [],
+    "width": 1080,
+    "height": 1350,
+    "space": "srgb",
+    "icc": true
+  },
+  {
+    "name": "03-engineering-view",
+    "font": true,
+    "art": {
+      "width": 1080,
+      "height": 1350
+    },
+    "images": true,
+    "textOutside": [],
+    "width": 1080,
+    "height": 1350,
+    "space": "srgb",
+    "icc": true
+  }
+]

@@ -1,0 +1,173 @@
+{
+  "project": "RochaPro Auto Pecas ? conceitos editoriais",
+  "date": "2026-11-10",
+  "status": "tres_conceitos_para_revisao",
+  "canvas": {
+    "width": 1080,
+    "height": 1350,
+    "ratio": "4:5",
+    "color_profile": "sRGB ICC"
+  },
+  "palette": [
+    "#E10606",
+    "#080808",
+    "#D9D9D9",
+    "#FFFFFF"
+  ],
+  "font": {
+    "family": "Montserrat",
+    "source": "https://github.com/google/fonts/tree/main/ofl/montserrat",
+    "file_not_distributed": true,
+    "render_cache": "../.tmp/Montserrat.ttf",
+    "sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+  },
+  "catalog_source": {
+    "path": "data/catalogo-publico.js",
+    "sha256": "877f986b143d46141fc75a7cf5f2234bb082f41c1ccc4a05f4e0ddc2fed8c4e0",
+    "active_count": 437
+  },
+  "selected_product": {
+    "codigo": "KIT10006",
+    "nome": "Kit Bieleta Dianteira Blazer / S10",
+    "descricao": "PEÇAS CONFECCIONADAS DE BORRACHA DE PNEU LONADO\nKIT DE BIELETA DIANTEIRA S10 / BLAZER\nAPLICAÇÃO:\nS10: 1995 A 2011 (TODOS OS MODELOS)\nBLAZER: 1995 A 2011 (TODOS OS MODELOS)\nCONTEÚDO DA EMBALAGEM:\n02 – BIELETA DIANTEIRA – BORRACHAS ROCHA",
+    "montadoras": [
+      "Chevrolet"
+    ],
+    "funcoes": [
+      "Bieleta"
+    ],
+    "imagens": [
+      "assets/catalogo/6-01.webp",
+      "assets/catalogo/6-02.webp",
+      "assets/catalogo/6-03.webp",
+      "assets/catalogo/6-04.webp",
+      "assets/catalogo/6-05.webp",
+      "assets/catalogo/6-06.webp",
+      "assets/catalogo/6-07.webp",
+      "assets/catalogo/6-08.webp"
+    ]
+  },
+  "quantity_crosscheck": "private/expedicao.html: KIT10006, linha 7 da planilha importada; quantidade 02; codigos internos nao exportados",
+  "assets": [
+    {
+      "file": "assets/kit10006-276.jpg",
+      "source": "assets/img/Fotos dos Kits/6/Borrachas-276.jpg",
+      "type": "fotografia_original",
+      "sha256": "09304df147e560ea8b948a8d83ffccd58c60ab601c3808cc6635ac4b18ddd5c9",
+      "unchanged": true
+    },
+    {
+      "file": "assets/kit10006-277.jpg",
+      "source": "assets/img/Fotos dos Kits/6/Borrachas-277.jpg",
+      "type": "fotografia_original",
+      "sha256": "0e59bbd09ffe00a411c0d342f57041ec28a3f07b075ab3a4bffb2e8808a34856",
+      "unchanged": true
+    },
+    {
+      "file": "assets/logo-horizontal-claro.png",
+      "source": "assets/identidade-visual/05-exportacoes/logos-png-transparentes/logo-horizontal-claro.png",
+      "type": "marca_existente_preliminar",
+      "sha256": "c9fce6930120da387d6df2963ca86ef3f353d7a821b3bc3803c9d8a3432dace6",
+      "unchanged": true
+    },
+    {
+      "file": "assets/logo-horizontal-escuro.png",
+      "source": "assets/identidade-visual/05-exportacoes/logos-png-transparentes/logo-horizontal-escuro.png",
+      "type": "marca_existente_preliminar",
+      "sha256": "63bfce346c34deb41843abbf721fa65471e7614eb1c0a59e6a2a366deedf622f",
+      "unchanged": true
+    },
+    {
+      "file": "assets/automotive-hero.png",
+      "type": "imagem_conceitual_gerada",
+      "tool": "image_gen.imagegen",
+      "prompt": "assets/automotive-hero-prompt.txt",
+      "sha256": "2500e76287db70284696480dabac17b347d885005f301c670f79339fd968bf38",
+      "technical_fitment_evidence": false
+    }
+  ],
+  "posts": [
+    {
+      "id": "01-automotive-hero",
+      "concept": "Automotive Hero",
+      "editorial_line": "Institucional",
+      "product_code": null,
+      "campaign_slot": 1,
+      "files": {
+        "html": "posts/01-automotive-hero.html",
+        "png": "posts/01-automotive-hero.png",
+        "jpg": "posts/01-automotive-hero.jpg",
+        "caption": "captions/01-automotive-hero.txt",
+        "preview": "previews/01-automotive-hero.png"
+      },
+      "source_assets": [
+        "assets/automotive-hero.png",
+        "assets/logo-horizontal-claro.png"
+      ],
+      "technical_claims": [],
+      "installation_depicted": false
+    },
+    {
+      "id": "02-industrial-product",
+      "concept": "Industrial Product",
+      "editorial_line": "Kits em destaque",
+      "product_code": "KIT10006",
+      "campaign_slot": 3,
+      "files": {
+        "html": "posts/02-industrial-product.html",
+        "png": "posts/02-industrial-product.png",
+        "jpg": "posts/02-industrial-product.jpg",
+        "caption": "captions/02-industrial-product.txt",
+        "preview": "previews/02-industrial-product.png"
+      },
+      "source_assets": [
+        "assets/kit10006-277.jpg",
+        "assets/logo-horizontal-escuro.png"
+      ],
+      "technical_claims": [
+        "02 bieletas dianteiras",
+        "S10 / Blazer 1995 a 2011",
+        "Borracha de pneu lonado"
+      ],
+      "installation_depicted": false
+    },
+    {
+      "id": "03-engineering-view",
+      "concept": "Engineering View",
+      "editorial_line": "Conhecimento tecnico",
+      "product_code": "KIT10006",
+      "campaign_slot": 8,
+      "files": {
+        "html": "posts/03-engineering-view.html",
+        "png": "posts/03-engineering-view.png",
+        "jpg": "posts/03-engineering-view.jpg",
+        "caption": "captions/03-engineering-view.txt",
+        "preview": "previews/03-engineering-view.png"
+      },
+      "source_assets": [
+        "assets/kit10006-276.jpg",
+        "assets/logo-horizontal-claro.png"
+      ],
+      "technical_claims": [
+        "02 bieletas dianteiras",
+        "S10 / Blazer 1995 a 2011",
+        "Borracha de pneu lonado"
+      ],
+      "installation_depicted": false
+    }
+  ],
+  "comparison": "previews/tres-conceitos.png",
+  "editable_comparison": "previews/conceitos.html",
+  "design_system": "brand-system/sistema-editorial.md",
+  "audit": "brand-system/auditoria.md",
+  "qa": "brand-system/revisao-final.md",
+  "campaign_plan": "brand-system/plano-nove-posts.md",
+  "nine_posts_rendered": false,
+  "published": false,
+  "limitations": [
+    "Vetores e PNGs da marca sao preliminares conforme README de origem.",
+    "Aplicacao verificada contra o cadastro local; nao homologada independentemente.",
+    "Sem manual de instalacao: apenas leitura visual de produto.",
+    "Fotos fornecidas no projeto, sem documentos de cessao/licenca anexados."
+  ]
+}

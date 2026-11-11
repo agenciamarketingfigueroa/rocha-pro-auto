@@ -1,0 +1,44 @@
+CONCEITO C — ENGINEERING VIEW
+Linha editorial: Conhecimento técnico
+Produto: KIT10006 — Kit Bieleta Dianteira Blazer / S10
+
+TÍTULO
+CONHEÇA CADA DETALHE.
+
+SUBTÍTULO
+Bieleta dianteira / KIT10006
+
+TEXTO FINAL DA ARTE
+RochaPro Auto Peças
+Conhecimento técnico
+CONHEÇA CADA DETALHE.
+Bieleta dianteira / KIT10006
+LEITURA VISUAL DO COMPONENTE
+01 / MATERIAL
+Borracha de pneu lonado.
+Detalhe ampliado da peça real.
+CONJUNTO — 02 bieletas dianteiras
+APLICAÇÃO CADASTRADA — S10 / Blazer · 1995 a 2011
+@rochaproauto
+Confirme a aplicação ↗
+
+LEGENDA
+Um olhar mais próximo sobre o KIT10006.
+
+A ampliação destaca a textura visível da bucha na fotografia original. O cadastro identifica o material como borracha de pneu lonado e informa um conjunto com duas bieletas dianteiras para S10 e Blazer de 1995 a 2011.
+
+O detalhe ajuda a conhecer o produto, mas aparência não substitui a conferência de aplicação. Antes do pedido, consulte o código e os dados do veículo com nossa equipe.
+
+Esta é uma leitura visual da peça real, não uma orientação de montagem.
+
+CHAMADA PARA AÇÃO
+Informe modelo, ano e versão para conferir a aplicação do KIT10006.
+
+HASHTAGS
+#RochaProAuto #KIT10006 #Bieleta #BorrachaLonada #Autopecas #AplicacaoAutomotiva
+
+TEXTO ALTERNATIVO
+Arte técnica vertical em fundo preto com o título Conheça cada detalhe. Uma prancha clara com grade sutil mostra a fotografia de duas bieletas. Um círculo vermelho marca a textura da bucha na peça frontal; uma linha conduz a uma ampliação da mesma fotografia, acompanhada da identificação Borracha de pneu lonado. Na base constam duas bieletas dianteiras e aplicação cadastrada S10 e Blazer, 1995 a 2011. Não há desenho de instalação.
+
+ORIGENS
+data/catalogo-publico.js, registro KIT10006; assets/img/Fotos dos Kits/6/Borrachas-276.jpg; private/mapeamento-fotos.csv. Ampliação por recorte CSS da mesma fotografia, sem geração ou reconstrução do produto.
