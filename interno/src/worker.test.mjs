@@ -46,17 +46,18 @@ test('private data and photos require a valid session', async () => {
 });
 
 test('admin and staff passwords create separate roles without exposing credentials', async () => {
-  for (const [password, role] of [['admin-example', 'Administrador'], ['staff-example', 'Equipe']]) {
+  for (const [password, role] of [['admin-example', 'admin'], ['staff-example', 'staff']]) {
     const state = setup();
     const response = await login(state.env, password);
     assert.equal(response.status, 303);
     const cookie = response.headers.get('Set-Cookie');
     assert.match(cookie, /HttpOnly; Secure; SameSite=Strict/);
     assert.doesNotMatch(cookie, /example/);
+    assert.equal(JSON.parse(Buffer.from(cookie.split('=')[1].split('.')[0], 'base64url')).role, role);
     const authenticated = await worker.fetch(request('/', { headers: { Cookie: cookie.split(';')[0] } }), state.env);
     assert.equal(authenticated.status, 200);
     const html = await authenticated.text();
-    assert.match(html, new RegExp(`Sair · ${role}`));
+    assert.doesNotMatch(html, /Sair ·|action="\/logout"/);
     assert.match(html, /\/fotos\/kit-1.webp/);
     assert.match(html, /"imagens":\["fotos\/kit-1.webp"\]/);
     assert.doesNotMatch(html, /private\/fotos\//);
@@ -93,4 +94,47 @@ test('rate limit rejects further login attempts', async () => {
   const state = setup();
   for (let attempt = 0; attempt < 5; attempt++) await login(state.env, 'wrong');
   assert.equal((await login(state.env, 'admin-example')).status, 429);
+});
+
+test('browser form posts with a suppressed Origin can log in and out on the same origin', async () => {
+  const state = setup();
+  const browserHeaders = { Origin: 'null', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Dest': 'document' };
+  const response = await worker.fetch(request('/login', {
+    method: 'POST', headers: browserHeaders, body: new URLSearchParams({ password: 'admin-example' }),
+  }), state.env);
+  assert.equal(response.status, 303);
+  const cookie = response.headers.get('Set-Cookie').split(';')[0];
+  const logout = await worker.fetch(request('/logout', {
+    method: 'POST', headers: { ...browserHeaders, Cookie: cookie },
+  }), state.env);
+  assert.equal(logout.status, 303);
+  assert.match(logout.headers.get('Set-Cookie'), /Max-Age=0/);
+});
+
+test('login page preserves the origin for same-origin browser form submissions', async () => {
+  const response = await worker.fetch(request('/login'), setup().env);
+  assert.equal(response.headers.get('Referrer-Policy'), 'same-origin');
+});
+
+test('null and missing origins do not allow cross-site or sibling-domain form submissions', async () => {
+  for (const headers of [
+    { Origin: 'null' },
+    { Origin: 'null', 'Sec-Fetch-Site': 'cross-site' },
+    { Origin: 'null', 'Sec-Fetch-Site': 'same-site' },
+    { 'Sec-Fetch-Site': 'cross-site' },
+    { Origin: 'https://other.example', 'Sec-Fetch-Site': 'same-origin' },
+  ]) {
+    const state = setup();
+    const response = await worker.fetch(request('/login', {
+      method: 'POST', headers, body: new URLSearchParams({ password: 'admin-example' }),
+    }), state.env);
+    assert.equal(response.status, 403, JSON.stringify(headers));
+    assert.equal(response.headers.get('Set-Cookie'), null);
+    const session = await login(state.env, 'admin-example');
+    const logout = await worker.fetch(request('/logout', {
+      method: 'POST', headers: { ...headers, Cookie: session.headers.get('Set-Cookie').split(';')[0] },
+    }), state.env);
+    assert.equal(logout.status, 403);
+    assert.equal(logout.headers.get('Set-Cookie'), null);
+  }
 });

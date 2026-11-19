@@ -18,7 +18,7 @@ function headers(contentType = 'text/html; charset=utf-8', nonce) {
     'Cache-Control': 'private, no-store',
     'Content-Security-Policy': policy,
     'X-Content-Type-Options': 'nosniff',
-    'Referrer-Policy': 'no-referrer',
+    'Referrer-Policy': 'same-origin',
     'X-Frame-Options': 'DENY',
   };
 }
@@ -96,10 +96,15 @@ function redirect(path, cookie) {
 
 function sameOrigin(request) {
   const origin = request.headers.get('Origin');
+  const site = request.headers.get('Sec-Fetch-Site');
+  if (site && site !== 'same-origin') return false;
+  // Pages opened before the policy fix can still submit Origin: null.
+  // Accept these only when browser-controlled metadata proves same-origin.
+  if (origin === 'null') return site === 'same-origin';
   return !origin || origin === new URL(request.url).origin;
 }
 
-async function privatePage(env, role) {
+async function privatePage(env) {
   const object = await env.PRIVATE_ASSETS.fetch(new Request('https://assets.internal/expedicao.html'));
   if (!object.ok) return page('Dados indisponíveis', '<h1>Dados ainda não enviados</h1><p>A consulta será liberada após importar a planilha de kits.</p>', 503);
   const nonce = base64url(crypto.getRandomValues(new Uint8Array(16)));
@@ -112,8 +117,7 @@ async function privatePage(env, role) {
     .replaceAll('private/fotos/', 'fotos/')
     .replaceAll('../assets/', `${publicSite}/assets/`)
     .replaceAll('../index.html', `${publicSite}/`)
-    .replace('<script>', `<script nonce="${nonce}">`)
-    .replace('<main>', `<main><form method="post" action="/logout"><button type="submit" class="secondary">Sair · ${role === 'admin' ? 'Administrador' : 'Equipe'}</button></form>`);
+    .replace('<script>', `<script nonce="${nonce}">`);
   return new Response(html, { headers: headers('text/html; charset=utf-8', nonce) });
 }
 
@@ -155,7 +159,7 @@ export default {
       return redirect('/login', `${COOKIE}=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0`);
     }
     if (request.method !== 'GET' && request.method !== 'HEAD') return new Response('Método não permitido', { status: 405, headers: headers('text/plain; charset=utf-8') });
-    if (url.pathname === '/' || url.pathname === '/index.html') return privatePage(env, role);
+    if (url.pathname === '/' || url.pathname === '/index.html') return privatePage(env);
     if (url.pathname.startsWith('/fotos/')) return privatePhoto(env, url.pathname);
     return new Response('Não encontrado', { status: 404, headers: headers('text/plain; charset=utf-8') });
   },
