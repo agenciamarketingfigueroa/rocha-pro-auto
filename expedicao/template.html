@@ -6,7 +6,7 @@
 </style></head><body><header><div class="head-shell"><a class="head-brand" href="../index.html" aria-label="Voltar ao catálogo RochaPro"><img src="../assets/identidade-visual/01-marca/logo-horizontal-claro.svg" width="210" height="53" alt="RochaPro Auto Peças"></a><div class="head-copy"><span class="label">ÁREA INTERNA · USO LOCAL</span><h1>Separar kit</h1><p>Consulta da composição para a expedição</p><a class="back" href="../index.html">Voltar ao catálogo</a></div></div></header>
 <main><p class="local-note">Esta versão funciona somente neste computador. Não publique este arquivo: a autenticação da área interna na web ainda precisa ser configurada.</p><div class="bar"><div class="field" style="max-width:230px"><label for="search-type">Buscar por</label><select id="search-type"><option value="kit">Código do kit</option><option value="supplier">Código do fornecedor</option></select></div><div class="field"><label for="search" id="search-label">Código do kit</label><input id="search" placeholder="Ex.: KIT10089, kit89 ou 89" autocomplete="off" autofocus></div><div class="field" id="quantity-field" style="max-width:160px"><label for="quantity">Quantidade de kits</label><input id="quantity" type="number" min="1" max="999" value="1"></div><button id="find">Consultar</button></div><div id="result" aria-live="polite"></div></main><footer>Arquivo local de uso interno. Composições vazias ou de interpretação incerta exigem conferência na planilha original. Nenhuma separação é registrada automaticamente.</footer>
 <script>
-const KITS = /*__KITS__*/;
+const KITS = /*__KITS__*/ [];
 const WHATSAPP_TEST = '5531973589165';
 const byCode = new Map(KITS.map(k=>[k.codigo.toUpperCase(),k]));
 function kitCode(value){
@@ -38,6 +38,7 @@ for(const kit of KITS){
 }
 const mode=document.querySelector('#search-type'), q=document.querySelector('#search'), amount=document.querySelector('#quantity'), out=document.querySelector('#result');
 function text(tag,value,cls){const e=document.createElement(tag);e.textContent=value;if(cls)e.className=cls;return e}
+if(!KITS.length){out.append(text('p','Esta é a tela modelo, sem dados de kits. Abra private/expedicao.html depois de gerar ou atualizar o arquivo interno.','warn'));q.disabled=true;amount.disabled=true;mode.disabled=true;document.querySelector('#find').disabled=true}
 function whatsappMessage(kit,qty){
  const lines=['Por favor, preciso dos kits com as peças:','',`${kit.codigo} — ${kit.descricao}`,`Quantidade: ${qty} kit${qty>1?'s':''}`,'','Peças para separar:'];
  for(const part of compositionParts(kit)){

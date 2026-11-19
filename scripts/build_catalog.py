@@ -240,7 +240,7 @@ def main(product_file, kit_file):
                              "anotacao_csv": product_note if not kit["composicao"] else ""})
     payload = json.dumps(private_kits, ensure_ascii=False).replace("<", "\\u003c")
     shell = (ROOT / "expedicao" / "template.html").read_text(encoding="utf-8")
-    (PRIVATE / "expedicao.html").write_text(shell.replace("/*__KITS__*/", payload), encoding="utf-8")
+    (PRIVATE / "expedicao.html").write_text(shell.replace("/*__KITS__*/ []", payload), encoding="utf-8")
     report = {
         "produtos_fonte": len(source_products), "produtos_ativos_publicados": len(public),
         "kits_xls": len(kits) - len(csv_without_xls), "codigos_produtos_sem_kit_xls": csv_without_xls,

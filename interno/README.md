@@ -7,6 +7,7 @@ O Worker distingue os papéis `admin` e `staff`. Nesta versão, os dois papéis 
 ## Para ativar quando as planilhas estiverem no outro computador
 
 1. Gere `private/expedicao.html` e `private/fotos/` com `python3 scripts/build_catalog.py PRODUTOS.xls KITS.xls`, usando os caminhos reais das planilhas. Não faça commit nem envie a pasta `private/` ao GitHub Pages.
+   Se `private/expedicao.html` já existir e só precisar receber uma versão nova da interface, execute `python scripts/refresh_expedicao.py` sem reler as planilhas.
 2. Na conta Cloudflare do domínio, crie um bucket R2 chamado `rochapro-interno`. Mantenha o acesso público do bucket desativado.
 3. Crie um Worker chamado `rochapro-interno` e cadastre os três segredos em **Workers & Pages → Worker → Settings → Variables and Secrets**. Informe as senhas escolhidas pela loja nos respectivos campos; gere `SESSION_SECRET` com um gerador de valores aleatórios. Não use as senhas como variáveis comuns em `wrangler.jsonc`.
 4. No diretório `interno/`, execute `npx wrangler deploy`. A configuração cria o domínio personalizado `interno.rochaproauto.com.br`, desativa `workers.dev` e URLs de prévia, vincula o bucket privado e aplica o limite de tentativas. O domínio precisa estar ativo na Cloudflare.
