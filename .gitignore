@@ -1,5 +1,8 @@
 private/
 .tmp/
+interno/.dev.vars*
+interno/.env*
+interno/.wrangler/
 assets/img/Fotos dos Kits/
 __pycache__/
 *.pyc
