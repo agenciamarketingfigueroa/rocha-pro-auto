@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import worker from './worker.mjs';
 
 const origin = 'https://interno.rochaproauto.com.br';
@@ -12,12 +13,13 @@ function setup() {
     STAFF_PASSWORD: 'staff-example',
     SESSION_SECRET: 'a-long-test-secret-with-more-than-thirty-two-characters',
     LOGIN_LIMITER: { async limit() { attempts++; return { success: attempts <= 5 }; } },
-    PRIVATE_FILES: {
-      async get(key) {
+    PRIVATE_ASSETS: {
+      async fetch(request) {
         reads++;
-        if (key === 'expedicao.html') return { async text() { return '<html><head></head><body><header></header><main><img src="../assets/logo.svg"><img src="../private/fotos/kit-1.webp"></main><script>const KITS = [];</script></body></html>'; } };
-        if (key === 'fotos/kit-1.webp') return { body: new Uint8Array([1, 2, 3]) };
-        return null;
+        const key = new URL(request.url).pathname;
+        if (key === '/expedicao.html') return new Response('<html><head><title>Expedição local · RochaPro</title></head><body><header>ÁREA INTERNA · USO LOCAL</header><main><p class="local-note">Somente local.</p><img src="../assets/logo.svg"><img src="../private/fotos/kit-1.webp"></main><script>const KITS = [{"imagens":["private/fotos/kit-1.webp"]}];</script></body></html>');
+        if (key === '/fotos/kit-1.webp') return new Response(new Uint8Array([1, 2, 3]));
+        return new Response('Not found', { status: 404 });
       },
     },
   };
@@ -36,8 +38,10 @@ test('private data and photos require a valid session', async () => {
   const state = setup();
   const page = await worker.fetch(request('/'), state.env);
   const photo = await worker.fetch(request('/fotos/kit-1.webp'), state.env);
+  const rawPage = await worker.fetch(request('/expedicao.html'), state.env);
   assert.equal(page.status, 303);
   assert.equal(photo.status, 303);
+  assert.equal(rawPage.status, 303);
   assert.equal(state.reads(), 0);
 });
 
@@ -54,9 +58,27 @@ test('admin and staff passwords create separate roles without exposing credentia
     const html = await authenticated.text();
     assert.match(html, new RegExp(`Sair · ${role}`));
     assert.match(html, /\/fotos\/kit-1.webp/);
+    assert.match(html, /"imagens":\["fotos\/kit-1.webp"\]/);
+    assert.doesNotMatch(html, /private\/fotos\//);
     assert.match(html, /https:\/\/rochaproauto.com.br\/assets\/logo.svg/);
     assert.doesNotMatch(html, /admin-example|staff-example/);
+    assert.doesNotMatch(html, /USO LOCAL|local-note|Expedição local/);
+    const photo = await worker.fetch(request('/fotos/kit-1.webp', { headers: { Cookie: cookie.split(';')[0] } }), state.env);
+    assert.equal(photo.status, 200);
+    assert.equal(photo.headers.get('Content-Type'), 'image/webp');
+    assert.equal(photo.headers.get('Cache-Control'), 'private, no-store');
+    const rawPage = await worker.fetch(request('/expedicao.html', { headers: { Cookie: cookie.split(';')[0] } }), state.env);
+    assert.equal(rawPage.status, 404);
   }
+});
+
+test('deployment always runs authentication before serving assets', async () => {
+  const config = JSON.parse(await readFile(new URL('../wrangler.jsonc', import.meta.url), 'utf8'));
+  assert.equal(config.assets.run_worker_first, true);
+  assert.equal(config.assets.html_handling, 'none');
+  assert.equal(config.assets.not_found_handling, 'none');
+  assert.equal(config.workers_dev, false);
+  assert.equal(config.preview_urls, false);
 });
 
 test('wrong password, forged cookie and cross-origin login do not unlock data', async () => {

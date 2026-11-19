@@ -5,7 +5,13 @@
   "workers_dev": false,
   "preview_urls": false,
   "routes": [{ "pattern": "interno.rochaproauto.com.br", "custom_domain": true }],
-  "r2_buckets": [{ "binding": "PRIVATE_FILES", "bucket_name": "rochapro-interno" }],
+  "assets": {
+    "directory": "../.tmp/interno-assets",
+    "binding": "PRIVATE_ASSETS",
+    "run_worker_first": true,
+    "html_handling": "none",
+    "not_found_handling": "none"
+  },
   "ratelimits": [{
     "name": "LOGIN_LIMITER",
     "namespace_id": "1001",

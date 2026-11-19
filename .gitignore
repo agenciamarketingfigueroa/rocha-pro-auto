@@ -1,5 +1,6 @@
 private/
 .tmp/
+.wrangler/
 interno/.dev.vars*
 interno/.env*
 interno/.wrangler/

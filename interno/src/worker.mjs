@@ -100,11 +100,16 @@ function sameOrigin(request) {
 }
 
 async function privatePage(env, role) {
-  const object = await env.PRIVATE_FILES.get('expedicao.html');
-  if (!object) return page('Dados indisponíveis', '<h1>Dados ainda não enviados</h1><p>A consulta será liberada após importar a planilha de kits.</p>', 503);
+  const object = await env.PRIVATE_ASSETS.fetch(new Request('https://assets.internal/expedicao.html'));
+  if (!object.ok) return page('Dados indisponíveis', '<h1>Dados ainda não enviados</h1><p>A consulta será liberada após importar a planilha de kits.</p>', 503);
   const nonce = base64url(crypto.getRandomValues(new Uint8Array(16)));
   const html = (await object.text())
+    .replace('<title>Expedição local · RochaPro</title>', '<title>Área interna · RochaPro</title>')
+    .replace('ÁREA INTERNA · USO LOCAL', 'ÁREA INTERNA')
+    .replace(/<p class="local-note">[\s\S]*?<\/p>/, '')
+    .replace('Arquivo local de uso interno.', 'Consulta interna protegida por senha.')
     .replaceAll('../private/fotos/', '/fotos/')
+    .replaceAll('private/fotos/', 'fotos/')
     .replaceAll('../assets/', `${publicSite}/assets/`)
     .replaceAll('../index.html', `${publicSite}/`)
     .replace('<script>', `<script nonce="${nonce}">`)
@@ -115,14 +120,14 @@ async function privatePage(env, role) {
 async function privatePhoto(env, path) {
   const match = path.match(/^\/fotos\/([a-z0-9][a-z0-9._-]*\.webp)$/i);
   if (!match) return new Response('Não encontrado', { status: 404, headers: headers('text/plain; charset=utf-8') });
-  const object = await env.PRIVATE_FILES.get(`fotos/${match[1]}`);
-  if (!object) return new Response('Não encontrado', { status: 404, headers: headers('text/plain; charset=utf-8') });
+  const object = await env.PRIVATE_ASSETS.fetch(new Request(`https://assets.internal/fotos/${match[1]}`));
+  if (!object.ok) return new Response('Não encontrado', { status: 404, headers: headers('text/plain; charset=utf-8') });
   return new Response(object.body, { headers: headers('image/webp') });
 }
 
 export default {
   async fetch(request, env) {
-    if (!env.ADMIN_PASSWORD || !env.STAFF_PASSWORD || env.ADMIN_PASSWORD === env.STAFF_PASSWORD || !env.SESSION_SECRET || env.SESSION_SECRET.length < 32 || !env.PRIVATE_FILES || !env.LOGIN_LIMITER) {
+    if (!env.ADMIN_PASSWORD || !env.STAFF_PASSWORD || env.ADMIN_PASSWORD === env.STAFF_PASSWORD || !env.SESSION_SECRET || env.SESSION_SECRET.length < 32 || !env.PRIVATE_ASSETS || !env.LOGIN_LIMITER) {
       return new Response('Configuração incompleta', { status: 503, headers: headers('text/plain; charset=utf-8') });
     }
     const url = new URL(request.url);

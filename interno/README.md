@@ -1,17 +1,18 @@
 # Área interna online
 
-O catálogo público continua no GitHub Pages. `interno.rochaproauto.com.br` será servido por um Cloudflare Worker separado. A consulta de kits usa o HTML gerado em `private/expedicao.html`, guardado em um bucket R2 privado; o Worker só o entrega depois do login. As fotos privadas passam pelo mesmo controle de acesso.
+A consulta em https://interno.rochaproauto.com.br usa o Worker rochapro-interno. Composições e fotos são arquivos estáticos vinculados ao Worker. Todas as requisições passam pelo login no servidor, inclusive as fotos: assets.run_worker_first deve permanecer true. Não é necessário ativar R2.
 
-O Worker distingue os papéis `admin` e `staff`. Nesta versão, os dois papéis podem consultar as mesmas fichas; o papel de administrador fica disponível para futuras funções exclusivas. As senhas escolhidas pela loja devem ser cadastradas como **segredos** `ADMIN_PASSWORD` e `STAFF_PASSWORD` no painel da Cloudflare, nunca neste repositório nem em arquivos publicados. Também é preciso cadastrar `SESSION_SECRET` com um valor aleatório de pelo menos 32 caracteres. As sessões duram oito horas e podem ser encerradas pelo botão **Sair**. O formulário de login limita as tentativas por IP a cinco por minuto.
+Os papéis admin e staff podem consultar todas as fichas nesta versão. As senhas ficam nos segredos ADMIN_PASSWORD e STAFF_PASSWORD da Cloudflare. SESSION_SECRET é uma chave aleatória de pelo menos 32 caracteres. Nunca grave esses valores no HTML, no código ou no Git. As sessões duram oito horas; Sair remove a sessão do navegador. O login limita tentativas por IP a cinco por minuto.
 
-## Para ativar quando as planilhas estiverem no outro computador
+## Preparar e publicar
 
-1. Gere `private/expedicao.html` e `private/fotos/` com `python3 scripts/build_catalog.py PRODUTOS.xls KITS.xls`, usando os caminhos reais das planilhas. Não faça commit nem envie a pasta `private/` ao GitHub Pages.
-   Se `private/expedicao.html` já existir e só precisar receber uma versão nova da interface, execute `python scripts/refresh_expedicao.py` sem reler as planilhas.
-2. Na conta Cloudflare do domínio, crie um bucket R2 chamado `rochapro-interno`. Mantenha o acesso público do bucket desativado.
-3. Crie um Worker chamado `rochapro-interno` e cadastre os três segredos em **Workers & Pages → Worker → Settings → Variables and Secrets**. Informe as senhas escolhidas pela loja nos respectivos campos; gere `SESSION_SECRET` com um gerador de valores aleatórios. Não use as senhas como variáveis comuns em `wrangler.jsonc`.
-4. No diretório `interno/`, execute `npx wrangler deploy`. A configuração cria o domínio personalizado `interno.rochaproauto.com.br`, desativa `workers.dev` e URLs de prévia, vincula o bucket privado e aplica o limite de tentativas. O domínio precisa estar ativo na Cloudflare.
-5. Envie `private/expedicao.html` ao objeto `expedicao.html` do bucket e cada arquivo de `private/fotos/` ao prefixo `fotos/`. Exemplo para o HTML, a partir da raiz do repositório: `npx wrangler r2 object put rochapro-interno/expedicao.html --file private/expedicao.html --remote --config interno/wrangler.jsonc`. Para as fotos, use a mesma operação com o destino `rochapro-interno/fotos/NOME.webp`.
-6. Teste que `/` e `/fotos/NOME.webp` redirecionam para `/login` sem sessão, que ambas as senhas permitem consultar, que uma senha errada não permite consultar e que **Sair** encerra o acesso. Só depois adicione um link no catálogo público.
+Requer Node.js e Wrangler autenticado na conta Cloudflare do domínio. Execute na raiz:
 
-As senhas numéricas escolhidas são curtas para um serviço exposto à internet. O limite de tentativas reduz ataques simples, mas pode ser contornado por origens distribuídas. Antes da ativação pública, recomendamos também uma política Cloudflare Access para restringir quem chega ao Worker, ou senhas mais longas. Se usar Access no Worker, proteja **todo o tráfego**, incluindo produção e prévias.
+1. Tenha private/expedicao.html e private/fotos/ neste computador. Gere-os com scripts/build_catalog.py e as planilhas originais quando for atualizar os dados.
+2. Execute node scripts/prepare_interno.mjs. O comando usa o modelo atualizado e os dados já embutidos, copiando somente a consulta e fotos WebP para .tmp/interno-assets/. As planilhas não são necessárias para atualizar a interface.
+3. Execute node --test interno/src/worker.test.mjs.
+4. Na primeira publicação, cadastre os três segredos no Worker pelo painel ou por wrangler secret bulk --config interno/wrangler.jsonc, fornecendo JSON por stdin. Não salve esse JSON em arquivos publicados.
+5. Execute wrangler deploy --config interno/wrangler.jsonc. A configuração desativa workers.dev e URLs de prévia.
+6. Confira que /, /expedicao.html e /fotos/NOME.webp redirecionam para /login sem sessão; que as duas senhas permitem consultar; e que Sair volta ao login. /expedicao.html continua indisponível mesmo com sessão: a consulta é servida apenas por /.
+
+As pastas private/ e .tmp/ são ignoradas pelo Git. Não as publique no GitHub Pages nem em hospedagem estática sem o Worker de autenticação. Para atualizar os kits ou fotos, prepare e publique uma nova versão.
