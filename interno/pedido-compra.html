@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pedido de compra · RochaPro</title>
+<style>
+:root{font:16px/1.5 system-ui,sans-serif;color:#171717;background:#f3f3f3}*{box-sizing:border-box}body{margin:0}header{background:#111;color:#fff;padding:24px 20px}.head-shell{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{width:210px;height:auto}.eyebrow{color:#ff4b4b;font-size:.875rem;font-weight:800;letter-spacing:.08em}h1{font-size:1.8rem;margin:4px 0}h2{font-size:1.35rem;margin:0 0 12px}h3{font-size:1.1rem;margin:0 0 8px}p{margin:8px 0}.head-copy{text-align:right}main{max-width:1120px;margin:28px auto;padding:0 20px}.layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px;align-items:start}.card{background:#fff;border:1px solid #ddd;border-radius:12px;padding:24px;box-shadow:0 5px 20px #0000000b}.field{display:grid;gap:6px;min-width:0}label{font-weight:700}.search-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.wide{grid-column:1/-1}input,select{width:100%;min-width:0;border:1px solid #aaa;border-radius:8px;background:#fff;padding:12px;font:inherit}select{appearance:none;padding-right:32px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12'%3E%3Cpath d='m3 4 5 5 5-5' fill='none' stroke='%23333' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}button,.send{border:0;border-radius:8px;background:#e10606;color:#fff;padding:13px 18px;font:700 1rem system-ui;cursor:pointer;text-decoration:none;display:inline-block;text-align:center}button:disabled,.send[aria-disabled="true"]{opacity:.5;cursor:not-allowed}.secondary{background:#eee;color:#222}.remove{padding:10px 12px;background:#fff;color:#a00;border:1px solid #e6b8b8}.muted{color:#555}.small{font-size:.875rem}.warn{padding:12px;background:#fff2d2;color:#673e00;border-left:4px solid #b56a00;border-radius:4px}.notice{min-height:24px;margin:14px 0;color:#175c32}.candidate{border-top:1px solid #ddd;padding:16px 0}.candidate:first-child{margin-top:14px}.candidate-fields{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,.85fr);gap:10px}.candidate-fields label{font-size:.875rem}.raw{overflow-wrap:anywhere}.row-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}.tag{display:inline-block;border-radius:5px;background:#ffe2df;color:#920000;font-size:.875rem;padding:3px 8px;margin-top:6px}.result{margin-top:24px}.full{width:100%;margin-top:14px}.order-list{list-style:none;margin:18px 0;padding:0}.order-row{display:grid;grid-template-columns:minmax(0,1fr) 96px auto;gap:10px;align-items:center;border-top:1px solid #ddd;padding:14px 0}.code{font-size:1.1rem;font-weight:800;overflow-wrap:anywhere}.send{background:#128c4b;width:100%}.preview{white-space:pre-wrap;overflow-wrap:anywhere;padding:14px;border-radius:8px;background:#f6f6f6;font:inherit;margin:12px 0}.summary{padding:12px;background:#f6f6f6;border-radius:8px}.empty{padding:24px 0}.actions{display:flex;justify-content:space-between;gap:12px;align-items:center}details{margin:16px 0}summary{cursor:pointer;font-weight:700}input:focus,select:focus,button:focus,a:focus{outline:3px solid #e10606;outline-offset:2px}input:invalid{border-color:#b00000}[hidden]{display:none!important}footer{max-width:1120px;margin:24px auto;padding:0 20px;color:#555;font-size:.875rem}@media(max-width:850px){.layout{grid-template-columns:1fr}.head-shell{align-items:flex-start;flex-direction:column;gap:16px}.head-copy{text-align:left}}@media(max-width:480px){main{padding:0 12px}.card{padding:18px}.search-fields{grid-template-columns:1fr}.candidate-fields{grid-template-columns:1fr 1fr}.candidate-fields .field:first-child{grid-column:1/-1}.order-row{grid-template-columns:minmax(0,1fr) 84px}.order-row .remove{grid-column:1/-1;justify-self:end}.brand{width:185px}}
+</style></head><body><header><div class="head-shell"><a href="/" aria-label="Consulta RochaPro"><img class="brand" src="/brand/logo-horizontal-claro.svg" width="210" height="53" alt="RochaPro Auto Peças"></a><div class="head-copy"><span class="eyebrow">ÁREA INTERNA</span><h1>Pedido de compra</h1><p>Peças para pedir ao Tigrinho · Borrachas Rocha</p></div></div></header>
+<main><div class="layout"><section class="card"><h2>Adicionar peças</h2><form id="purchase-search"><div class="search-fields"><div class="field"><label for="purchase-mode">Buscar por</label><select id="purchase-mode"><option value="kit">Código do kit</option><option value="supplier">Código do fornecedor</option></select></div><div class="field"><label for="purchase-quantity" id="purchase-quantity-label">Quantidade de kits</label><input id="purchase-quantity" type="number" min="1" max="999999" step="1" value="1" required inputmode="numeric"></div><div class="field wide"><label for="purchase-code" id="purchase-code-label">Código do kit</label><input id="purchase-code" placeholder="Ex.: KIT10051 ou 51" autocomplete="off" required></div><button class="wide" type="submit">Buscar</button></div></form><p class="muted small">Adicione um kit para trazer suas peças ou busque uma peça pelo código do fornecedor.</p><div id="purchase-result" class="result" aria-live="polite"></div></section>
+<section class="card" aria-labelledby="order-title"><div class="actions"><h2 id="order-title">Seu pedido</h2><button id="clear-order" class="secondary" type="button" hidden>Limpar</button></div><p class="muted small" id="draft-note">Rascunho salvo neste aparelho.</p><div id="order-empty" class="empty muted">O pedido está vazio. Busque um kit ou uma peça para começar.</div><ul id="order-list" class="order-list"></ul><div id="order-summary" class="summary" hidden></div><p id="order-status" class="notice" role="status"></p><details id="message-details" hidden><summary>Conferir mensagem</summary><pre id="message-preview" class="preview"></pre></details><a id="send-order" class="send" aria-disabled="true" target="_blank" rel="noopener noreferrer">Fazer pedido pelo WhatsApp</a><p class="muted small">Tigrinho · +55 31 97160-6904<br>O WhatsApp abre com a mensagem pronta para você conferir e enviar.</p></section></div></main><footer>As quantidades são somadas por código e unidade. Exclua as peças de outros fornecedores antes de enviar.</footer>
+<script>
+const KITS = /*__KITS__*/ [];
+/*__PURCHASE_CORE__*/
+const $ = selector => document.querySelector(selector);
+const make = (tag, content='', cls='') => { const element=document.createElement(tag); element.textContent=content; if(cls)element.className=cls; return element; };
+const mode=$('#purchase-mode'), codeInput=$('#purchase-code'), quantityInput=$('#purchase-quantity'), result=$('#purchase-result');
+const STORAGE_KEY='rochapro-purchase-v1';
+let order=[], candidates=[], candidateMode='kit', selectedKit=null;
+try {
+ const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');
+ if(!Array.isArray(saved)||!saved.every(item=>item&&validCode(item.code)&&ORDER_UNITS.includes(item.unit)&&(item.quantity===null||validQuantity(item.quantity))))throw new Error('invalid');
+ order=saved.map(({code,unit,quantity})=>({code,unit,quantity}));
+} catch { $('#draft-note').textContent='Não foi possível recuperar o rascunho. O pedido começa vazio.'; }
+function saveDraft(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(order))}catch{$('#draft-note').textContent='Rascunho disponível somente enquanto esta página estiver aberta.'}}
+function announce(message){$('#order-status').textContent=message}
+function refreshSummary(){
+ const valid=order.length>0&&order.every(validItem);const url=purchaseUrl(order);const send=$('#send-order');
+ send.setAttribute('aria-disabled',String(!valid));if(url)send.href=url;else send.removeAttribute('href');
+ $('#order-empty').hidden=order.length>0;$('#clear-order').hidden=!order.length;$('#order-summary').hidden=!order.length;
+ const totals=new Map();for(const item of order)if(validQuantity(item.quantity))totals.set(item.unit,(totals.get(item.unit)||0)+item.quantity);
+ $('#order-summary').textContent=valid?`${order.length} linha${order.length===1?'':'s'} · ${[...totals].map(([unit,qty])=>`${qty} ${unit}`).join(' + ')}`:'Preencha uma quantidade inteira maior que zero em cada linha.';
+ $('#message-details').hidden=!valid;$('#message-preview').textContent=purchaseMessage(order);saveDraft();
+}
+function renderOrder(){
+ const list=$('#order-list');list.replaceChildren();
+ order.forEach((item,index)=>{
+  const row=make('li','','order-row'),info=make('div');info.append(make('div',item.code,'code'),make('div',item.unit,'muted small'));
+  const qty=make('input');qty.type='number';qty.min='1';qty.max=String(ORDER_LIMIT);qty.step='1';qty.required=true;qty.inputMode='numeric';qty.value=item.quantity??'';qty.setAttribute('aria-label',`Quantidade de ${item.code} em ${item.unit}`);
+  qty.addEventListener('input',()=>{const value=Number(qty.value);item.quantity=validQuantity(value)?value:null;refreshSummary()});
+  const remove=make('button','Excluir','remove');remove.type='button';remove.setAttribute('aria-label',`Excluir ${item.code} do pedido`);remove.onclick=()=>{order.splice(index,1);renderOrder();announce(`Peça ${item.code} excluída.`)};
+  row.append(info,qty,remove);list.append(row);
+ });refreshSummary();
+}
+function candidateMultiplier(){return candidateMode==='kit'?Number(quantityInput.value):1}
+function validCandidates(){return candidates.length>0&&candidates.every(validItem)&&validQuantity(candidateMultiplier())}
+function updateCandidateTotals(){
+ const multiplier=candidateMultiplier();
+ candidates.forEach((part,index)=>{const label=$(`#candidate-total-${index}`);if(label)label.textContent=validItem(part)&&validQuantity(multiplier)?`Adicionar: ${part.quantity*multiplier} ${part.unit}`:'Confira código, quantidade e unidade.'});
+ const add=$('#add-purchase');if(add)add.disabled=!validCandidates();
+}
+function candidateField(labelText,input){const field=make('div','','field'),label=make('label',labelText);label.htmlFor=input.id;field.append(label,input);return field}
+function renderCandidates(){
+ result.replaceChildren();
+ if(selectedKit){result.append(make('h3',`${selectedKit.codigo} · ${selectedKit.descricao}`));result.append(make('p','Quantidades por kit. Ajuste ou exclua as peças antes de adicionar.','muted small'))}
+ else result.append(make('h3',`Peça ${supplierCode(codeInput.value)}`));
+ if(candidates.some(p=>!validItem(p)))result.append(make('p','Há anotações sem código, quantidade ou unidade confirmados. Preencha os campos ou exclua a linha para continuar.','warn'));
+ candidates.forEach((part,index)=>{
+  const row=make('div','','candidate');row.append(make('p',part.raw,'raw muted small'));if(part.external)row.append(make('span','Outra marca / sob medida: confira o fornecedor','tag'));
+  const fields=make('div','','candidate-fields');
+  const code=make('input');code.id=`candidate-code-${index}`;code.value=part.code;code.autocomplete='off';code.placeholder='Código do fornecedor';code.oninput=()=>{part.code=supplierCode(code.value);updateCandidateTotals()};
+  const qty=make('input');qty.id=`candidate-qty-${index}`;qty.type='number';qty.min='1';qty.max=String(ORDER_LIMIT);qty.step='1';qty.inputMode='numeric';qty.required=true;qty.value=part.quantity??'';qty.oninput=()=>{const value=Number(qty.value);part.quantity=validQuantity(value)?value:null;if(candidateMode==='supplier')quantityInput.value=qty.value;updateCandidateTotals()};
+  const unit=make('select');unit.id=`candidate-unit-${index}`;for(const value of ['',...ORDER_UNITS]){const option=make('option',value||'Escolha');option.value=value;unit.append(option)}unit.value=part.unit;unit.onchange=()=>{part.unit=unit.value;updateCandidateTotals()};
+  fields.append(candidateField('Código',code),candidateField(candidateMode==='kit'?'Qtd. por kit':'Quantidade',qty),candidateField('Unidade',unit));row.append(fields);
+  const actions=make('div','','row-actions'),total=make('span','','muted small');total.id=`candidate-total-${index}`;const remove=make('button','Excluir','remove');remove.type='button';remove.setAttribute('aria-label',`Excluir peça ${part.code||index+1} desta seleção`);remove.onclick=()=>{candidates.splice(index,1);renderCandidates()};actions.append(total,remove);row.append(actions);result.append(row);
+ });
+ if(!candidates.length){result.append(make('p','Nenhuma peça selecionada. Faça uma nova busca para adicionar.','muted'));return}
+ const add=make('button',candidateMode==='kit'?'Adicionar kit ao pedido':'Adicionar peça ao pedido','full');add.id='add-purchase';add.type='button';add.onclick=()=>{
+  try{order=addToOrder(order,candidates,candidateMultiplier());renderOrder();announce(candidateMode==='kit'?'Peças do kit adicionadas ao pedido. Você pode ajustar ou excluir cada linha.':'Peça adicionada ao pedido.');}
+  catch(error){announce(error.message)}
+ };result.append(add);updateCandidateTotals();
+}
+function search(event){
+ event?.preventDefault();result.replaceChildren();candidates=[];selectedKit=null;candidateMode=mode.value;
+ if(!codeInput.value.trim()||!validQuantity(Number(quantityInput.value))){result.append(make('p','Informe o código e uma quantidade inteira maior que zero.','warn'));return}
+ if(candidateMode==='kit'){
+  selectedKit=resolveKit(codeInput.value,KITS);if(!selectedKit){result.append(make('p','Kit não encontrado. Confira o código.','warn'));return}
+  candidates=compositionParts(selectedKit.composicao).map(parsePart);
+  if(!candidates.length){result.append(make('p','Este kit não tem composição cadastrada. Busque as peças pelo código do fornecedor.','warn'));return}
+ }else{
+  const found=findSupplier(codeInput.value,KITS);
+  if(!found.length){result.append(make('p','Código não encontrado nas composições cadastradas. Confira o código do fornecedor.','warn'));return}
+  const units=[...new Set(found.map(p=>p.unit).filter(Boolean))];
+  candidates=[{code:supplierCode(codeInput.value),quantity:Number(quantityInput.value),unit:units.length===1?units[0]:'',raw:`Encontrada em ${new Set(found.map(p=>p.kit)).size} kit(s). A quantidade informada é a quantidade da peça para comprar.`,external:found.some(p=>p.external)}];
+ }
+ renderCandidates();
+}
+$('#purchase-search').addEventListener('submit',search);
+mode.addEventListener('change',()=>{const supplier=mode.value==='supplier';$('#purchase-code-label').textContent=supplier?'Código do fornecedor':'Código do kit';$('#purchase-quantity-label').textContent=supplier?'Quantidade da peça':'Quantidade de kits';codeInput.placeholder=supplier?'Ex.: 0811':'Ex.: KIT10051 ou 51';codeInput.value='';quantityInput.value='1';candidates=[];selectedKit=null;result.replaceChildren();codeInput.focus()});
+quantityInput.addEventListener('input',()=>{if(candidateMode==='supplier'&&candidates.length===1){const value=Number(quantityInput.value);candidates[0].quantity=validQuantity(value)?value:null;const qty=$('#candidate-qty-0');if(qty)qty.value=candidates[0].quantity??''}updateCandidateTotals()});
+$('#clear-order').onclick=()=>{if(window.confirm('Limpar todas as peças deste pedido?')){order=[];renderOrder();announce('Pedido limpo.')}};
+$('#send-order').addEventListener('click',event=>{if(!purchaseUrl(order)){event.preventDefault();announce('Adicione peças e confira as quantidades antes de abrir o WhatsApp.')}});
+renderOrder();
+</script></body></html>

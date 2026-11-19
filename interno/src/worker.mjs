@@ -2,12 +2,31 @@ const COOKIE = '__Host-rochapro_session';
 const SESSION_SECONDS = 8 * 60 * 60;
 const encoder = new TextEncoder();
 const publicSite = 'https://rochaproauto.com.br';
+const brandFiles = new Map([
+  ['/brand/logo-horizontal-claro.svg', 'image/svg+xml'],
+  ['/brand/logo-horizontal-escuro.svg', 'image/svg+xml'],
+  ['/brand/favicon.svg', 'image/svg+xml'],
+  ['/brand/pwa-192.png', 'image/png'],
+  ['/brand/pwa-512.png', 'image/png'],
+  ['/apple-touch-icon.png', 'image/png'],
+]);
+const appHead = '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/brand/favicon.svg"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#111111"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RochaPro"><meta name="apple-mobile-web-app-status-bar-style" content="default">';
+const appManifest = {
+  id: '/', name: 'RochaPro · Área interna', short_name: 'RochaPro',
+  lang: 'pt-BR', start_url: '/', scope: '/', display: 'standalone',
+  background_color: '#f3f3f3', theme_color: '#111111',
+  icons: [
+    { src: '/brand/pwa-192.png', sizes: '192x192', type: 'image/png' },
+    { src: '/brand/pwa-512.png', sizes: '512x512', type: 'image/png' },
+  ],
+};
 
 function headers(contentType = 'text/html; charset=utf-8', nonce) {
   const policy = [
     "default-src 'none'",
     `script-src ${nonce ? `'nonce-${nonce}'` : "'none'"}`,
     "style-src 'unsafe-inline'",
+    "manifest-src 'self'",
     `img-src 'self' ${publicSite} data:`,
     "form-action 'self'",
     "base-uri 'none'",
@@ -25,11 +44,11 @@ function headers(contentType = 'text/html; charset=utf-8', nonce) {
 
 function page(title, body, status = 200) {
   const html = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} · RochaPro</title><style>body{font:16px/1.5 system-ui,sans-serif;background:#f3f3f3;color:#171717;margin:0;padding:32px 16px}.box{max-width:380px;margin:10vh auto;background:#fff;border-radius:12px;padding:28px;box-shadow:0 5px 20px #0002}h1{font-size:1.5rem;margin:0 0 12px}label{display:block;font-weight:700;margin:20px 0 6px}input{font:inherit;width:100%;box-sizing:border-box;padding:12px;border:1px solid #888;border-radius:7px}button{font:700 1rem system-ui;background:#d00;color:#fff;border:0;border-radius:7px;padding:12px 18px;margin-top:18px;cursor:pointer}.error{color:#a00}a{color:#a00}</style></head><body><main class="box">${body}</main></body></html>`;
-  return new Response(html, { status, headers: headers() });
+  return new Response(html.replace('</head>', `${appHead}</head>`), { status, headers: headers() });
 }
 
 function loginPage(error = false) {
-  return page('Área interna', `<h1>Área interna</h1><p>Entre com a senha de administrador ou da equipe.</p>${error ? '<p class="error" role="alert">Senha inválida. Tente novamente.</p>' : ''}<form method="post" action="/login"><label for="password">Senha</label><input id="password" name="password" type="password" inputmode="numeric" autocomplete="current-password" required autofocus maxlength="128"><button type="submit">Entrar</button></form>`);
+  return page('Área interna', `<img src="/brand/logo-horizontal-escuro.svg" width="246" height="62" alt="RochaPro Auto Peças" style="display:block;max-width:100%;height:auto;margin:0 0 24px"><h1>Área interna</h1><p>Entre com a senha de administrador ou da equipe.</p>${error ? '<p class="error" role="alert">Senha inválida. Tente novamente.</p>' : ''}<form method="post" action="/login"><label for="password">Senha</label><input id="password" name="password" type="password" inputmode="numeric" autocomplete="current-password" required autofocus maxlength="128"><button type="submit">Entrar</button></form>`);
 }
 
 function base64url(bytes) {
@@ -104,20 +123,24 @@ function sameOrigin(request) {
   return !origin || origin === new URL(request.url).origin;
 }
 
-async function privatePage(env) {
-  const object = await env.PRIVATE_ASSETS.fetch(new Request('https://assets.internal/expedicao.html'));
+async function privatePage(env, purchase = false) {
+  const object = await env.PRIVATE_ASSETS.fetch(new Request(`https://assets.internal/${purchase ? 'pedido-compra.html' : 'expedicao.html'}`));
   if (!object.ok) return page('Dados indisponíveis', '<h1>Dados ainda não enviados</h1><p>A consulta será liberada após importar a planilha de kits.</p>', 503);
   const nonce = base64url(crypto.getRandomValues(new Uint8Array(16)));
   const html = (await object.text())
-    .replace('<title>Expedição local · RochaPro</title>', '<title>Área interna · RochaPro</title>')
+    .replace('<title>Expedição local · RochaPro</title>', '<title>Consulta · RochaPro</title>')
+    .replace('<h1>Separar kit</h1>', '<h1>Consulta</h1>')
     .replace('ÁREA INTERNA · USO LOCAL', 'ÁREA INTERNA')
     .replace(/<p class="local-note">[\s\S]*?<\/p>/, '')
     .replace('Arquivo local de uso interno.', 'Consulta interna protegida por senha.')
     .replaceAll('../private/fotos/', '/fotos/')
     .replaceAll('private/fotos/', 'fotos/')
+    .replaceAll('../assets/identidade-visual/01-marca/', '/brand/')
     .replaceAll('../assets/', `${publicSite}/assets/`)
     .replaceAll('../index.html', `${publicSite}/`)
-    .replace('<script>', `<script nonce="${nonce}">`);
+    .replace('<script>', `<script nonce="${nonce}">`)
+    .replace('</head>', `${appHead}<style>.tools-nav{max-width:1080px;margin:20px auto 0;padding:0 20px;display:flex;gap:10px;flex-wrap:wrap}.tools-nav a{display:inline-block;padding:11px 18px;border-radius:8px;color:#222;background:#e6e6e6;text-decoration:none;font-weight:700}.tools-nav a[aria-current="page"]{background:#e10606;color:white}.tools-nav a:focus{outline:3px solid #e10606;outline-offset:2px}@media print{.tools-nav{display:none}}</style></head>`)
+    .replace('</header>', `</header><nav class="tools-nav" aria-label="Ferramentas internas"><a href="/consulta"${purchase ? '' : ' aria-current="page"'}>Consulta</a><a href="/pedido-de-compra"${purchase ? ' aria-current="page"' : ''}>Pedido de compra</a></nav>`);
   return new Response(html, { headers: headers('text/html; charset=utf-8', nonce) });
 }
 
@@ -135,6 +158,16 @@ export default {
       return new Response('Configuração incompleta', { status: 503, headers: headers('text/plain; charset=utf-8') });
     }
     const url = new URL(request.url);
+    // Only public brand assets are exposed before login, including iOS icon discovery.
+    if (brandFiles.has(url.pathname) || url.pathname === '/manifest.webmanifest') {
+      if (!['GET', 'HEAD'].includes(request.method)) return new Response('Método não permitido', { status: 405, headers: headers('text/plain; charset=utf-8') });
+      if (url.pathname === '/manifest.webmanifest') {
+        return new Response(request.method === 'HEAD' ? null : JSON.stringify(appManifest), { headers: { ...headers('application/manifest+json; charset=utf-8'), 'Cache-Control': 'public, max-age=3600' } });
+      }
+      const asset = await env.PRIVATE_ASSETS.fetch(new Request(`https://assets.internal${url.pathname}`));
+      if (!asset.ok) return new Response('Não encontrado', { status: 404, headers: headers('text/plain; charset=utf-8') });
+      return new Response(request.method === 'HEAD' ? null : asset.body, { headers: { ...headers(brandFiles.get(url.pathname)), 'Cache-Control': 'public, max-age=3600' } });
+    }
     if (url.pathname === '/login' && request.method === 'GET') return loginPage();
     if (url.pathname === '/login' && request.method === 'POST') {
       if (!sameOrigin(request)) return new Response('Origem inválida', { status: 403, headers: headers('text/plain; charset=utf-8') });
@@ -159,7 +192,8 @@ export default {
       return redirect('/login', `${COOKIE}=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0`);
     }
     if (request.method !== 'GET' && request.method !== 'HEAD') return new Response('Método não permitido', { status: 405, headers: headers('text/plain; charset=utf-8') });
-    if (url.pathname === '/' || url.pathname === '/index.html') return privatePage(env);
+    if (['/', '/index.html', '/consulta', '/consulta/'].includes(url.pathname)) return privatePage(env);
+    if (['/pedido-de-compra', '/pedido-de-compra/'].includes(url.pathname)) return privatePage(env, true);
     if (url.pathname.startsWith('/fotos/')) return privatePhoto(env, url.pathname);
     return new Response('Não encontrado', { status: 404, headers: headers('text/plain; charset=utf-8') });
   },
