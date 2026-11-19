@@ -3,40 +3,159 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Consulte peças e kits RochaPro Auto Peças por código, montadora e função.">
-  <meta name="theme-color" content="#0b0b0b">
-  <title>Catálogo de peças e kits | RochaPro Auto Peças</title>
+  <meta name="description" content="O novo site da RochaPro Auto Peças está em preparação. Consulte peças e kits com nossa equipe pelo WhatsApp.">
+  <meta name="theme-color" content="#080808">
+  <title>Em breve | RochaPro Auto Peças</title>
   <link rel="icon" href="assets/identidade-visual/01-marca/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/identidade-visual/01-marca/apple-touch-icon-180.png">
-  <link rel="preload" as="image" href="assets/hero-suspensao.webp">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="brand.css">
-  <link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href="assets/identidade-visual/02-identidade/tokens.css">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+    }
+
+    .shell {
+      width: min(100% - 2 * clamp(1.5rem, 6vw, 5.5rem), 80rem);
+      margin-inline: auto;
+    }
+
+    header { border-bottom: 1px solid #292929; }
+
+    header .shell {
+      display: flex;
+      align-items: center;
+      min-height: 5.5rem;
+    }
+
+    header img {
+      display: block;
+      width: clamp(10.75rem, 20vw, 13.25rem);
+      height: auto;
+    }
+
+    main {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      flex: 1;
+      align-items: center;
+      min-height: 34rem;
+      background-color: #0d0f11;
+    }
+
+    .hero-image,
+    main::before {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-image {
+      z-index: -2;
+      object-fit: cover;
+      object-position: right center;
+    }
+
+    main::before {
+      content: "";
+      z-index: -1;
+      background: linear-gradient(90deg, #0d0f11 4%, rgba(13, 15, 17, .86) 24%, rgba(13, 15, 17, .36) 49%, transparent 72%);
+    }
+
+    .message { padding-block: 4rem 5rem; }
+
+    .message::before {
+      content: "";
+      display: block;
+      width: 3rem;
+      height: .25rem;
+      margin-bottom: 1.125rem;
+      background: var(--rp-red);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(4.25rem, 9vw, 8rem);
+      font-weight: 850;
+      line-height: .97;
+      letter-spacing: -.065em;
+    }
+
+    h1 span { color: var(--rp-red); }
+
+    .description {
+      max-width: 23rem;
+      margin: 1.5rem 0 2rem;
+      color: var(--rp-gray);
+      font-size: clamp(1rem, 1.55vw, 1.1875rem);
+      line-height: 1.6;
+    }
+
+    .contact {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.25rem;
+      padding: .875rem 1.5rem;
+      border-radius: .375rem;
+      background: #c60808;
+      color: var(--rp-white);
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .contact:hover { background: #ad0808; }
+
+    .contact:focus-visible {
+      outline: 2px solid var(--rp-white);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 45rem) {
+      header .shell { min-height: 4.5rem; }
+
+      main { align-items: start; }
+
+      .hero-image,
+      main::before {
+        height: clamp(15rem, 43svh, 23rem);
+      }
+
+      .hero-image { object-position: 85% center; }
+
+      main::before {
+        background: linear-gradient(180deg, transparent 18%, rgba(13, 15, 17, .18) 43%, #0d0f11 100%);
+      }
+
+      .message { padding-block: clamp(12rem, 34svh, 18rem) 3rem; }
+
+      h1 { font-size: clamp(3.25rem, 11vw, 5.125rem); }
+
+      .description { margin-block: 1.125rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-  <a class="skip" href="#catalogo">Ir para o catálogo</a>
-  <header class="site-header">
-    <div class="shell header-inner"><a class="wordmark" href="#inicio" aria-label="RochaPro Auto Peças, início"><img class="brand-logo" src="assets/identidade-visual/01-marca/logo-horizontal-claro.svg" width="210" height="53" alt="RochaPro Auto Peças"></a><nav aria-label="Navegação principal"><a href="#catalogo">Catálogo</a><a href="#sobre">Sobre</a><a id="internal-link" class="internal-link" href="private/expedicao.html" hidden>Área interna</a><button id="cart-toggle" class="cart-toggle" type="button" aria-label="Abrir carrinho, 0 itens"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 2h2l2.5 12.4a2 2 0 0 0 2 1.6h11.8a2 2 0 0 0 2-1.6L23 6H4"/></svg><span id="cart-count">0</span></button></nav></div>
+  <header>
+    <div class="shell">
+      <img src="assets/identidade-visual/01-marca/logo-horizontal-claro.svg" width="210" height="53" alt="RochaPro Auto Peças">
+    </div>
   </header>
-  <main>
-    <section class="hero" id="inicio"><div class="shell hero-inner"><p class="eyebrow">ROCHAPRO AUTO PEÇAS</p><h1>Encontre a peça certa pelo nome, código, montadora ou função.</h1><p>Um catálogo organizado com os produtos ativos da lista RochaPro. Consulte a referência e confirme a aplicação antes do pedido.</p><a class="button" href="#catalogo">Consultar peças <span aria-hidden="true">↗</span></a></div></section>
-    <section class="catalog-section shell" id="catalogo"><div class="section-heading"><div><p class="eyebrow dark">CATÁLOGO</p><h2>Peças e kits</h2><p>Resultados provenientes da lista de produtos fornecida.</p></div><p class="count"><strong id="result-count">—</strong><span>produtos encontrados</span></p></div>
-      <div class="filters" role="search">
-        <div class="control search"><label for="busca">Buscar produto ou código</label><input id="busca" type="search" placeholder="Ex.: KIT10006, bieleta, Ranger" autocomplete="off"></div>
-        <div class="control"><label for="montadora">Montadora</label><select id="montadora"><option value="">Todas as montadoras</option></select></div>
-        <div class="control"><label for="funcao">Função</label><select id="funcao"><option value="">Todas as funções</option></select></div>
-        <button type="button" class="clear" id="limpar">Limpar filtros</button>
-      </div>
-      <p class="result-note" id="result-note" aria-live="polite"></p>
-      <div class="product-grid" id="products"></div>
-      <div class="pagination"><button id="mais" class="button outline" type="button">Mostrar mais produtos</button></div>
-    </section>
-    <section class="about" id="sobre"><div class="shell about-inner"><div><p class="eyebrow">ROCHAPRO</p><h2>Referências organizadas para facilitar sua consulta.</h2></div><p>Use os filtros para localizar um item, confira o código na ficha e entre em contato pelo seu canal comercial habitual para validar disponibilidade e aplicação. Produtos sem foto confirmada aparecem com uma identificação clara.</p></div></section>
+  <main aria-labelledby="page-title">
+    <img class="hero-image" src="assets/hero-suspensao.webp" width="1672" height="941" alt="" fetchpriority="high">
+    <div class="shell message">
+      <h1 id="page-title">Em breve<span>.</span></h1>
+      <p class="description">Estamos preparando nosso novo site. Enquanto isso, fale com a nossa equipe para consultar peças e kits.</p>
+      <a class="contact" href="https://wa.me/5531973589165">Fale pelo WhatsApp</a>
+    </div>
   </main>
-  <footer><div class="shell"><strong>ROCHAPRO <span>AUTO PEÇAS</span></strong><p>Catálogo informativo. Aplicações, medidas e disponibilidade devem ser confirmadas antes da compra.</p></div></footer>
-  <dialog id="detail"><button class="dialog-close" type="button" aria-label="Fechar ficha">×</button><div id="detail-content"></div></dialog>
-  <dialog id="cart-dialog" class="cart-dialog" aria-labelledby="cart-title"><div class="cart-shell"><header class="cart-head"><div><p class="eyebrow dark">SEU PEDIDO</p><h2 id="cart-title">Carrinho</h2></div><button class="cart-close" type="button" aria-label="Fechar carrinho">×</button></header><div id="cart-items" class="cart-items"></div><footer class="cart-foot"><p id="cart-summary" aria-live="polite"></p><a id="cart-whatsapp" class="button cart-send" target="_blank" rel="noopener noreferrer">Enviar pedido pelo WhatsApp ↗</a><button id="cart-clear" class="cart-clear" type="button">Limpar carrinho</button><p class="cart-help">O WhatsApp abrirá com o resumo pronto para você conferir e enviar.</p></footer></div></dialog>
-  <div id="cart-notice" class="cart-notice" role="status" aria-live="polite" hidden></div>
-  <script src="data/catalogo-publico.js"></script><script src="site.js"></script><script src="cart.js"></script>
 </body>
 </html>

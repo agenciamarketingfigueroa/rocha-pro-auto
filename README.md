@@ -4,9 +4,13 @@ Este repositório contém um catálogo estático dos **produtos ativos** da list
 
 Contagens, lacunas e decisões de vínculo de fotos: [auditoria dos dados](docs/auditoria-dados.md).
 
-## Abrir o catálogo
+## Página inicial temporária
 
-Abra `index.html` no navegador ou sirva esta pasta com `python -m http.server 8000` e acesse `http://localhost:8000`. A busca aceita código ou palavras do título e das descrições adicionais. Os filtros de montadora e função são combináveis, a URL preserva os filtros e o catálogo mostra 24 itens por vez.
+`index.html` exibe a página “Em breve” com o contato comercial. Até o lançamento, o GitHub Pages exclui `catalogo.html` da publicação por meio de `_config.yml`.
+
+## Abrir o catálogo localmente
+
+Abra `catalogo.html` no navegador ou sirva esta pasta com `python -m http.server 8000` e acesse `http://localhost:8000/catalogo.html`. A busca aceita código ou palavras do título e das descrições adicionais. Os filtros de montadora e função são combináveis, a URL preserva os filtros e o catálogo mostra 24 itens por vez.
 
 O XLS de produtos tem descrições adicionais para **19 dos 437 produtos ativos** após remover duplicatas do título. Elas aparecem nas fichas e entram na busca e na inferência de montadoras; nos demais, o título continua sendo a única descrição disponível. Os trechos antigos de perguntas frequentes foram descartados porque continham promessas de estoque e garantia que podem estar desatualizadas.
 
@@ -18,7 +22,7 @@ Montadora e função são classificações automáticas feitas a partir dos text
 
 ## Consultar kits na expedição
 
-No catálogo aberto neste computador (`index.html` ou `http://localhost:8000`), clique em **Área interna** no menu. Também é possível abrir `private/expedicao.html` diretamente. O link no menu só aparece quando o catálogo está aberto via arquivo local ou `localhost`/`127.0.0.1`.
+No catálogo aberto neste computador (`catalogo.html` ou `http://localhost:8000/catalogo.html`), clique em **Área interna** no menu. Também é possível abrir `private/expedicao.html` diretamente. O link no menu só aparece quando o catálogo está aberto via arquivo local ou `localhost`/`127.0.0.1`.
 
 Se a tela abrir mas a busca nova não funcionar, atualize o arquivo local já gerado com `python scripts/refresh_expedicao.py` na raiz do projeto e reabra `private/expedicao.html`. Esse comando reaproveita os dados de kits embutidos no arquivo; não precisa das planilhas XLS. `expedicao/template.html` é apenas o modelo sem dados e mostra um aviso quando aberto diretamente. Se `private/expedicao.html` não existir, copie a pasta `private/` do computador em que a consulta foi gerada ou execute o importador com as planilhas originais.
 
