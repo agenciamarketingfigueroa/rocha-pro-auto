@@ -76,9 +76,9 @@ class PublicPagesTest(unittest.TestCase):
         cls.pages = {url: Page(local_path(url).read_text(encoding="utf-8")) for url in cls.urls}
 
     def test_all_routes_have_unique_indexable_metadata(self):
-        self.assertEqual(len(self.urls), 13)
-        self.assertEqual(len({p.title for p in self.pages.values()}), 13)
-        self.assertEqual(len({p.meta["description"] for p in self.pages.values()}), 13)
+        self.assertEqual(len(self.urls), 12)
+        self.assertEqual(len({p.title for p in self.pages.values()}), 12)
+        self.assertEqual(len({p.meta["description"] for p in self.pages.values()}), 12)
         for url, page in self.pages.items():
             with self.subTest(url=url):
                 self.assertEqual(page.canonical, [url])
@@ -150,10 +150,18 @@ class PublicPagesTest(unittest.TestCase):
         self.assertIn(f"Sitemap: https://{HOST}/sitemap.xml", robots)
         self.assertNotIn("Disallow: /\n", robots)
         self.assertNotIn("Disallow: /assets/", robots)
+        self.assertNotIn("Disallow: /links", robots)
+        self.assertNotIn(f"https://{HOST}/links/", self.urls)
+        links_page = Page((ROOT / "links/index.html").read_text(encoding="utf-8"))
+        self.assertEqual(links_page.meta["robots"], "noindex,follow")
+        self.assertEqual(links_page.canonical, [f"https://{HOST}/links/"])
+        for page in self.pages.values():
+            self.assertNotIn("/links/", page.refs)
+            self.assertNotIn(f"https://{HOST}/links/", json.dumps(page.jsonld))
         for image in ET.parse(ROOT / "sitemap.xml").findall(".//{http://www.google.com/schemas/sitemap-image/1.1}loc"):
             self.assertTrue(local_path(image.text).is_file())
         home = self.pages[f"https://{HOST}/"]
-        for route in ("/tr4/", "/troller/", "/hilux/", "/frontier/", "/links/", "/blog/"):
+        for route in ("/tr4/", "/troller/", "/hilux/", "/frontier/", "/blog/"):
             self.assertIn(route, home.refs)
         for css in (ROOT / "assets/site/site.css", ROOT / "tr4/style.css"):
             for resource in re.findall(r"url\(['\"]?([^)'\"]+)", css.read_text(encoding="utf-8")):

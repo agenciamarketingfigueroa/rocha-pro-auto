@@ -7,7 +7,7 @@
 | `/troller/` | 7 kits, 1 com fotografia; estabilizadora, Panhard, braços tensores e amortecedor |
 | `/hilux/` | 21 kits, 8 com fotografia; seleção da picape, sem os 5 cadastros exclusivos da SW4 |
 | `/frontier/` | 22 kits, 14 com fotografia; aplicação por geração, posição e medida |
-| `/links/` | Página para a bio do Instagram, com WhatsApp, quatro modelos e blog |
+| `/links/` | Cartão digital para as redes sociais, acessível pelo endereço direto, sem links na navegação interna e com `noindex,follow` |
 | `/blog/` | Seis artigos com filtros por modelo e assunto |
 
 Não foram criados preços, percentuais de desconto, estoque, promessas de desempenho, avaliações ou aplicações novas. A campanha da TR4 continua no fluxo existente; as três páginas novas usam conteúdo permanente. As imagens dos produtos vêm exclusivamente do catálogo público. Cenas dos veículos e da estrada são ilustrativas e estão identificadas como tal.
@@ -38,7 +38,7 @@ A cotação usa o WhatsApp comercial `(31) 97358-9165`. A seleção fica separad
 - Títulos e descrições exclusivos, idioma `pt-BR`, URL canônica HTTPS com barra final e metadados Open Graph/Twitter.
 - JSON-LD `Organization`, `WebSite`, `CollectionPage`, `ItemList` e `BreadcrumbList`; `BlogPosting` com autor institucional, editor, imagem, datas com fuso de Brasília e URL canônica nos artigos.
 - Sem marcação de ofertas, estoque, avaliações ou preços fictícios. As páginas de modelo são coleções; a implementação não promete resultados enriquecidos de produto.
-- `sitemap.xml` com 13 URLs públicas, datas explícitas de modificação e imagens reais das páginas. `robots.txt` referencia o sitemap e mantém imagens/CSS/JS públicos acessíveis.
+- `sitemap.xml` com 12 URLs indexáveis, datas explícitas de modificação e imagens reais das páginas. `/links/` fica fora do sitemap e recebe `noindex,follow`; permanece acessível aos robôs para que leiam essa instrução, conforme a [documentação do Google sobre noindex](https://developers.google.com/search/docs/crawling-indexing/block-indexing). `robots.txt` referencia o sitemap e mantém imagens/CSS/JS públicos acessíveis.
 - RSS em `/blog/feed.xml`, navegação entre os modelos, links pela página inicial e ligação de cada artigo com os kits relacionados. A TR4 recebeu âncoras de kits e navegação para as novas páginas.
 - Capas WebP em tamanhos de 800, 1200 e 1672 px, `srcset`, dimensões explícitas, carregamento tardio abaixo da primeira tela e prioridade da imagem principal. Fonte local com `font-display: swap`, sem dependência de CDN em tempo de execução.
 - Os fontes editoriais e scripts de geração são excluídos do build do GitHub Pages. O catálogo geral continua fora da publicação, conforme configuração existente.
