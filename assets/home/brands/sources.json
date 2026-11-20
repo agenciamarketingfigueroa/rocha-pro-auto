@@ -1,0 +1,82 @@
+[
+  {
+    "brand": "chevrolet",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/chevrolet.png",
+    "bytes": 12668
+  },
+  {
+    "brand": "ford",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/ford.png",
+    "bytes": 4985
+  },
+  {
+    "brand": "volkswagen",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/volkswagen.png",
+    "bytes": 3240
+  },
+  {
+    "brand": "fiat",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/fiat.png",
+    "bytes": 23652
+  },
+  {
+    "brand": "toyota",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/toyota.png",
+    "bytes": 3693
+  },
+  {
+    "brand": "mitsubishi",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/mitsubishi.png",
+    "bytes": 3524
+  },
+  {
+    "brand": "nissan",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/nissan.png",
+    "bytes": 3173
+  },
+  {
+    "brand": "renault",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/renault.png",
+    "bytes": 5740
+  },
+  {
+    "brand": "hyundai",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/hyundai.png",
+    "bytes": 9548
+  },
+  {
+    "brand": "mercedes-benz",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/mercedes-benz.png",
+    "bytes": 7673
+  },
+  {
+    "brand": "kia",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/kia.png",
+    "bytes": 7433
+  },
+  {
+    "brand": "honda",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/honda.png",
+    "bytes": 9851
+  },
+  {
+    "brand": "peugeot",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/peugeot.png",
+    "bytes": 7574
+  },
+  {
+    "brand": "citroen",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/citroen.png",
+    "bytes": 4905
+  },
+  {
+    "brand": "troller",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/troller.png",
+    "bytes": 2044
+  },
+  {
+    "brand": "iveco",
+    "source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/thumb/iveco.png",
+    "bytes": 6948
+  }
+]

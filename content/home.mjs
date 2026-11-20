@@ -1,0 +1,28 @@
+export const homeBrands = [
+  ['Chevrolet','chevrolet'],['Ford','ford'],['Volkswagen','volkswagen'],['Fiat','fiat'],
+  ['Toyota','toyota'],['Mitsubishi','mitsubishi'],['Nissan','nissan'],['Renault','renault'],
+  ['Hyundai','hyundai'],['Mercedes-Benz','mercedes-benz'],['Honda','honda'],['Kia','kia'],
+  ['Troller','troller'],['Iveco','iveco'],['Peugeot','peugeot'],['Citroën','citroen'],
+].map(([name,slug])=>({name,slug}));
+export const homeModels = [
+  ['Pajero TR4','Mitsubishi','SUVs','TR4','/tr4/','/tr4/assets/tr4-hero.webp'],
+  ['Troller','Troller','SUVs','Troller','/troller/','/assets/site/troller-hero.webp'],
+  ['Hilux','Toyota','Picapes','Hilux','/hilux/','/assets/site/hilux-hero.webp'],
+  ['Frontier','Nissan','Picapes','Frontier','/frontier/','/assets/site/frontier-hero.webp'],
+  ['S10','Chevrolet','Picapes','S10'],['Ranger','Ford','Picapes','Ranger'],
+  ['L200','Mitsubishi','Picapes','L200'],['Strada','Fiat','Picapes','Strada'],
+  ['Amarok','Volkswagen','Picapes','Amarok'],['Toro','Fiat','Picapes','Toro'],
+  ['D20','Chevrolet','Picapes','D20'],['F250','Ford','Picapes','F250'],
+  ['F4000','Ford','Utilitários','F4000'],['F1000','Ford','Picapes','F1000'],
+  ['Blazer','Chevrolet','SUVs','Blazer'],['SW4','Toyota','SUVs','SW4'],
+  ['Sprinter','Mercedes-Benz','Utilitários','Sprinter'],['Ducato','Fiat','Utilitários','Ducato'],
+  ['Master','Renault','Utilitários','Master'],['HR','Hyundai','Utilitários','HR'],
+  ['Gol','Volkswagen','Passeio','Gol'],['Palio','Fiat','Passeio','Palio'],
+  ['Uno','Fiat','Passeio','Uno'],['Corsa','Chevrolet','Passeio','Corsa'],
+  ['Celta','Chevrolet','Passeio','Celta'],['Bongo','Kia','Utilitários','Bongo'],
+  ['Corolla','Toyota','Passeio','Corolla'],['Civic','Honda','Passeio','Civic'],
+  ['HB20','Hyundai','Passeio','HB20'],['Pampa','Ford','Picapes','Pampa'],
+].map(([name,make,category,query,href,image])=>({name,make,category,query,image,
+  brand:homeBrands.find(b=>b.name===make).slug,
+  href:href || '/catalogo.html?'+new URLSearchParams({busca:query,montadora:make}).toString()+'#catalogo',
+}));

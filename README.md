@@ -4,9 +4,11 @@ Este repositório contém um catálogo estático dos **produtos ativos** da list
 
 Contagens, lacunas e decisões de vínculo de fotos: [auditoria dos dados](docs/auditoria-dados.md).
 
-## Página inicial temporária
+## Página inicial
 
-`index.html` exibe a página “Em breve” com o contato comercial. Até o lançamento, o GitHub Pages exclui `catalogo.html` da publicação por meio de `_config.yml`.
+`index.html` é a home institucional da RochaPro, com 30 modelos, 16 marcas, apresentação da empresa e destaques do blog. A seleção é mantida em `content/home.mjs`; execute `node scripts/build_home.mjs` para regenerar a página. Veja [conteúdo, imagens e validação da home](docs/home-rochapro.md).
+
+`catalogo.html` faz parte da publicação para atender aos links filtrados de modelos e marcas. Usa apenas os dados públicos de `data/catalogo-publico.js`; as consultas de filtros não são páginas de SEO independentes.
 
 ## Abrir o catálogo localmente
 

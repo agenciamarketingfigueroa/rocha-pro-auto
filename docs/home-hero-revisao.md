@@ -1,0 +1,11 @@
+# Hero — revisão TR4 e caminhão
+
+Imagem editada com a ferramenta integrada `image_gen`. Chamada HTML: **Kits e buchas para seguir em frente.**
+
+O hatch foi substituído por uma Pajero TR4 e foi adicionado um caminhão no trecho de estrada à direita. A picape e a paisagem foram preservadas. A composição é ilustrativa.
+
+Arquivos utilizados: `assets/home/hero-tr4-caminhao.webp`, versões `-800.webp` e `-1280.webp`, e `hero-social-tr4-caminhao.webp`. O enquadramento desktop prioriza o lado direito para manter o caminhão visível. Original gerado: `exec-b55df3bd-c4ea-41bd-ac44-b3cc05b8f761.png`.
+
+## Prompt final
+
+Use case: precise-object-edit. Image 1 is the exact edit target: the panoramic sunset mountain overlook homepage background. Image 2 is the supporting vehicle reference: Mitsubishi Pajero TR4. Make ONLY these two requested changes to Image 1: (1) Replace the dark grey compact hatchback parked to the left of the silver pickup with a recognizable graphite-grey Mitsubishi Pajero TR4, based faithfully on Image 2's compact boxy 5-door SUV body, roof rails, upright greenhouse and rear-mounted spare wheel. Show this TR4 in the same rear three-quarter angle, position, and approximately same footprint as the outgoing hatchback, naturally parked alongside the existing pickup. Correctly adapt its rear geometry; it must be specifically a Pajero TR4 rather than a generic modern crossover. (2) Add one realistic medium-sized Brazilian cargo truck with a white cab and a neutral silver box body on the visible winding paved road in the FAR RIGHT background, above/behind the pickup. It should be recognizably a truck but correctly small and scaled to the distant road, travelling in its own lane, not on the parking area, not floating. Place it on a visible portion of the bend with enough margin from the image's right edge to be noticeable. Preserve the existing silver pickup unchanged, the empty dark left half for overlaid website text, exact panoramic framing and camera angle, sunset colors, sky, mountains, vegetation, paving and lighting. Maintain photographic realism and matching warm sunset reflections, natural shadows. No text, no graphic overlays, no readable registration plates, no extra vehicles, no people. Keep the same approximately 21:9 landscape dimensions.

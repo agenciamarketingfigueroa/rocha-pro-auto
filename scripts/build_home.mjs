@@ -1,0 +1,75 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import {fileURLToPath} from 'node:url';
+import {homeBrands,homeModels} from '../content/home.mjs';
+import {posts} from '../content/posts.mjs';
+
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const base='https://rochaproauto.com.br';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const scope={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,'data/catalogo-publico.js'),'utf8'),scope);
+const catalog=scope.window.ROCHAPRO_CATALOG;
+const fold=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+for(const model of homeModels){
+  if(!catalog.some(p=>p.montadoras.includes(model.make)&&fold(p.nome+' '+p.descricao).includes(fold(model.query))))throw Error('Modelo sem aplicação cadastrada: '+model.name);
+}
+const wa='https://wa.me/5531973589165?text='+encodeURIComponent('Olá! Vim pelo site da RochaPro e gostaria de conversar sobre as peças para meu veículo.');
+const logo='/assets/identidade-visual/01-marca/logo-horizontal-claro.svg';
+const img=(src,alt,width,height,extra='')=>`<img src="${src}" alt="${esc(alt)}" width="${width}" height="${height}" ${extra}>`;
+const cards=homeModels.map(m=>{
+  const attrs=`data-model="${esc(m.name+' '+m.make)}" data-kind="${m.category}"`;
+  if(m.image)return `<a class="vehicle-card" href="${esc(m.href)}" ${attrs} aria-label="Conhecer os kits para ${esc(m.name)}">${img(m.image,'Cena ilustrativa de '+m.name,1672,941,'class="vehicle-photo" loading="lazy" decoding="async"')}<div class="vehicle-info"><div><small>${m.make}</small><h3>${m.name}</h3></div><span class="card-action">Conhecer</span></div></a>`;
+  return `<a class="model-button" href="${esc(m.href)}" ${attrs} aria-label="Consultar peças para ${esc(m.make+' '+m.name)}">${img('/assets/home/brands/'+m.brand+'.png','',96,64,'loading="lazy" decoding="async"')}<div><h3>${m.name}</h3><small>${m.make}</small></div></a>`;
+});
+const brandLinks=homeBrands.map(b=>`<a class="brand-tile" href="/catalogo.html?${esc(new URLSearchParams({montadora:b.name}).toString())}#catalogo" aria-label="Consultar aplicações ${b.name}">${img('/assets/home/brands/'+b.slug+'.png','',120,80,'loading="lazy" decoding="async"')}<span>${b.name}</span></a>`).join('');
+const featured=posts.find(p=>p.slug==='transamazonica-preparacao-do-carro');
+const reads=[
+  ['estrada-de-terra-uso-severo-manutencao','NA ROTINA','Terra e poeira: quando o uso pede outro cuidado','Entenda o que muda na conversa sobre manutenção.','/tr4/assets/tr4-road.webp'],
+  ['hilux-buchas-medidas-e-aplicacao','NOS DETALHES','Peças parecidas. Aplicações diferentes.','Ano, versão e medidas também fazem parte da escolha.','/assets/site/hilux-hero.webp'],
+  ['troller-revisao-antes-e-depois-da-trilha','NA AVENTURA','A trilha acaba. O cuidado continua.','O que observar antes de sair e depois de voltar.','/assets/site/troller-hero.webp'],
+];
+for(const [slug] of reads)if(!posts.some(p=>p.slug===slug))throw Error('Artigo ausente: '+slug);
+const storyCards=reads.map(([slug,category,title,description,image])=>`<a class="story-card" href="/blog/${slug}/"><div class="story-thumb">${img(image,'',1672,941,'loading="lazy" decoding="async"')}</div><div><p class="eyebrow">${category}</p><h3>${title}</h3><p>${description}</p><span class="read-story">Ler a história</span></div></a>`).join('');
+const title='RochaPro Auto Peças | Peças e kits em Contagem, MG';
+const description='Conheça a RochaPro, em Contagem, MG. Encontre peças e kits para o seu veículo, explore as marcas atendidas e descubra dicas e curiosidades no nosso blog.';
+const schema={'@context':'https://schema.org','@graph':[
+  {'@type':'Organization','@id':base+'/#organization',name:'RochaPro Auto Peças',url:base+'/',logo:base+'/assets/identidade-visual/01-marca/pwa-512.png',telephone:'+55-31-97358-9165',address:{'@type':'PostalAddress',addressLocality:'Contagem',addressRegion:'MG',addressCountry:'BR'}},
+  {'@type':'WebSite','@id':base+'/#website',url:base+'/',name:'RochaPro Auto Peças',inLanguage:'pt-BR',publisher:{'@id':base+'/#organization'}},
+  {'@type':'WebPage','@id':base+'/#webpage',url:base+'/',name:title,description,inLanguage:'pt-BR',isPartOf:{'@id':base+'/#website'},about:{'@id':base+'/#organization'}},
+  {'@type':'ItemList',name:'Encontre seu veículo',numberOfItems:homeModels.length,itemListElement:homeModels.map((m,i)=>({'@type':'ListItem',position:i+1,name:m.make+' '+m.name,url:base+m.href}))},
+]};
+const html=`<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${title}</title><meta name="description" content="${description}"><meta name="theme-color" content="#090909">
+<link rel="canonical" href="${base}/"><meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="RochaPro Auto Peças">
+<meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:url" content="${base}/"><meta property="og:image" content="${base}/assets/home/hero-social-tr4-caminhao.webp"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Veículos em um mirante ao pôr do sol, em uma cena ilustrativa de novos caminhos.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${title}"><meta name="twitter:description" content="${description}"><meta name="twitter:image" content="${base}/assets/home/hero-social-tr4-caminhao.webp">
+<link rel="icon" href="/assets/identidade-visual/01-marca/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/identidade-visual/01-marca/apple-touch-icon-180.png">
+<link rel="preload" href="/tr4/assets/Montserrat.ttf" as="font" type="font/ttf" crossorigin><link rel="preload" as="image" href="/assets/home/hero-tr4-caminhao.webp" imagesrcset="/assets/home/hero-tr4-caminhao-800.webp 800w, /assets/home/hero-tr4-caminhao-1280.webp 1280w, /assets/home/hero-tr4-caminhao.webp 1920w" imagesizes="100vw">
+<link rel="stylesheet" href="/assets/home/home.css"><link rel="alternate" type="application/rss+xml" title="Blog RochaPro" href="/blog/feed.xml"><script src="/assets/home/home.js" defer></script>
+<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>
+</head><body id="inicio">
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+<header class="site-header"><div class="shell header-row"><a class="brand" href="/" aria-label="RochaPro — início">${img(logo,'RochaPro Auto Peças',210,53)}</a><button class="menu-toggle" type="button" aria-controls="main-menu" aria-expanded="false">Menu</button><nav class="main-menu" id="main-menu" aria-label="Navegação principal"><a href="#seu-carro">Encontre seu carro</a><a href="#sobre">A RochaPro</a><a href="#blog">Dicas &amp; curiosidades</a><a class="button" href="${wa}" target="_blank" rel="noopener noreferrer">Vamos conversar</a></nav></div></header>
+<main id="conteudo">
+<section class="hero" aria-labelledby="hero-title">${img('/assets/home/hero-tr4-caminhao.webp','Cena ilustrativa de uma Pajero TR4 e uma picape no mirante, com um caminhão na estrada ao fundo.',1920,824,'class="hero-photo" srcset="/assets/home/hero-tr4-caminhao-800.webp 800w, /assets/home/hero-tr4-caminhao-1280.webp 1280w, /assets/home/hero-tr4-caminhao.webp 1920w" sizes="100vw" fetchpriority="high" decoding="async"')}<div class="shell hero-content"><p class="eyebrow">PEÇAS E KITS · CONTAGEM, MG</p><h1 id="hero-title"><span>KITS E BUCHAS</span><span>PARA SEGUIR</span><span class="last-line">EM FRENTE</span></h1><p class="hero-description">Buchas, bieletas, coxins e kits para diferentes veículos. Conheça a linha RochaPro e encontre a aplicação para o seu carro com a nossa equipe.</p><div class="hero-actions"><a class="button" href="#seu-carro">Encontre seu carro</a><a class="button secondary" href="#blog">Inspire o próximo caminho</a></div></div><div class="shell hero-foot"><strong>De Contagem, MG, para a sua rotina.</strong><a href="#sobre">Conheça a RochaPro</a></div></section>
+<div class="intro-strip"><div class="shell intro-inner"><p>Para quem trabalha, viaja e gosta de cuidar.</p><span>Do carro de todo dia à próxima aventura.</span></div></div>
+<section class="models-section" id="seu-carro" aria-labelledby="models-title"><div class="shell"><div class="section-head"><div><p class="eyebrow red">COMECE PELO SEU COMPANHEIRO DE ESTRADA</p><h2 class="section-title" id="models-title">QUAL É A<br><span>SUA HISTÓRIA?</span></h2></div><p>Cada carro tem seu jeito. Encontre o seu e conheça as peças e os kits que fazem parte da nossa linha.</p></div>
+<div class="model-controls" hidden><div class="categories" role="group" aria-label="Tipos de veículo">${['Todos','Picapes','SUVs','Passeio','Utilitários'].map((s,i)=>`<button type="button" data-category="${s}" aria-pressed="${i===0}">${s}</button>`).join('')}</div><div class="search-wrap"><label class="sr-only" for="model-search">Buscar modelo ou marca</label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input type="search" id="model-search" placeholder="Qual é o seu carro?" autocomplete="off"></div></div>
+<div class="model-meta"><p id="model-count" role="status" aria-live="polite">30 modelos para explorar</p><button id="clear-models" class="clear-models" type="button" hidden>Limpar filtros</button></div>
+<div class="vehicle-grid featured-vehicles">${cards.slice(0,4).join('')}</div><div class="vehicle-grid compact-vehicles">${cards.slice(4).join('')}</div>
+<div class="empty-state" id="model-empty" hidden><h3>Seu carro não apareceu por aqui?</h3><p>Conte o modelo e o ano para a nossa equipe. Vamos conferir as opções.</p><a href="${wa}" target="_blank" rel="noopener noreferrer">Conversar com a RochaPro</a></div>
+<div class="model-footer"><p>Não encontrou seu modelo? Nossa linha vai além desta seleção.</p><a href="${wa}" target="_blank" rel="noopener noreferrer">Me ajude a encontrar</a></div></div></section>
+<section class="brands-section" id="marcas" aria-labelledby="brands-title"><div class="shell"><div class="brands-heading"><div><p class="eyebrow red" style="margin-bottom:12px">DIFERENTES MARCAS. O MESMO CUIDADO.</p><h2 id="brands-title">Uma linha que acompanha muitos caminhos.</h2></div><p>Conheça algumas das marcas com aplicações no catálogo RochaPro.</p></div><div class="brands-grid">${brandLinks}</div><p class="brands-note">Selecione uma marca para explorar as aplicações. A compatibilidade varia por modelo, ano e versão.</p></div></section>
+<section class="about-section" id="sobre" aria-labelledby="about-title"><div class="shell about-grid"><div class="about-visual">${img('/assets/home/pecas-reais.webp','Fotografia real das duas bieletas do KIT10006, com buchas e componentes metálicos.',1000,1000,'loading="lazy" decoding="async"')}<p class="photo-caption">O cuidado também está nos detalhes.</p></div><div class="about-copy"><p class="eyebrow">PRAZER, SOMOS A ROCHAPRO.</p><h2 class="section-title" id="about-title">DE CONTAGEM.<br>PERTO DA<br><span>SUA ROTINA.</span></h2><p>Tem carro que leva a família. Tem carro que carrega o trabalho. E tem aquele que guarda os planos do fim de semana. A gente entende que, por trás de cada peça, existe uma dessas histórias.</p><p>Na RochaPro, você encontra peças, kits e uma equipe para conversar sobre a aplicação do seu veículo. Um lugar para conhecer melhor o seu carro e cuidar dos próximos caminhos.</p><a class="text-link" href="${wa}" target="_blank" rel="noopener noreferrer">Conte pra gente o que você precisa</a><div class="about-values"><span>Peças e kits</span><span>Diferentes aplicações</span><span>Conversa de perto</span></div></div></div></section>
+<section class="journal-section" id="blog" aria-labelledby="blog-title"><div class="shell"><div class="section-head"><div><p class="eyebrow red">UMA PAUSA PARA DESCOBRIR</p><h2 class="section-title" id="blog-title">BOM DE SABER.<br><span>MELHOR AINDA VIVER.</span></h2></div><a class="text-link" href="/blog/">Explore o blog RochaPro</a></div>
+<article class="feature-story"><a href="/blog/${featured.slug}/" aria-label="Ler: Transamazônica, a preparação começa antes das adaptações">${img('/assets/site/transamazonica.webp','Cena ilustrativa de uma estrada de terra entre a vegetação amazônica.',1672,941,'class="story-image" srcset="/assets/site/transamazonica-800.webp 800w, /assets/site/transamazonica.webp 1672w" sizes="(max-width:800px) 100vw, 55vw" loading="lazy" decoding="async"')}</a><div class="feature-story-copy"><p class="eyebrow red">ESPECIAL · TRANSAMAZÔNICA</p><h3>A aventura começa<br>antes de dar a partida.</h3><p>O que considerar antes de preparar um carro para a Transamazônica? Roteiro, revisão e escolhas que começam muito antes dos acessórios.</p><a class="text-link" href="/blog/${featured.slug}/">Descubra por onde começar</a></div></article><div class="stories-grid">${storyCards}</div></div></section>
+<section class="contact-section" aria-labelledby="contact-title"><div class="shell contact-inner"><div><h2 id="contact-title">SEU CARRO TEM UMA HISTÓRIA.<br>CONTA PRA GENTE.</h2><p>Uma dúvida, uma peça, um próximo plano. A conversa começa aqui.</p></div><a class="button" href="${wa}" target="_blank" rel="noopener noreferrer">Vamos conversar no WhatsApp</a></div></section>
+</main><footer class="site-footer"><div class="shell"><div class="footer-top"><div class="footer-brand"><a href="/" aria-label="RochaPro — início">${img(logo,'RochaPro Auto Peças',210,53,'loading="lazy"')}</a><p>Peças, informação e cuidado para os caminhos que fazem parte da sua vida.</p></div><nav class="footer-nav" aria-label="Navegação do rodapé"><a href="#seu-carro">Seu carro</a><a href="#marcas">Marcas</a><a href="#sobre">A RochaPro</a><a href="/blog/">Blog</a></nav><div class="footer-contact"><p>Contagem · Minas Gerais</p><a href="${wa}" target="_blank" rel="noopener noreferrer">(31) 97358-9165</a></div></div><div class="footer-bottom"><p>© 2026 RochaPro Auto Peças. Cenas de veículos e paisagens ilustrativas. Marcas e símbolos pertencem aos seus respectivos titulares.</p><a href="#inicio">Voltar ao início</a></div></div></footer>
+<noscript><style>.menu-toggle{display:none}@media(max-width:800px){.header-row{height:auto;flex-direction:column;padding-block:20px}.main-menu{display:flex;position:static;border:0;padding:0;flex-wrap:wrap;flex-direction:row;font-size:12px}.main-menu .button{display:none}}</style></noscript>
+</body></html>`;
+fs.writeFileSync(path.join(root,'index.html'),html+'\n');
+console.log(`Home gerada: ${homeModels.length} modelos, ${homeBrands.length} marcas, ${reads.length+1} artigos.`);

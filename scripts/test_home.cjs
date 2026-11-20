@@ -1,0 +1,48 @@
+// Browser QA for the homepage journey and its existing catalog destinations.
+const {chromium}=require('playwright');
+const path=require('path'),fs=require('fs');
+const assert=require('node:assert/strict');
+const base=process.env.HOME_PREVIEW_URL||'http://127.0.0.1:4173';
+(async()=>{
+ const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+ const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1,reducedMotion:'reduce'});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(base,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+ assert.match(await page.locator('h1').innerText(),/KITS E BUCHAS\s+PARA SEGUIR\s+EM FRENTE/);
+ assert.equal(await page.locator('[data-model]').count(),30);
+ assert.equal(await page.locator('.brand-tile').count(),16);
+ assert.equal(await page.locator('.feature-story').count(),1);
+ assert.equal(await page.locator('.story-card').count(),3);
+ await page.locator('#model-search').fill('Toyota');assert.equal(await page.locator('[data-model]:visible').count(),3);
+ await page.getByRole('button',{name:'SUVs',exact:true}).click();assert.equal(await page.locator('[data-model]:visible').count(),1);
+ assert.ok((await page.locator('[data-model]:visible').innerText()).includes('SW4'));
+ await page.locator('#clear-models').click();assert.equal(await page.locator('[data-model]:visible').count(),30);
+ await page.locator('#model-search').fill('nenhum-veiculo');assert.equal(await page.locator('[data-model]:visible').count(),0);assert.ok(await page.locator('#model-empty').isVisible());
+ await page.locator('#clear-models').click();
+ const links=await page.locator('[data-model]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')));
+ const catalog=await browser.newPage();
+ for(const href of links.filter(h=>h.startsWith('/catalogo'))){await catalog.goto(base+href,{waitUntil:'domcontentloaded'});await catalog.waitForFunction(()=>document.querySelector('#result-count')?.textContent!=='—');assert.ok(Number(await catalog.locator('#result-count').innerText())>0,href);}
+ await catalog.close();
+ await page.evaluate(async()=>{await Promise.all([...document.images].map(im=>{im.loading='eager';return im.decode().catch(()=>{})}));document.activeElement.blur();window.scrollTo(0,0)});
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ assert.equal(await page.locator('img').evaluateAll(xs=>xs.filter(x=>!x.complete||!x.naturalWidth).length),0);
+ fs.mkdirSync(path.resolve('.tmp/home-qa'),{recursive:true});
+ await page.screenshot({path:'.tmp/home-qa/desktop.png',fullPage:true});
+ await page.screenshot({path:'.tmp/home-qa/hero.png'});
+ await page.locator('#seu-carro').screenshot({path:'.tmp/home-qa/modelos.png'});
+ await page.locator('#marcas').screenshot({path:'.tmp/home-qa/marcas.png'});
+ await page.locator('#blog').screenshot({path:'.tmp/home-qa/blog.png'});
+ await page.setViewportSize({width:390,height:844});await page.goto(base,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
+ await page.locator('.menu-toggle').click();assert.ok(await page.locator('#main-menu').isVisible());
+ await page.locator('#main-menu a[href="#seu-carro"]').click();assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
+ await page.locator('.menu-toggle').click();await page.keyboard.press('Escape');assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
+ await page.evaluate(async()=>{await Promise.all([...document.images].map(im=>{im.loading='eager';return im.decode().catch(()=>{})}));document.activeElement.blur();window.scrollTo(0,0)});
+ await page.screenshot({path:'.tmp/home-qa/mobile.png',fullPage:true});
+ await page.screenshot({path:'.tmp/home-qa/mobile-hero.png'});
+ await page.locator('#seu-carro').screenshot({path:'.tmp/home-qa/mobile-modelos.png'});
+ await page.setViewportSize({width:320,height:740});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ assert.deepEqual(errors,[]);await browser.close();
+ console.log('Home OK: 30 modelos, 16 marcas, 4 artigos; filtros combinados, estado vazio, 26 consultas com resultados, imagens, menu e layouts 1440/390/320 px.');
+})().catch(e=>{console.error(e);process.exit(1)});
