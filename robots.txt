@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /interno/
+Disallow: /expedicao/
+Disallow: /.tmp/
+Disallow: /catalogo.html
+Disallow: /scripts/
+Disallow: /content/
+
+Sitemap: https://rochaproauto.com.br/sitemap.xml

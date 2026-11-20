@@ -1,3 +1,7 @@
+url: "https://rochaproauto.com.br"
+baseurl: ""
 exclude:
   - catalogo.html
   - tr4/page.template.html
+  - content/
+  - scripts/

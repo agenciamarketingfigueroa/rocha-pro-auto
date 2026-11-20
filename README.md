@@ -62,6 +62,9 @@ python scripts/refresh_photos.py
 python scripts/verify_build.py
 node scripts/build_tr4.mjs
 node scripts/test_tr4.mjs
+node scripts/build_public_pages.mjs
+node scripts/test_public_pages.mjs
+python -m unittest discover -s scripts -p test_public_pages.py
 node scripts/prepare_interno.mjs
 ```
 
@@ -70,6 +73,10 @@ Esse fluxo requer os arquivos existentes em `data/` e `private/`, mas dispensa a
 Quando apenas um kit mudou desde a última atualização completa, `python scripts/refresh_photos.py --kit KIT10239` regenera esse kit e reaproveita as demais imagens. O código deve ser completo; a opção pode ser repetida para vários kits.
 
 ## Limites conhecidos
+
+As páginas `/troller/`, `/hilux/`, `/frontier/`, `/links/` e `/blog/` são estáticas e geradas por `scripts/build_public_pages.mjs`. Modelos e textos ficam em `content/models.mjs` e `content/posts.mjs`; estilos e scripts compartilhados em `assets/site/`. Após atualizar as fotos ou o catálogo, regenere também essas páginas. A seleção de Hilux exclui aplicações exclusivas da SW4. O blog contém seis artigos, todos terminando com kits relacionados, e o gerador valida se cada código pertence ao modelo indicado.
+
+SEO, fontes, limitações de validação e passos para indexação estão em [páginas públicas e SEO](docs/paginas-publicas-seo.md). A geração atualiza sitemap com imagens, RSS, metadados de compartilhamento e JSON-LD. A publicação segue o fluxo existente do repositório; gerar arquivos não os publica automaticamente.
 
 - O XLS de kits tem composições vazias e anotações em formatos variados. A ficha preserva a anotação de origem, mas não atribui códigos nem quantidades a textos ambíguos.
 - As fotos são vinculadas pelo nome das pastas informado pela equipe. Esse vínculo identifica o kit, não cada peça da composição. Não há fotos individuais das peças nesta importação.
