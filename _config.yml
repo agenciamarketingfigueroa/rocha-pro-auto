@@ -1,2 +1,3 @@
 exclude:
   - catalogo.html
+  - tr4/page.template.html
