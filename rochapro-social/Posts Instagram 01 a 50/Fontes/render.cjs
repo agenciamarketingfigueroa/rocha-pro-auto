@@ -1,0 +1,10 @@
+const fs=require('fs'),path=require('path'),{pathToFileURL}=require('url');
+const {chromium}=require('playwright'),sharp=require('sharp');
+const here=__dirname,out=path.dirname(here),posts=require('./posts.json');
+(async()=>{const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',args:['--force-color-profile=srgb']});
+const page=await browser.newPage({viewport:{width:1080,height:1350},deviceScaleFactor:1});const qa=[];
+for(const p of posts){const file=p.arquivo;if(p.numero>3){await page.goto(pathToFileURL(path.join(here,file+'.html')).href);await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(x=>x.decode()));const h=document.querySelector('h1');let s=parseFloat(getComputedStyle(h).fontSize);while([...h.children].some(x=>x.scrollWidth>936)||h.offsetHeight>184){s--;h.style.fontSize=s+'px';if(s<48)throw Error('Título grande demais')}});
+const checks=await page.evaluate(()=>{const art=document.querySelector('.art');const bounds=[...document.querySelectorAll('h1,p,.footer,.code,.eyebrow,.bottom-copy,.detail-label')].filter(e=>{const r=e.getBoundingClientRect();return r.x<0||r.y<0||r.right>1080||r.bottom>1350}).map(e=>e.textContent);return{font:document.fonts.check('850 78px Montserrat'),size:[art.offsetWidth,art.offsetHeight],bounds,images:[...document.images].every(x=>x.naturalWidth>0)}});if(!checks.font||checks.bounds.length||!checks.images)throw Error(file+JSON.stringify(checks));qa.push({post:p.numero,...checks});
+const pixels=await page.screenshot();await sharp(pixels).withIccProfile('srgb').png().toFile(path.join(out,'PNG',file+'.png'));await sharp(pixels).withIccProfile('srgb').jpeg({quality:94,chromaSubsampling:'4:4:4'}).toFile(path.join(out,'JPG',file+'.jpg'));}
+await sharp(path.join(out,'PNG',file+'.png')).resize(432,540).jpeg({quality:88}).toFile(path.join(out,'Previa',file+'.jpg'));console.log('Exportado',p.numero,file);}
+fs.writeFileSync(path.join(here,'validacao-layout.json'),JSON.stringify(qa,null,2));await browser.close();})().catch(e=>{console.error(e);process.exit(1)});

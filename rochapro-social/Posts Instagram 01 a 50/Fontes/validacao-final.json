@@ -1,0 +1,519 @@
+{
+  "posts": 50,
+  "originais_preservados": 3,
+  "novos": 47,
+  "formatos": [
+    "50 PNG",
+    "50 JPG"
+  ],
+  "dimensoes": [
+    1080,
+    1350
+  ],
+  "perfil": "sRGB",
+  "legendas_com_cta": 50,
+  "paginas_pdf": 51,
+  "posts_blog": 8,
+  "arquivos": [
+    {
+      "arquivo": "PNG\\01-chegou-a-rochapro.png",
+      "sha256": "72e1db5f53699781b2bffde021ffa0edba0e4fa88ecbe8b9d31662038c524a73",
+      "tamanho": 1613883
+    },
+    {
+      "arquivo": "PNG\\02-bieletas-dianteiras.png",
+      "sha256": "4b4a2d00011736bf2c8cd4f3f8330b1b690f00cf7fe9d788133c74c0174de131",
+      "tamanho": 890541
+    },
+    {
+      "arquivo": "PNG\\03-conheca-cada-detalhe.png",
+      "sha256": "95dc2970e3198751b6e23b06dbc88776a23c97eecbed0a0560a712e94f1a7f47",
+      "tamanho": 599024
+    },
+    {
+      "arquivo": "PNG\\04-sua-tr4-novos-planos.png",
+      "sha256": "353df0e29f14f242a7b8b3ff38f2ab9ced04f9878cd04b245829f409204ba704",
+      "tamanho": 712586
+    },
+    {
+      "arquivo": "PNG\\05-estabilizadora-dois-pontos.png",
+      "sha256": "c58210fe012e97ac3506369979849cff691b4bc0843d3a6f5a4a2ed240b5d8d6",
+      "tamanho": 373266
+    },
+    {
+      "arquivo": "PNG\\06-olhe-mais-de-perto.png",
+      "sha256": "bf0dff9da141c20ea1aec5d7a518541f6fb663146ba7c357d9b24ff26fabae6f",
+      "tamanho": 415495
+    },
+    {
+      "arquivo": "PNG\\07-barulho-nao-e-diagnostico.png",
+      "sha256": "a5260211fbc21dd71529eb5c744eedde2bd92f63cde389d675b49a47f515b4c5",
+      "tamanho": 903186
+    },
+    {
+      "arquivo": "PNG\\08-troller-foco-na-traseira.png",
+      "sha256": "b75da58d33bae898998ab7ab777cc7b41822e45271de43fda747a7e00a1b5544",
+      "tamanho": 437473
+    },
+    {
+      "arquivo": "PNG\\09-antes-da-trilha-vem-o-cuidado.png",
+      "sha256": "9a9e3a424c69068ca3fd0bb0f947be00c9cb4756f97bc9d6ca1601833a3dabe2",
+      "tamanho": 662332
+    },
+    {
+      "arquivo": "PNG\\10-textura-real-detalhe-real.png",
+      "sha256": "3745149105b92b65382cf3044f74a6e5312e7ecb8b57bf0b09f31fc87dd44645",
+      "tamanho": 465985
+    },
+    {
+      "arquivo": "PNG\\11-hilux-conjunto-em-foco.png",
+      "sha256": "934bba32490c737e6ee0dd1626df338c18a8cb763e75e0128ed3a867825d2709",
+      "tamanho": 385348
+    },
+    {
+      "arquivo": "PNG\\12-sua-hilux-proximo-caminho.png",
+      "sha256": "b31b00825d4c90b5dab8d4fb20293d6a31bc11195e9defee1cdb0ac61a3148a8",
+      "tamanho": 694728
+    },
+    {
+      "arquivo": "PNG\\13-milimetros-fazem-diferenca.png",
+      "sha256": "3924e4ae95b36cd491c1e61e3c2a1f9664aaf95bf70fa85be0d362a26698f1c9",
+      "tamanho": 433278
+    },
+    {
+      "arquivo": "PNG\\14-frontier-conjunto-traseiro.png",
+      "sha256": "08be643da9559dc4e37d05158cb25905e819e71f138e52c5350fdcbec5758149",
+      "tamanho": 359330
+    },
+    {
+      "arquivo": "PNG\\15-mesmo-nome-outra-geracao.png",
+      "sha256": "28b911d81f525f68e9ad5fd2255468bb463b84384ccb70e002fa1b19e17ad0d8",
+      "tamanho": 522459
+    },
+    {
+      "arquivo": "PNG\\16-37-mm-confira-o-codigo.png",
+      "sha256": "17590c1bbafada5c85c8fbd0908f0e2c5892430fb11e480cc24de88008171f45",
+      "tamanho": 443325
+    },
+    {
+      "arquivo": "PNG\\17-bieletas-frontier-em-foco.png",
+      "sha256": "830dadb898af2d86919ac04a5c876e8492ab557a59dc226b67dfb33d54662726",
+      "tamanho": 371193
+    },
+    {
+      "arquivo": "PNG\\18-quem-roda-tem-historia.png",
+      "sha256": "03180174a4228307c3a21a4f450cf501b86591f1079e333764a8f7e5405ab67d",
+      "tamanho": 861190
+    },
+    {
+      "arquivo": "PNG\\19-s10-feixe-de-mola.png",
+      "sha256": "79710908dfc86856db1e2df60b92ce54d93302d4f77411fbdae3ed6793f6b0d7",
+      "tamanho": 548256
+    },
+    {
+      "arquivo": "PNG\\20-26-mm-atencao-a-medida.png",
+      "sha256": "1e2dd89cc115c8ba4c20ae078ce08023a9877503780ea8747e7d0a9e5b69300d",
+      "tamanho": 476758
+    },
+    {
+      "arquivo": "PNG\\21-pequenos-itens-revisao-atenta.png",
+      "sha256": "a15a1536ab6aba53ef631087a0e08dcfc4682cb8d98cb1441f7cda408210c8ab",
+      "tamanho": 461107
+    },
+    {
+      "arquivo": "PNG\\22-cuidado-que-acompanha.png",
+      "sha256": "3311ce4ae59bc01291d52b0c141cc912a6f36838895e7a9789c878900217c565",
+      "tamanho": 861560
+    },
+    {
+      "arquivo": "PNG\\23-ranger-conjunto-em-cena.png",
+      "sha256": "fafca0a80bef5c0a85bb3f2bf095cb17c77ebc7e304bb7ae5d6df6e2b45d9b92",
+      "tamanho": 555579
+    },
+    {
+      "arquivo": "PNG\\24-ranger-classica-atencao-atual.png",
+      "sha256": "4acd6c245c8af19d10590a995b2b080d68e0f091148f12f773782bb7f3a916fa",
+      "tamanho": 315978
+    },
+    {
+      "arquivo": "PNG\\25-cabine-detalhes-importam.png",
+      "sha256": "7d9a6aa2f0b988adcec1d776d5c90cbb32887ff77226dfe319094a50765f4610",
+      "tamanho": 456043
+    },
+    {
+      "arquivo": "PNG\\26-no-seu-ritmo-no-seu-caminho.png",
+      "sha256": "2b86721792bfd356b344cbaaafe8d7d565ef154332fed04e2117e35cb431e1de",
+      "tamanho": 437379
+    },
+    {
+      "arquivo": "PNG\\27-l200-conjunto-traseiro.png",
+      "sha256": "ad9717254515e7a7d28e97521da7c9e8c81eb5046937a98a44831726f1ef8242",
+      "tamanho": 311114
+    },
+    {
+      "arquivo": "PNG\\28-l200-triton-37-mm-em-foco.png",
+      "sha256": "fe4c56c8c61700599fa4579354a0f22f60b9483046d3ee430b4d5a5693fe7032",
+      "tamanho": 451931
+    },
+    {
+      "arquivo": "PNG\\29-l200-pecas-em-conjunto.png",
+      "sha256": "6ea1db525588f3b8e91068ed1bcd65374cbeb2f29616ab0cc3d8fcec39a9bff2",
+      "tamanho": 434652
+    },
+    {
+      "arquivo": "PNG\\30-nao-e-so-o-nome-do-carro.png",
+      "sha256": "1bb9fb334a92e673bf0286604d9cc568291ea0f4384494f94d6568da65cdefc4",
+      "tamanho": 519178
+    },
+    {
+      "arquivo": "PNG\\31-strada-rotina-em-movimento.png",
+      "sha256": "d5e828551b26729afd58bb8db86fe896ab140922a2cac45f8abed9c7f7166d7d",
+      "tamanho": 412044
+    },
+    {
+      "arquivo": "PNG\\32-adventure-detalhe-por-detalhe.png",
+      "sha256": "0242f3dc101f9347147ed0ff27184147850f2f3d3d03b34ee0b80035782204f9",
+      "tamanho": 494838
+    },
+    {
+      "arquivo": "PNG\\33-sprinter-cuidado-na-rotina.png",
+      "sha256": "aedcfe18db5d6f5402490a6c55a3caf1900e963f37287b9bda32d110e404b607",
+      "tamanho": 432401
+    },
+    {
+      "arquivo": "PNG\\34-mesma-linha-medidas-diferentes.png",
+      "sha256": "8ef2500664c99f96f474bd9699cd8d77a2f76f4eceac27784c837e5759d1d2f6",
+      "tamanho": 207092
+    },
+    {
+      "arquivo": "PNG\\35-hyundai-hr-trabalho-em-dia.png",
+      "sha256": "55c5e3d538a292a8b77bae51abc5a14366764a81ee694694472c44705c55a371",
+      "tamanho": 343913
+    },
+    {
+      "arquivo": "PNG\\36-f250-conjunto-em-foco.png",
+      "sha256": "9aee3a6f948453355689570fcfcc0e1006d1b36e0114a03d57b56f14e0976b07",
+      "tamanho": 328486
+    },
+    {
+      "arquivo": "PNG\\37-f4000-olhar-de-perto.png",
+      "sha256": "9cad5a1e43117ed6dcb9b42a3b8d36588aa7fd4fed38527532ada000f1b2f7ee",
+      "tamanho": 435638
+    },
+    {
+      "arquivo": "PNG\\38-d20-d40-cabine-em-foco.png",
+      "sha256": "e2967cf9871a9dc273064f21f83fb668a89ae5d1234f0062092cea9168b41b1d",
+      "tamanho": 447525
+    },
+    {
+      "arquivo": "PNG\\39-d20-cuidado-nos-detalhes.png",
+      "sha256": "d82b0e99e0d2b1a55030029eaf56a4552064e8e17885c8e785e4dc6b4e55c3f3",
+      "tamanho": 458872
+    },
+    {
+      "arquivo": "PNG\\40-de-contagem-para-sua-rotina.png",
+      "sha256": "42f3f6776d6ae37acea5b0e01e8e7ed609c9ebbb5b63867bdaae188df2374dfb",
+      "tamanho": 334903
+    },
+    {
+      "arquivo": "PNG\\41-antes-de-adaptar-planeje.png",
+      "sha256": "9ddb52bed3aff9c9ffbd90b676fda683fa62ef59e231d0effabd44a9a62c64fe",
+      "tamanho": 1203799
+    },
+    {
+      "arquivo": "PNG\\42-a-rota-muda-o-plano-tambem.png",
+      "sha256": "2569dfee71e0ffc5e3af3e389942c8c28d291810add6c6e07102934dbff56a73",
+      "tamanho": 1198483
+    },
+    {
+      "arquivo": "PNG\\43-terra-poeira-outro-ritmo.png",
+      "sha256": "b221b939d6c37a6910aea9912aa5cb17b6dfb1a31b25289311c91173f7e50a15",
+      "tamanho": 901672
+    },
+    {
+      "arquivo": "PNG\\44-ano-versao-aplicacao.png",
+      "sha256": "4546065fa5061eacc8641fea8a8ccee88a93bd56300e75bbc71fd195c2bd64da",
+      "tamanho": 445276
+    },
+    {
+      "arquivo": "PNG\\45-tr4-diferencial-em-foco.png",
+      "sha256": "0db69a1a39dad36fbb0da000365820253f99d90d9b7cc068415aa93fb6f68b4e",
+      "tamanho": 302603
+    },
+    {
+      "arquivo": "PNG\\46-tr4-atencao-a-traseira.png",
+      "sha256": "9aff4f6f61fa589623c099bb5d000f5c302719ee3727c468957884fde9cde731",
+      "tamanho": 463818
+    },
+    {
+      "arquivo": "PNG\\47-frontier-jumelo-traseiro.png",
+      "sha256": "7d369628c61e434d466cb9bc5034441bde3f1129a5a2de5262dd986f623a6bea",
+      "tamanho": 338093
+    },
+    {
+      "arquivo": "PNG\\48-hilux-cada-peca-conta.png",
+      "sha256": "e7f286137e73d5cde861547a91e2f6043912be62f3e118853e109d49f4364b94",
+      "tamanho": 417792
+    },
+    {
+      "arquivo": "PNG\\49-bora-encontrar-a-sua-peca.png",
+      "sha256": "12c6e093105ed90121f5d95ea83605f4885611838ffd5010ca3fd0c94fb3849c",
+      "tamanho": 348401
+    },
+    {
+      "arquivo": "PNG\\50-seu-proximo-caminho.png",
+      "sha256": "3016734e6a8776a9294e616ef75121d1dea4eba5804f11294fb7edbaa2866b49",
+      "tamanho": 1255114
+    },
+    {
+      "arquivo": "JPG\\01-chegou-a-rochapro.jpg",
+      "sha256": "ec520b58fe97493e030fe715ab777853eacbc4481150f731ed6501a4112c759b",
+      "tamanho": 327499
+    },
+    {
+      "arquivo": "JPG\\02-bieletas-dianteiras.jpg",
+      "sha256": "c1050387dcb723e2fdc2b000c76bb24fb159c17c73afdf3eacc3ad64f5de5e92",
+      "tamanho": 187674
+    },
+    {
+      "arquivo": "JPG\\03-conheca-cada-detalhe.jpg",
+      "sha256": "f1f3e014e22f41a4b983c07ee3193891fd04b3cab95c9ba1beed8c03fc040e7f",
+      "tamanho": 204855
+    },
+    {
+      "arquivo": "JPG\\04-sua-tr4-novos-planos.jpg",
+      "sha256": "5f791b21395aa1ec974213715f204df14db2b57e007644cac77f338899a919d6",
+      "tamanho": 255734
+    },
+    {
+      "arquivo": "JPG\\05-estabilizadora-dois-pontos.jpg",
+      "sha256": "b46b913b2926b159283acc6187e3384ff6451de4e2a37d15c75862d68a172532",
+      "tamanho": 158167
+    },
+    {
+      "arquivo": "JPG\\06-olhe-mais-de-perto.jpg",
+      "sha256": "83d8f56b27a08aa696a8bbb982c91c7a01b4627dfb89317e7e8708a4b7a2d43e",
+      "tamanho": 172546
+    },
+    {
+      "arquivo": "JPG\\07-barulho-nao-e-diagnostico.jpg",
+      "sha256": "2dfa9e98e0714ad33df492ccadb251e8aa394c5ef08c6ae9bcf586f4ff32c4d2",
+      "tamanho": 292624
+    },
+    {
+      "arquivo": "JPG\\08-troller-foco-na-traseira.jpg",
+      "sha256": "0fff8f2c120b054e7fdd293fea0c0a5df3c49c8aa08b8561de03a2d53e53846f",
+      "tamanho": 155875
+    },
+    {
+      "arquivo": "JPG\\09-antes-da-trilha-vem-o-cuidado.jpg",
+      "sha256": "549b0c942ef00e6c365179d0a0d6b8d7ade8bf12204a8240594e9a254977c1c6",
+      "tamanho": 249764
+    },
+    {
+      "arquivo": "JPG\\10-textura-real-detalhe-real.jpg",
+      "sha256": "dfb9139b910a7e6c7507b4dccd22deba6324b629d2c72d4dec668c9221f9a2d3",
+      "tamanho": 183966
+    },
+    {
+      "arquivo": "JPG\\11-hilux-conjunto-em-foco.jpg",
+      "sha256": "71515792485b3af0c33ba60f97a4abeab26c25dcee7c0ee24189805aae84d2f8",
+      "tamanho": 145278
+    },
+    {
+      "arquivo": "JPG\\12-sua-hilux-proximo-caminho.jpg",
+      "sha256": "c5ffb842cf4caf60193a40dbfad2535ecb0349c70fc8a816cf3c828f6d2398e4",
+      "tamanho": 250356
+    },
+    {
+      "arquivo": "JPG\\13-milimetros-fazem-diferenca.jpg",
+      "sha256": "0049a9e944a47ae32a607d3dba7d52f39a5c4d65535c2061b10e74e0b011732d",
+      "tamanho": 180155
+    },
+    {
+      "arquivo": "JPG\\14-frontier-conjunto-traseiro.jpg",
+      "sha256": "83e3b987190efdc547fdc7b09d3506106eaf54f02b603dd3da473f3667aa5cb0",
+      "tamanho": 160118
+    },
+    {
+      "arquivo": "JPG\\15-mesmo-nome-outra-geracao.jpg",
+      "sha256": "5060ea6f943ca98cc658e8bd32de14d0137ff43526e1aed1d78c6a3996dc7621",
+      "tamanho": 216388
+    },
+    {
+      "arquivo": "JPG\\16-37-mm-confira-o-codigo.jpg",
+      "sha256": "96c8e901c45ebb7850285b0b3b4695367195ef4513ea42810b841018a9434791",
+      "tamanho": 179406
+    },
+    {
+      "arquivo": "JPG\\17-bieletas-frontier-em-foco.jpg",
+      "sha256": "01cca1c54e58198c7e98c4a5ac3e4d8467bf425d545103f8ce982c012a0622aa",
+      "tamanho": 158593
+    },
+    {
+      "arquivo": "JPG\\18-quem-roda-tem-historia.jpg",
+      "sha256": "e7e3a1febcfa3305976e930bcd39273bbb29e6dd98a52a6452ae681565635eb1",
+      "tamanho": 244622
+    },
+    {
+      "arquivo": "JPG\\19-s10-feixe-de-mola.jpg",
+      "sha256": "72bc030b1dc4855da9b27a1a321287827f7f7f3d0944627fd179a3d874ccae29",
+      "tamanho": 176753
+    },
+    {
+      "arquivo": "JPG\\20-26-mm-atencao-a-medida.jpg",
+      "sha256": "148cd765f1b3cd4d913bc2ec3043e6faa9bece114f4014bb712da03dd0e88fc9",
+      "tamanho": 191386
+    },
+    {
+      "arquivo": "JPG\\21-pequenos-itens-revisao-atenta.jpg",
+      "sha256": "24b808fa16b3fb1be28fec40f4836c2531623e62a18706d601f0fa76dfa4e21d",
+      "tamanho": 161281
+    },
+    {
+      "arquivo": "JPG\\22-cuidado-que-acompanha.jpg",
+      "sha256": "aced6eca1de2cfc08b36369d334792ae774fe6621d561f82903f6cc0a3ee09ae",
+      "tamanho": 245242
+    },
+    {
+      "arquivo": "JPG\\23-ranger-conjunto-em-cena.jpg",
+      "sha256": "fdc502e29ef3f90068654efc559a569417b47799d91cd2373b98fdec2742f41a",
+      "tamanho": 170378
+    },
+    {
+      "arquivo": "JPG\\24-ranger-classica-atencao-atual.jpg",
+      "sha256": "bc6f4f2fca0936d5a481da9304cb61725b7ccbcd8cff7f2840e99905f5efc845",
+      "tamanho": 183456
+    },
+    {
+      "arquivo": "JPG\\25-cabine-detalhes-importam.jpg",
+      "sha256": "9375307b9cef4667dce5ddad316fb6de24e390e84fef44dd1419316b7826a262",
+      "tamanho": 156836
+    },
+    {
+      "arquivo": "JPG\\26-no-seu-ritmo-no-seu-caminho.jpg",
+      "sha256": "221d7010f5d2ed87ad81a46bab06d428c7732a21e276d688de01e99898b92346",
+      "tamanho": 186824
+    },
+    {
+      "arquivo": "JPG\\27-l200-conjunto-traseiro.jpg",
+      "sha256": "176529fe2781a945565803337b1a0ba33b172525d122ba15ef4ed6d3d0e85e44",
+      "tamanho": 152690
+    },
+    {
+      "arquivo": "JPG\\28-l200-triton-37-mm-em-foco.jpg",
+      "sha256": "d9abd94a025e9d9475937ea279a7d3a418ba0bd85e72bcce501ae318062541a4",
+      "tamanho": 180410
+    },
+    {
+      "arquivo": "JPG\\29-l200-pecas-em-conjunto.jpg",
+      "sha256": "12009932f6bdd39b2a3bb68a841e4c2c17c578b41a01743ce163781e8f470a2d",
+      "tamanho": 164828
+    },
+    {
+      "arquivo": "JPG\\30-nao-e-so-o-nome-do-carro.jpg",
+      "sha256": "80b3e79e44e2e3cf8696ba300c76f95d609d22d0f0b9cd4ee08dc10cd9e184c4",
+      "tamanho": 206365
+    },
+    {
+      "arquivo": "JPG\\31-strada-rotina-em-movimento.jpg",
+      "sha256": "894e9921fdb31833d05cf2fdb9ca3505afbcb8efe98348f8162c142c7afa8615",
+      "tamanho": 158672
+    },
+    {
+      "arquivo": "JPG\\32-adventure-detalhe-por-detalhe.jpg",
+      "sha256": "e2b4a18bae8d32c808c51d3530cfa826270dafdd4aba1dbc43d75726fef3c870",
+      "tamanho": 222816
+    },
+    {
+      "arquivo": "JPG\\33-sprinter-cuidado-na-rotina.jpg",
+      "sha256": "5f2c87acd678b5e6630fd794335bda00783bcaa576b49a467f87e559ecc289a9",
+      "tamanho": 158245
+    },
+    {
+      "arquivo": "JPG\\34-mesma-linha-medidas-diferentes.jpg",
+      "sha256": "f39b279903e1b3ea9a275eb941a3c5fc83ae088a6d571fc4ba4e3251f7aaceef",
+      "tamanho": 168136
+    },
+    {
+      "arquivo": "JPG\\35-hyundai-hr-trabalho-em-dia.jpg",
+      "sha256": "a6d26048bfad0af751cde6611e188cf01ac960a4891816b51c7185f5716e02f8",
+      "tamanho": 150645
+    },
+    {
+      "arquivo": "JPG\\36-f250-conjunto-em-foco.jpg",
+      "sha256": "74f61c480302966bc3efcd71e8e37b0b51953ae17a526918beee6cc255889456",
+      "tamanho": 154475
+    },
+    {
+      "arquivo": "JPG\\37-f4000-olhar-de-perto.jpg",
+      "sha256": "afc3d266323fb7b833f554f9a9b8c7a249231c324f75b6e1e916e26aaee96fd0",
+      "tamanho": 175856
+    },
+    {
+      "arquivo": "JPG\\38-d20-d40-cabine-em-foco.jpg",
+      "sha256": "11a2e7fbfd7397d5997e8557640205ae02c877e560c7bd91cdaa8c796df9b570",
+      "tamanho": 166670
+    },
+    {
+      "arquivo": "JPG\\39-d20-cuidado-nos-detalhes.jpg",
+      "sha256": "f62cf7e8c9404029931d46eafcb81ccdcff2885c23e2d6642ed96d71c9588548",
+      "tamanho": 200581
+    },
+    {
+      "arquivo": "JPG\\40-de-contagem-para-sua-rotina.jpg",
+      "sha256": "0fe12df1ed0169fdeeb0c3bc9d658c859ab471c6ec232390ff2143112696bf93",
+      "tamanho": 159942
+    },
+    {
+      "arquivo": "JPG\\41-antes-de-adaptar-planeje.jpg",
+      "sha256": "99d411fe94a9f3e4585c17abdb725edf8b66761dfff95d9719a8dbc9072a0c05",
+      "tamanho": 386735
+    },
+    {
+      "arquivo": "JPG\\42-a-rota-muda-o-plano-tambem.jpg",
+      "sha256": "71ee9275e1b34f3e850be3aabb8e00ee18e04fea185e89ca1c4856951970933d",
+      "tamanho": 390849
+    },
+    {
+      "arquivo": "JPG\\43-terra-poeira-outro-ritmo.jpg",
+      "sha256": "a5bf34b44efff804e70a0c62bec6da2e675fb38c5a8bda2ed16c64792ed003f5",
+      "tamanho": 300611
+    },
+    {
+      "arquivo": "JPG\\44-ano-versao-aplicacao.jpg",
+      "sha256": "92bb9bdea9a5a6dbe429fa2800d3ac8ed9197569dfbddd9282129040e9f7ca5e",
+      "tamanho": 179845
+    },
+    {
+      "arquivo": "JPG\\45-tr4-diferencial-em-foco.jpg",
+      "sha256": "f658b9a6412e0e501c74fbb3d3cf4a73b50f84521e43ee150ad47c4cb9d54746",
+      "tamanho": 147198
+    },
+    {
+      "arquivo": "JPG\\46-tr4-atencao-a-traseira.jpg",
+      "sha256": "919b23b06b7a8e8d96084817041498909ef117c7c73977e009c759fcf33323c8",
+      "tamanho": 195174
+    },
+    {
+      "arquivo": "JPG\\47-frontier-jumelo-traseiro.jpg",
+      "sha256": "8acc07cfe23f6bcdc042b96b7495abb230cc114a4b45a7bdc16704e44bf404bb",
+      "tamanho": 139919
+    },
+    {
+      "arquivo": "JPG\\48-hilux-cada-peca-conta.jpg",
+      "sha256": "d20fecbe3ed70a4be1ae75208c3e8db06d333391c30cacb4bd4188e31635bf44",
+      "tamanho": 187850
+    },
+    {
+      "arquivo": "JPG\\49-bora-encontrar-a-sua-peca.jpg",
+      "sha256": "646c2c2831d9b8dfeccded08e97559271c04da161316368469f13cd54241308d",
+      "tamanho": 161648
+    },
+    {
+      "arquivo": "JPG\\50-seu-proximo-caminho.jpg",
+      "sha256": "a0f9c8cd687db3592d4de5c95a0fc7aa4e5cd3937d020c5ec94000642f684658",
+      "tamanho": 360491
+    }
+  ]
+}
