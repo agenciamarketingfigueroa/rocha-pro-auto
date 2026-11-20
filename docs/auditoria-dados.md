@@ -1,4 +1,17 @@
-# Auditoria da importação — 22/10/2026
+# Auditoria dos dados e fotos
+
+## Atualização de fotos — 20/11/2026
+
+- Reprocessadas as pastas diretamente em `assets/img/Fotos dos Kits/`, respeitando os códigos corrigidos e sem alterar títulos, descrições ou composições dos cadastros existentes.
+- 437 produtos ativos, dos quais 134 têm fotos (antes, 91). Foram geradas 1.002 imagens WebP para o catálogo e 1.002 para a consulta interna de 786 kits.
+- 46 produtos ativos passaram a ter fotos, incluindo as oito imagens movidas de `KIT2393` para `KIT239`, correção confirmada pela equipe.
+- `KIT234 (Conferir nome do kit)` permanece pendente, conforme solicitado. A pasta `KIT234`, sem observação, fornece cinco fotos ao kit 234.
+- As pastas de lotes `10-11-2026` e `0. Kits-20261022T134400Z-1-001-comprimidas` não são reimportadas; usam-se as pastas organizadas no nível principal. Os kits 22, 173 e 216 perderam os vínculos anteriores por não terem pasta correspondente nesse nível. Há fotos identificadas como KIT10022 dentro do lote arquivado; elas permanecem lá, sem incorporação automática.
+- As pastas dos códigos 967, 969, 970, 971, 991 e 992 continuam sem cadastro correspondente e não criam produtos automaticamente.
+- Pastas específicas prevalecem sobre compartilhadas: `Kit 21` sobre `Kit 21 e 35`; `KIT59` e `KIT60` sobre `KIT60 (=KIT59)`. As duas pastas específicas existentes para cada um dos kits 88, 95 e 230 são mantidas, reunindo suas fotos.
+- Observações como `(Foto com 2)` não são interpretadas como códigos. Todas as imagens e caminhos de arquivos públicos e internos foram conferidos; o pacote local da área interna também remove fotos antigas sem uso.
+
+## Importação original — 22/10/2026
 
 ## Fontes recebidas
 

@@ -53,7 +53,21 @@ O primeiro comando lê os originais sem alterá-los e gera:
 - `private/expedicao.html` — consulta offline com a composição original;
 - `private/auditoria-importacao.json` e `private/mapeamento-fotos.csv` — contagens e vínculos de pastas de fotos para revisão interna.
 
-As fotos originais em `assets/img/Fotos dos Kits/` permanecem no disco, mas são ignoradas pelo Git devido ao tamanho. Para atualizar fotos em outro computador, copie essa pasta localmente antes de executar a importação. O mapeamento usa números inteiros das pastas: `KIT 1` e `1` correspondem a `KIT10001`; `KIT 204 - 972` corresponde a `KIT10204` e `KIT10972`. Quando existe uma pasta específica para o código, ela prevalece sobre a compartilhada: `KIT10021` usa `21` e `KIT10972` usa `KIT 972`, conforme confirmado pela equipe. Os demais códigos citados nas pastas compartilhadas continuam vinculados a elas. A auditoria registra esses casos.
+As fotos originais em `assets/img/Fotos dos Kits/` permanecem no disco, mas são ignoradas pelo Git devido ao tamanho. Para atualizar fotos em outro computador, copie essa pasta localmente antes de executar a importação. O mapeamento lê as pastas diretamente dentro desse diretório: `KIT 1`, `KIT01` e `1` correspondem a `KIT10001`; `KIT 204 - 972` corresponde a `KIT10204` e `KIT10972`. Quando existe uma pasta específica com fotos para o código, ela prevalece sobre a compartilhada. Os demais códigos citados nas pastas compartilhadas continuam vinculados a elas. A auditoria registra esses casos.
+
+Para trocar somente as fotos ou corrigir os códigos nos nomes das pastas, mantendo os cadastros e composições já importados:
+
+```text
+python scripts/refresh_photos.py
+python scripts/verify_build.py
+node scripts/build_tr4.mjs
+node scripts/test_tr4.mjs
+node scripts/prepare_interno.mjs
+```
+
+Esse fluxo requer os arquivos existentes em `data/` e `private/`, mas dispensa as planilhas. Regenera as imagens mesmo quando o original substituído tem data antiga, remove as cópias derivadas sem uso e atualiza os vínculos no catálogo e na consulta interna. Os títulos dos produtos continuam sendo os do cadastro; renomear uma pasta corrige o vínculo das fotos. Observações como `(Foto com 2)` não criam outro código. A indicação `(=KIT59)` é tratada como compartilhamento; pastas marcadas `Conferir` ficam pendentes. Pastas de lotes/datas e seus subdiretórios não são reimportados automaticamente. A preparação da área interna atualiza o pacote local; publicar continua sendo uma etapa separada, descrita em `interno/README.md`.
+
+Quando apenas um kit mudou desde a última atualização completa, `python scripts/refresh_photos.py --kit KIT10239` regenera esse kit e reaproveita as demais imagens. O código deve ser completo; a opção pode ser repetida para vários kits.
 
 ## Limites conhecidos
 

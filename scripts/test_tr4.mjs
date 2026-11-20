@@ -14,6 +14,7 @@ assert.deepEqual([...products.map(p=>p.codigo)].sort(),[...expected.map(p=>p.cod
 const html=read('tr4/index.html');
 assert.equal((html.match(/class="product-card"/g)||[]).length,products.length);
 assert.ok(!html.includes('<!--__PRODUCTS__-->'));
+assert.ok(!html.includes('__KIT55_'));
 assert.ok(!html.includes('�'));
 for(const match of html.matchAll(/(?:src|href)="(\/[^"#]*)"/g)) {
   if(match[1]==='/') continue;

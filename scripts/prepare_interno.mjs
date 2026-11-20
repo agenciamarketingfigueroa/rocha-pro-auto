@@ -1,4 +1,4 @@
-import { mkdir, readFile, readdir, copyFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, copyFile, writeFile, unlink } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -28,9 +28,16 @@ const purchaseHtml = purchaseTemplate.replace('/*__KITS__*/ []', JSON.stringify(
   .replace('/*__PURCHASE_CORE__*/', purchaseCore.replace(/^export /gm, ''));
 await writeFile(path.join(destination, 'pedido-compra.html'), purchaseHtml);
 let photos = 0;
+const currentPhotos = new Set();
 for (const entry of await readdir(path.join(source, 'fotos'), { withFileTypes: true })) {
   if (!entry.isFile() || !/^[a-z0-9][a-z0-9._-]*\.webp$/i.test(entry.name)) continue;
   await copyFile(path.join(source, 'fotos', entry.name), path.join(destination, 'fotos', entry.name));
+  currentPhotos.add(entry.name);
   photos++;
+}
+for (const entry of await readdir(path.join(destination, 'fotos'), { withFileTypes: true })) {
+  if (entry.isFile() && entry.name.endsWith('.webp') && !currentPhotos.has(entry.name)) {
+    await unlink(path.join(destination, 'fotos', entry.name));
+  }
 }
 console.log(`Publicação preparada: ${kits.length} kits e ${photos} fotos em .tmp/interno-assets.`);

@@ -133,48 +133,70 @@ def functions(description):
     return labels or ["Outras funções"]
 
 
+def folder_codes(name):
+    """Read kit identifiers, never dates or numbers inside photo annotations."""
+    if "conferir" in normalized(name):
+        return []
+    base = name.split("(", 1)[0].strip()
+    if re.fullmatch(r"\d{1,2}-\d{1,2}-\d{4}", base):
+        return []
+    if not re.fullmatch(r"(?:kit\s*)?\d+(?:\s*(?:-|e|/|,)\s*(?:kit\s*)?\d+)*", base, re.I):
+        return []
+    numbers = re.findall(r"\d+", base)
+    # An explicit equivalence is a shared folder, unlike '(Foto com 2)'.
+    numbers += re.findall(r"\(\s*=\s*KIT\s*(\d+)\s*\)", name, re.I)
+    return list(dict.fromkeys(f"KIT{n if n >= 10000 else 10000 + n}"
+                             for n in map(int, numbers) if 0 < n < 20000))
+
+
 def photo_map():
     mapping = defaultdict(list)
     folder_details = []
     for folder in sorted(PHOTOS.iterdir()):
         if not folder.is_dir():
             continue
-        endings = [int(n) for n in re.findall(r"\d+", folder.name)]
-        codes = [f"KIT{10000 + n}" for n in endings if 0 < n < 10000]
-        files = sorted(p for p in folder.iterdir() if p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"})
+        codes = folder_codes(folder.name)
+        files = sorted(p for p in folder.iterdir() if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"})
         folder_details.append({"pasta": folder.name, "codigos": codes, "fotos": len(files)})
-        for code in codes:
+        for code in codes if files else []:
             mapping[code].append((folder, files))
     preferred = {}
     for code, groups in mapping.items():
-        specific = [group for group in groups if len(re.findall(r"\d+", group[0].name)) == 1]
+        specific = [group for group in groups if len(folder_codes(group[0].name)) == 1]
         if len(groups) > 1 and specific:
             preferred[code] = [group[0].name for group in groups if group not in specific]
             mapping[code] = specific
     return mapping, folder_details, preferred
 
 
-def make_thumbnails(photo_groups, target_dir, url_prefix, reuse=None):
+def make_thumbnails(photo_groups, target_dir, url_prefix, reuse=None, refresh_codes=None):
     target_dir.mkdir(parents=True, exist_ok=True)
     thumbs = {}
     expected = set()
+    refresh_folders = {str(folder) for code, groups in photo_groups.items()
+                       if refresh_codes is None or code in refresh_codes for folder, _ in groups}
     for folder, files in {str(group[0]): group for groups in photo_groups.values() for group in groups}.values():
         for number, original in enumerate(files):
-            relative = f"{normalized(folder.name).replace(' ', '-')}-{number + 1:02}.webp"
+            slug = re.sub(r"[^a-z0-9-]+", "-", normalized(folder.name).replace(' ', '-')).strip('-')
+            relative = f"{slug}-{number + 1:02}.webp"
+            if relative in expected:
+                raise ValueError(f"Nome de imagem repetido: {relative}")
             expected.add(relative)
             target = target_dir / relative
-            if not target.exists() or target.stat().st_mtime < original.stat().st_mtime:
-                try:
-                    if reuse and str(original) in reuse and (ROOT / reuse[str(original)]).is_file():
-                        shutil.copyfile(ROOT / reuse[str(original)], target)
-                    else:
-                        with Image.open(original) as image:
-                            image = ImageOps.exif_transpose(image)
-                            image.thumbnail((900, 900))
-                            image.convert("RGB").save(target, "WEBP", quality=76, method=5)
-                except Exception as exc:
-                    print(f"Imagem ignorada: {original}: {exc}", file=sys.stderr)
-                    continue
+            if refresh_codes is not None and str(folder) not in refresh_folders and target.is_file():
+                thumbs[str(original)] = f"{url_prefix}/{relative}"
+                continue
+            # Replaced originals can retain older timestamps. Always rebuild.
+            try:
+                if reuse and str(original) in reuse and (ROOT / reuse[str(original)]).is_file():
+                    shutil.copyfile(ROOT / reuse[str(original)], target)
+                else:
+                    with Image.open(original) as image:
+                        image = ImageOps.exif_transpose(image)
+                        image.thumbnail((900, 900))
+                        image.convert("RGB").save(target, "WEBP", quality=76, method=5)
+            except Exception as exc:
+                raise ValueError(f"Falha ao converter imagem: {original}") from exc
             thumbs[str(original)] = f"{url_prefix}/{relative}"
     for stale in target_dir.glob("*.webp"):
         if stale.name not in expected:
