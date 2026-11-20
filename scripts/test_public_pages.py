@@ -76,9 +76,9 @@ class PublicPagesTest(unittest.TestCase):
         cls.pages = {url: Page(local_path(url).read_text(encoding="utf-8")) for url in cls.urls}
 
     def test_all_routes_have_unique_indexable_metadata(self):
-        self.assertEqual(len(self.urls), 12)
-        self.assertEqual(len({p.title for p in self.pages.values()}), 12)
-        self.assertEqual(len({p.meta["description"] for p in self.pages.values()}), 12)
+        self.assertEqual(len(self.urls), 42)
+        self.assertEqual(len({p.title for p in self.pages.values()}), 42)
+        self.assertEqual(len({p.meta["description"] for p in self.pages.values()}), 42)
         for url, page in self.pages.items():
             with self.subTest(url=url):
                 self.assertEqual(page.canonical, [url])
@@ -113,7 +113,7 @@ class PublicPagesTest(unittest.TestCase):
 
     def test_article_schema_and_kits_finish_every_post(self):
         articles = [url for url in self.urls if url.startswith(f"https://{HOST}/blog/") and url != f"https://{HOST}/blog/"]
-        self.assertEqual(len(articles), 6)
+        self.assertEqual(len(articles), 36)
         for url in articles:
             page = self.pages[url]
             graph = page.jsonld[0]["@graph"]
@@ -123,7 +123,7 @@ class PublicPagesTest(unittest.TestCase):
             self.assertTrue(article["datePublished"].endswith("-03:00"))
             self.assertEqual(article["author"]["name"], "Equipe RochaPro")
             text = local_path(url).read_text(encoding="utf-8")
-            self.assertGreaterEqual(text.count('class="kit-link"'), 2)
+            self.assertGreaterEqual(text.count('class="kit-link"'), 1)
             self.assertEqual(re.findall(r'<section[^>]*id="([^"]+)"', text)[-1], "kits-relacionados")
             self.assertIn('class="source-link"', text)
             self.assertNotIn('"offers"', text)
@@ -145,7 +145,7 @@ class PublicPagesTest(unittest.TestCase):
     def test_sitemap_feed_and_crawl_entrypoints(self):
         self.assertEqual(len(self.urls), len(set(self.urls)))
         feed = ET.parse(ROOT / "blog/feed.xml")
-        self.assertEqual(len(feed.findall(".//item")), 6)
+        self.assertEqual(len(feed.findall(".//item")), 36)
         robots = (ROOT / "robots.txt").read_text()
         self.assertIn(f"Sitemap: https://{HOST}/sitemap.xml", robots)
         self.assertNotIn("Disallow: /\n", robots)

@@ -4,3 +4,7 @@ exclude:
   - tr4/page.template.html
   - content/
   - scripts/
+  - output/
+  - docs/pesquisa-comunidades-4x4.json
+  - docs/pesquisa-comunidades-picapes.json
+  - docs/serie-blog-comunidades.json

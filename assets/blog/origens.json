@@ -1,0 +1,37 @@
+[
+  {
+    "model": "l200",
+    "code": "KIT10002",
+    "source": "assets/catalogo/kit02-01.webp",
+    "output": "assets/blog/l200-kits.webp",
+    "processing": "Resized proportionally and padded; no part added or altered."
+  },
+  {
+    "model": "ranger",
+    "code": "KIT10088",
+    "source": "assets/catalogo/kit-88-01.webp",
+    "output": "assets/blog/ranger-kits.webp",
+    "processing": "Resized proportionally and padded; no part added or altered."
+  },
+  {
+    "model": "s10",
+    "code": "KIT10006",
+    "source": "assets/catalogo/kit-06-01.webp",
+    "output": "assets/blog/s10-kits.webp",
+    "processing": "Resized proportionally and padded; no part added or altered."
+  },
+  {
+    "model": "d20",
+    "code": "KIT10012",
+    "source": "assets/catalogo/kit12-01.webp",
+    "output": "assets/blog/d20-kits.webp",
+    "processing": "Resized proportionally and padded; no part added or altered."
+  },
+  {
+    "model": "f1000",
+    "code": "KIT10025",
+    "source": "assets/catalogo/kit-25-01.webp",
+    "output": "assets/blog/f1000-kits.webp",
+    "processing": "Resized proportionally and padded; no part added or altered."
+  }
+]

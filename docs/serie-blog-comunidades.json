@@ -1,0 +1,355 @@
+{
+  "date": "2026-11-20",
+  "articles": [
+    {
+      "number": 7,
+      "title": "TR4: o carro que vira assunto, amizade e encontro",
+      "model": "tr4",
+      "category": "Comunidades",
+      "url": "/blog/tr4-comunidade-historias-encontros/",
+      "kits": [
+        "KIT10055",
+        "KIT10082"
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Primeiro encontro de TR4: como chegar sabendo o que perguntar",
+      "model": "tr4",
+      "category": "Vida com o carro",
+      "url": "/blog/primeiro-encontro-pajero-tr4/",
+      "kits": [
+        "KIT10170",
+        "KIT10273"
+      ]
+    },
+    {
+      "number": 9,
+      "title": "TR4 usada: monte uma memória de manutenção que acompanha o carro",
+      "model": "tr4",
+      "category": "Organização da manutenção",
+      "url": "/blog/tr4-historico-manutencao-organizado/",
+      "kits": [
+        "KIT10427",
+        "KIT10426"
+      ]
+    },
+    {
+      "number": 10,
+      "title": "TR4 4x2 ou 4x4: a identificação vem antes da busca por peças",
+      "model": "tr4",
+      "category": "Aplicação de peças",
+      "url": "/blog/tr4-4x2-4x4-identificar-pecas/",
+      "kits": [
+        "KIT10082",
+        "KIT10170"
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Buchas da TR4: como organizar os nomes da dianteira à traseira",
+      "model": "tr4",
+      "category": "Entenda o catálogo",
+      "url": "/blog/tr4-dianteira-traseira-nomes-buchas/",
+      "kits": [
+        "KIT10273",
+        "KIT10358",
+        "KIT10190"
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Diário da TR4: registre viagens sem perder a memória dos cuidados",
+      "model": "tr4",
+      "category": "Histórias de estrada",
+      "url": "/blog/tr4-diario-viagens-revisoes/",
+      "kits": [
+        "KIT10923",
+        "KIT10170"
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Troller além da trilha: encontros, memória e pertencimento",
+      "model": "troller",
+      "category": "Comunidades",
+      "url": "/blog/troller-clubes-pertencimento/",
+      "kits": [
+        "KIT10343",
+        "KIT10375"
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Troller: Panhard, tensor e estabilizadora no pedido de peças",
+      "model": "troller",
+      "category": "Entenda o catálogo",
+      "url": "/blog/troller-panhard-tensor-estabilizadora/",
+      "kits": [
+        "KIT10343",
+        "KIT10375",
+        "KIT10363"
+      ]
+    },
+    {
+      "number": 15,
+      "title": "O ano do Troller importa: como ler os limites de aplicação de um kit",
+      "model": "troller",
+      "category": "Aplicação de peças",
+      "url": "/blog/troller-ano-versao-aplicacao-kits/",
+      "kits": [
+        "KIT10363",
+        "KIT10428"
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Expedição de Troller: as perguntas que vêm antes da bagagem",
+      "model": "troller",
+      "category": "Expedição",
+      "url": "/blog/troller-expedicao-planejamento-grupo/",
+      "kits": [
+        "KIT10363",
+        "KIT10343"
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Hilux de segunda a domingo: trabalho e passeio no mesmo histórico",
+      "model": "hilux",
+      "category": "Vida com o carro",
+      "url": "/blog/hilux-trabalho-passeio-familia/",
+      "kits": [
+        "KIT10124",
+        "KIT10062"
+      ]
+    },
+    {
+      "number": 18,
+      "title": "Hilux e SW4: nomes próximos não confirmam a mesma aplicação",
+      "model": "hilux",
+      "category": "Aplicação de peças",
+      "url": "/blog/hilux-sw4-nomes-aplicacoes-diferentes/",
+      "kits": [
+        "KIT10124",
+        "KIT10061"
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Cotação da Hilux: uma mensagem completa evita várias idas e voltas",
+      "model": "hilux",
+      "category": "Entenda o catálogo",
+      "url": "/blog/hilux-como-pedir-peca-por-codigo/",
+      "kits": [
+        "KIT10115",
+        "KIT10141",
+        "KIT10119"
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Hilux na estrada rural: o caderno de uso que ajuda na revisão",
+      "model": "hilux",
+      "category": "Organização da manutenção",
+      "url": "/blog/hilux-estrada-rural-caderno-uso/",
+      "kits": [
+        "KIT10061",
+        "KIT10062"
+      ]
+    },
+    {
+      "number": 21,
+      "title": "L200 e Triton: quando a picape ajuda a reunir pessoas",
+      "model": "l200",
+      "category": "Comunidades",
+      "url": "/blog/l200-triton-comunidade-historias/",
+      "kits": [
+        "KIT10234",
+        "KIT10002"
+      ]
+    },
+    {
+      "number": 22,
+      "title": "L200, Outdoor ou Triton: por que a versão precisa entrar no pedido",
+      "model": "l200",
+      "category": "Aplicação de peças",
+      "url": "/blog/l200-gl-gls-outdoor-triton-aplicacao/",
+      "kits": [
+        "KIT10543",
+        "KIT10376",
+        "KIT10234"
+      ]
+    },
+    {
+      "number": 23,
+      "title": "L200: feixe de molas e amortecedor pedem consultas diferentes",
+      "model": "l200",
+      "category": "Entenda o catálogo",
+      "url": "/blog/l200-feixe-molas-amortecedor-kits/",
+      "kits": [
+        "KIT10288",
+        "KIT10204",
+        "KIT10615"
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Ranger: a picape que também guarda histórias de família",
+      "model": "ranger",
+      "category": "Comunidades",
+      "url": "/blog/ranger-clube-historias-familia/",
+      "kits": [
+        "KIT10239",
+        "KIT10088"
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Ranger antiga: atenção aos anos na consulta de bieletas e buchas",
+      "model": "ranger",
+      "category": "Aplicação de peças",
+      "url": "/blog/ranger-1994-2011-bieletas-aplicacao/",
+      "kits": [
+        "KIT10371",
+        "KIT10315",
+        "KIT10312"
+      ]
+    },
+    {
+      "number": 26,
+      "title": "Ranger: cabine, feixe de molas e jumelo não são a mesma cotação",
+      "model": "ranger",
+      "category": "Entenda o catálogo",
+      "url": "/blog/ranger-cabine-feixe-jumelo/",
+      "kits": [
+        "KIT10021",
+        "KIT10088",
+        "KIT10287"
+      ]
+    },
+    {
+      "number": 27,
+      "title": "Frontier: uma comunidade fica mais útil quando identifica a geração",
+      "model": "frontier",
+      "category": "Comunidades",
+      "url": "/blog/frontier-comunidade-perguntas-por-geracao/",
+      "kits": [
+        "KIT10238",
+        "KIT10242"
+      ]
+    },
+    {
+      "number": 28,
+      "title": "Ruído na Frontier: como descrever o problema sem adivinhar a peça",
+      "model": "frontier",
+      "category": "Organização da manutenção",
+      "url": "/blog/frontier-ruido-como-relatar-oficina/",
+      "kits": [
+        "KIT10116",
+        "KIT10117"
+      ]
+    },
+    {
+      "number": 29,
+      "title": "Frontier: como ler uma aplicação de feixe de molas e jumelo",
+      "model": "frontier",
+      "category": "Entenda o catálogo",
+      "url": "/blog/frontier-feixe-jumelo-ler-catalogo/",
+      "kits": [
+        "KIT10242",
+        "KIT10207"
+      ]
+    },
+    {
+      "number": 30,
+      "title": "S10 e Blazer: a memória dos encontros também faz parte da garagem",
+      "model": "s10",
+      "category": "Comunidades",
+      "url": "/blog/s10-blazer-memoria-comunidade/",
+      "kits": [
+        "KIT10006",
+        "KIT10461"
+      ]
+    },
+    {
+      "number": 31,
+      "title": "S10 de 1995 a 2011: bieleta e estabilizadora na leitura do orçamento",
+      "model": "s10",
+      "category": "Entenda o catálogo",
+      "url": "/blog/s10-1995-2011-bieleta-estabilizadora/",
+      "kits": [
+        "KIT10006",
+        "KIT10461"
+      ]
+    },
+    {
+      "number": 32,
+      "title": "S10: por que um kit traseiro de outra época pode não ser o seu",
+      "model": "s10",
+      "category": "Aplicação de peças",
+      "url": "/blog/s10-mudanca-ano-feixe-molas/",
+      "kits": [
+        "KIT10005",
+        "KIT10004",
+        "KIT10472"
+      ]
+    },
+    {
+      "number": 33,
+      "title": "Jimny: o passeio em grupo começa pela escolha da experiência",
+      "model": "jimny",
+      "category": "Comunidades",
+      "url": "/blog/jimny-comunidade-passeios-familia/",
+      "kits": [
+        "KIT10452"
+      ]
+    },
+    {
+      "number": 34,
+      "title": "Jimny e Jimny Sierra: confirme a aplicação antes de seguir uma indicação",
+      "model": "jimny",
+      "category": "Aplicação de peças",
+      "url": "/blog/jimny-sierra-conferir-aplicacao-kit/",
+      "kits": [
+        "KIT10452"
+      ]
+    },
+    {
+      "number": 35,
+      "title": "D20: conservar a história também é documentar os cuidados",
+      "model": "d20",
+      "category": "Histórias de garagem",
+      "url": "/blog/d20-memoria-conservacao-historico/",
+      "kits": [
+        "KIT10011",
+        "KIT10086",
+        "KIT10012"
+      ]
+    },
+    {
+      "number": 36,
+      "title": "F1000: história de garagem, atenção ao ano e às peças",
+      "model": "f1000",
+      "category": "Histórias de garagem",
+      "url": "/blog/f1000-antes-depois-1992-pecas/",
+      "kits": [
+        "KIT10025",
+        "KIT10271",
+        "KIT10019"
+      ]
+    }
+  ],
+  "catalogCounts": {
+    "tr4": 13,
+    "troller": 7,
+    "hilux": 21,
+    "frontier": 22,
+    "l200": 25,
+    "ranger": 29,
+    "s10": 33,
+    "jimny": 1,
+    "d20": 8,
+    "f1000": 5
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "consultedAt": "2026-11-20",
+  "scope": "Pesquisa qualitativa pública de comunidades brasileiras; não é ranking nacional nem medição de taxa de engajamento.",
+  "method": "Prioridade a clubes, organizadores e marcas. Datas internas das publicações/eventos prevalecem sobre data de rastreamento. Existência de clube, publicação, anúncio de evento e participação presencial são sinais diferentes. Não houve acesso a métricas privadas, contato com organizadores ou auditoria de membros.",
+  "models": [
+    {
+      "model": "Ranger",
+      "signal": "Prioridade editorial alta nesta amostra: identidade de comunidade e relato presencial recente.",
+      "sources": [
+        {
+          "title": "Ford From the Road — Carros que atravessam gerações: a história do Ranger Clube Brasil",
+          "url": "https://www.fromtheroad.ford.com/br/pt/articles/2026/carros-que-atravessam-geracoes--a-historia-do-ranger-clube-brasi",
+          "eventDate": "Publicação: 2026-11-16. Datas dos encontros narrados não informadas.",
+          "evidence": "Relato assinado pelo presidente Raul Razin informa clube formalizado em 2019, mais de 420 picapes no país e encontros com famílias. Descreve comboios e restauração de uma Ranger 1996. O texto foi recuperado integralmente no índice de busca da página oficial Ford.",
+          "limitations": "Números autodeclarados pelo presidente, sem auditoria ou período de atividade dos membros. As 420 picapes não são seguidores nem pessoas ativas mensais. A abertura direta apresentou timeout; o índice da página e a home oficial confirmaram título, autoria e data. Não generalizar experiência de uma Ranger 1996 às gerações atuais."
+        }
+      ],
+      "strategy": ["Histórias de família e conservação de Rangers antigas.", "Como reunir ano, versão e medidas antes de procurar buchas para a Ranger.", "Revisão planejada para viagens a encontros; perguntar qual geração o leitor conserva.", "Priorizar parceria editorial com clube mediante autorização futura, sem anunciar parceria existente."]
+    },
+    {
+      "model": "Frontier",
+      "signal": "Prioridade editorial alta: produção própria e conversas públicas documentadas em 2025; alcance não mensurado.",
+      "sources": [
+        {
+          "title": "Clube da Nissan Frontier — publicações e índice por geração",
+          "url": "https://clubedanissanfrontier.com.br/wp/",
+          "eventDate": "Publicações de 2025, incluindo 2025-11-24, 2025-10-22 e 2025-10-06; consulta em 2026-11-20.",
+          "evidence": "Site do próprio clube mantém artigos, vídeos, enquetes e categorias separadas por gerações da Frontier. Há atividade editorial documentada em 2025 e comentários em conteúdos anteriores.",
+          "limitations": "A última publicação exibida era de novembro de 2025; não tratar a data dinâmica do cabeçalho como novo artigo. Enquetes são abertas a outros modelos, sem amostragem representativa nem período claro. Não usar suas porcentagens para descrever todos os donos de Frontier."
+        },
+        {
+          "title": "4x4 Brasil — Venda de veículos da Nissan, página 44",
+          "url": "https://www.4x4brasil.com.br/forum/geral-off-topic/55217-venda-de-veiculos-da-nissan-44.html",
+          "eventDate": "Mensagens em 2025-10-06 e 2025-10-07.",
+          "evidence": "Discussão pública com mensagens datadas e participante vinculado ao Clube da Nissan Frontier, abordando mercado e experiências com picapes.",
+          "limitations": "Evidência de conversa, não de tamanho total ou taxa de engajamento. Conteúdo recuperado pelo índice de busca; a abertura direta falhou na decodificação. Opiniões de fórum não validam instruções técnicas ou comparações de confiabilidade."
+        }
+      ],
+      "strategy": ["Conteúdos separados por geração e uso, evitando tratar toda Frontier como a mesma suspensão.", "Como registrar ruídos, histórico e circunstâncias para conversar com a oficina.", "Checklist de identificação de peças; ligar apenas kits cujo cadastro corresponda ao modelo e ano."]
+    },
+    {
+      "model": "S10 / Blazer",
+      "signal": "Comunidade identificada; recência insuficiente para classificá-la como uma das mais ativas hoje.",
+      "sources": [
+        {
+          "title": "Clube do Vortec 4.3 V6 — O Clube",
+          "url": "https://www.clubedovortec.com.br/oclube.htm",
+          "eventDate": "Histórico de encontros em 2009–2011; página com copyright 2013, sem data recente.",
+          "evidence": "O clube se apresenta como grupo de proprietários e admiradores de Blazer, S10, SS10 e Sonoma com motor Vortec 4.3 V6. Relata troca de experiências, encontros, passeios e colaboração entre membros.",
+          "limitations": "Página histórica não prova atividade em 2025–2026. Agenda não pôde ser aberta. O recorte V6 não representa todas as motorizações de S10/Blazer, nem comprova compatibilidade dos kits do catálogo com essas versões."
+        }
+      ],
+      "strategy": ["Conservação, memória e identificação de versão são pautas adequadas ao perfil histórico.", "Explicar por que nome do modelo sozinho não identifica a bucha correta.", "Tratar o clube como pista para futura validação, sem prometer grande alcance ou encontros ativos."]
+    },
+    {
+      "model": "F1000",
+      "signal": "Presença em encontro multimarcas recente; força de comunidade exclusiva ainda não comprovada.",
+      "sources": [
+        {
+          "title": "Casa de Metal — 4º Encontro O Barão de Carros Antigos",
+          "url": "https://casademetalcultural.com.br/atividades-culturais/4o-encontro-o-barao-de-carros-antigos/",
+          "eventDate": "Evento realizado em 2025-03-23.",
+          "evidence": "A instituição que recebeu o evento lista F1000 entre os modelos expostos e descreve convivência e troca de experiências entre entusiastas.",
+          "limitations": "Mais de 30 veículos e mais de 80 visitantes são totais do evento multimarcas, não da F1000. Não demonstram número de donos do modelo nem atividade de um clube exclusivo."
+        }
+      ],
+      "strategy": ["Conservação de picapes que atravessam gerações, com foco em histórico de manutenção e aplicação correta.", "Conteúdo sobre como documentar peças antigas e comparar medidas, sem recomendar adaptações genéricas."]
+    },
+    {
+      "model": "D20",
+      "signal": "Participação em cultura de veículos antigos demonstrada por organizador público; alcance específico desconhecido.",
+      "sources": [
+        {
+          "title": "Prefeitura de Caxias — City Tour e relíquias automobilísticas",
+          "url": "https://caxias.ma.gov.br/2025/09/27/caxias-celebra-o-dia-mundial-do-turismo-com-city-tour-e-reliquias-automobilisticas/",
+          "eventDate": "Publicação e celebração: 2025-09-27.",
+          "evidence": "A prefeitura relata passeio em parceria com o clube local de veículos antigos e inclui D20 entre os modelos participantes. A pauta associa automóveis, memória e turismo local.",
+          "limitations": "É um clube multimarcas; não oferece contagem de D20, métricas digitais ou prova de comunidade exclusiva do modelo."
+        }
+      ],
+      "strategy": ["D20 conservada: histórico de uso e documentação das intervenções antes da compra de peças.", "Conteúdo que valorize memória familiar sem afirmar robustez ilimitada ou dispensar revisão."]
+    },
+    {
+      "model": "F250",
+      "signal": "Pista regional secundária; insuficiente para prioridade por engajamento.",
+      "sources": [
+        {
+          "title": "Maxicar — 12º Encontro de Autos Antigos de Congonhas, MG",
+          "url": "https://www.maxicar.com.br/2025/06/12o-encontro-de-autos-antigos-de-congonhas-mg-2/",
+          "eventDate": "Evento: 2025-05-31 a 2025-06-01. Publicação: 2025-06-02.",
+          "evidence": "Cobertura jornalística cita F1000, F250 e Ranger entre as picapes expostas em Congonhas, em Minas Gerais.",
+          "limitations": "Fonte secundária, mantida apenas como pista regional. O total de mais de 500 veículos abrange todo o evento; não pode ser atribuído às F250 nem interpretado como tamanho de clube."
+        }
+      ],
+      "strategy": ["Usar como pauta experimental de conservação e identificação de buchas, condicionada ao cadastro de aplicação.", "Relevância geográfica para uma marca de Contagem é hipótese de estratégia, não vínculo confirmado com clientes locais."]
+    },
+    {
+      "model": "Strada",
+      "signal": "Sem evidência pública suficiente de comunidade organizada recente na amostra.",
+      "sources": [],
+      "strategy": ["Não atribuir alto engajamento apenas à popularidade comercial do modelo.", "Pode receber conteúdo de utilidade ligado a trabalho e identificação de aplicação, mas fora do núcleo escolhido por evidência de comunidade.", "Validar demanda com dados próprios de consultas e pedidos antes de ampliar a série."]
+    },
+    {
+      "model": "Civic",
+      "signal": "Evento específico recente e registro fotográfico; contraste relevante com cobertura limitada no catálogo.",
+      "sources": [
+        {
+          "title": "Sympla — Civic Oz, Road Eventos",
+          "url": "https://www.sympla.com.br/evento/civic-oz/3064285",
+          "eventDate": "Evento anunciado para 2025-10-12, Osasco/SP.",
+          "evidence": "Página do organizador para exposição de Civics originais e modificados, com apoio anunciado de Civiqueiros ABC e Civic Brasil Clube.",
+          "limitations": "Anúncio não comprova público realizado ou taxa de engajamento. Apoio é declaração do organizador; não representa parceria da RochaPro."
+        },
+        {
+          "title": "Fotto — Wrecked Media, eventos fotografados",
+          "url": "https://www.fotto.com.br/wreckedmedia",
+          "eventDate": "Álbum Civic Oz listado em 2025-10-12.",
+          "evidence": "O fotógrafo lista cobertura do Civic Oz em Osasco na mesma data do anúncio, reforçando a evidência de realização.",
+          "limitations": "Listagem do fotógrafo não é auditoria de público. Quantidade global de fotos da plataforma não tem relação com alcance deste evento ou modelo."
+        }
+      ],
+      "strategy": ["Bom candidato a pequeno teste editorial, restrito à aplicação do kit realmente cadastrado.", "Não anunciar atendimento a todas as gerações do Civic com base na existência de um único kit."]
+    },
+    {
+      "model": "Gol",
+      "signal": "Presença e vínculo afetivo documentados em encontro multimarcas; não valida todas as gerações do catálogo.",
+      "sources": [
+        {
+          "title": "Prefeitura de Caxias — City Tour e relíquias automobilísticas",
+          "url": "https://caxias.ma.gov.br/2025/09/27/caxias-celebra-o-dia-mundial-do-turismo-com-city-tour-e-reliquias-automobilisticas/",
+          "eventDate": "Publicação: 2025-09-27.",
+          "evidence": "Relato de dono de Gol CL 1994 preservado na família, participante de passeio do clube local. Demonstra motivação afetiva e conservação.",
+          "limitations": "Um depoimento não mede tamanho ou engajamento nacional. Verificar se os kits RochaPro atendem justamente essa geração antes de criar conteúdo comercial para Gol quadrado."
+        }
+      ],
+      "strategy": ["Explorar histórias de conservação apenas nas gerações cobertas pelo catálogo.", "Separar evidência cultural de intenção de compra e testar procura real antes de ampliar investimento."]
+    }
+  ],
+  "recommendation": "Nesta pesquisa de picapes, priorizar Ranger e Frontier pela evidência pública mais sólida. Tratar S10/Blazer, D20, F1000 e F250 como segmentos de afinidade e utilidade, com incerteza explícita sobre atividade atual ou alcance. Civic merece teste pequeno caso o kit corresponda à geração abordada. Não classificar Strada como comunidade de alto engajamento sem nova evidência.",
+  "measurementProposal": ["Medir cliques para kits e conversas qualificadas de WhatsApp por artigo/modelo.", "Registrar perguntas recorrentes de aplicação, ano e versão como pauta.", "Comparar sessões, salvamentos e compartilhamentos por exposição; não somar seguidores de grupos sobrepostos.", "Usar UTMs distintas em eventual parceria aprovada e observar janela de 30–60 dias antes de realocar esforço."]
+}

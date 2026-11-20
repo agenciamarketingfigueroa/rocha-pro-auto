@@ -1,5 +1,7 @@
+import { communityPosts, communitySources } from './posts-community.mjs';
 // Texts are editorial guidance, not installation procedures or live road reports.
 export const sources = {
+  ...communitySources,
   dnit: {name:'DNIT — ocorrência na BR-230/AM, fevereiro de 2026', url:'https://www.gov.br/dnit/pt-br/central-de-conteudos/noticias-alerta-de-servicos/dnit-alerta-para-interdicao-total-do-km-95-2-na-br-230-am'},
   prf: {name:'PRF — orientações de viagem',url:'https://www.gov.br/prf/pt-br/seguranca-viaria/orientacoes-de-viagem'},
   chuva: {name:'PRF — cuidados durante o período chuvoso',url:'https://agenciagov.ebc.com.br/noticias/202401/prf-orienta-motoristas-sobre-cuidados-ao-dirigir-durante-periodo-chuvoso'},
@@ -101,4 +103,5 @@ export const posts = [
       {id:'pecas',title:'Com o diagnóstico, procure a aplicação',html:'<p>Leve para a cotação o modelo, o ano, a versão e a posição da peça indicada. Os kits abaixo são exemplos do catálogo para TR4, Troller, Hilux e Frontier. A presença nesta lista não significa que todos devam ser usados numa revisão, nem que sirvam em qualquer ano desses modelos.</p><p>Uma manutenção organizada conecta três informações: o que o manual prevê, o que o carro apresenta e qual peça corresponde ao reparo confirmado.</p>'},
     ],sources:['hilux','nissanUse'],kits:[['tr4','KIT10055'],['troller','KIT10363'],['hilux','KIT10124'],['frontier','KIT10242']],
   },
+  ...communityPosts,
 ].map(post => ({...post, date:'2026-11-20', updated:'2026-11-20'}));

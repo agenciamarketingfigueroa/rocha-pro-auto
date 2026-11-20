@@ -59,7 +59,7 @@ for(const model of models){
   storage.set(`rochapro-${model.slug}-selection`,'not-json');boot(model.slug);boot(model.slug,true);
 }
 storage.clear();const troller=boot('troller');troller.buttons[0].click();assert.equal(boot('hilux').ids['#selected-count'].textContent,'Monte sua cotação');
-const filters=['all','tr4','troller','hilux','frontier','expedicao'].map(topic=>new Element({topic}));
+const filters=['all',...new Set(posts.flatMap(p=>p.topics))].map(topic=>new Element({topic}));
 const articleCards=posts.map(p=>new Element({postTopics:p.topics.join(' ')}));
 const status=new Element();
 vm.runInNewContext(read('assets/site/editorial.js'),{document:{querySelector:s=>{assert.equal(s,'#post-count');return status;},querySelectorAll:s=>s==='[data-topic]'?filters:articleCards}});

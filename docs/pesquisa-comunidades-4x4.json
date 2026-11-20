@@ -1,0 +1,149 @@
+{
+  "consultedAt": "2026-11-20",
+  "scope": "Comunidades brasileiras de quatro modelos atendidos pelo catálogo RochaPro: Pajero TR4, Troller, Hilux e L200. Pesquisa documental pública; sem contato com comunidades.",
+  "method": "Priorizadas páginas de organizadores, clubes e órgãos que participam dos eventos, entre 2025 e 2026. Sinais observáveis: encontro anunciado, relato posterior, resultado de competição, organização própria e identidade de grupo. Não se calculou taxa de engajamento nem ranking nacional; as fontes não oferecem métricas comparáveis de alcance, pessoas ativas ou conversão.",
+  "models": [
+    {
+      "model": "Pajero TR4",
+      "assessment": "Prioridade editorial alta para teste: há mobilização específica do modelo em 2026 e participação identificada em competição. Isso sustenta uma aposta em pertencimento e experiência de uso, sem demonstrar que seja a maior comunidade do país.",
+      "sources": [
+        {
+          "title": "1º Encontro de Entusiastas da marca Mitsubishi Pajero do Clube TR4 Brasília DF — anúncio do organizador na Sympla",
+          "url": "https://www.sympla.com.br/evento/lgc/3645046",
+          "eventDate": "2026-11-12, 19h–23h",
+          "publicationDate": null,
+          "evidence": "Anúncio específico de encontro de proprietários e admiradores da TR4 na Torre de TV, Brasília. O organizador propõe convivência familiar, troca de experiências e roteiros de turismo ecológico. É um sinal recente de mobilização presencial em torno do modelo.",
+          "limitations": "Página de inscrição/anúncio, não um balanço posterior. A data passou, mas a página sozinha não comprova realização nem público efetivo. A previsão de veículos do organizador não deve ser tratada como presença medida. A abertura direta falhou; conteúdo e data foram recuperados pelo índice de busca."
+        },
+        {
+          "title": "1ª Etapa Mitsubishi Motorsports Goiânia 2026 — resultado da categoria Light",
+          "url": "https://storage.googleapis.com/bw8-mit-uploads/steps/349/results/349_2026_MMS_Resultados_ET1_LGH.pdf",
+          "eventDate": "2026-04-11",
+          "publicationDate": "Documento emitido em 2026-04-11 às 18:07",
+          "evidence": "A classificação identifica diversas equipes com Pajero TR4 e cidades de origem, incluindo Brasília e Goiânia. É evidência de participação do modelo em uma atividade organizada em 2026, além do discurso de afinidade nas redes.",
+          "limitations": "Resultado de uma categoria e uma etapa; não representa todos os proprietários nem a composição de toda a audiência Mitsubishi. Não permite inferir taxa de engajamento, intenção de compra ou compatibilidade de kits com veículos de competição."
+        }
+      ],
+      "strategy": [
+        "Criar conteúdo sobre o primeiro encontro de TR4: como escolher o grupo, entender o formato e preparar perguntas úteis aos veteranos.",
+        "Explorar histórias de proprietários e convivência familiar; convidar leitores a contar por que mantêm o carro e qual roteiro marcou sua história.",
+        "Publicar um guia para organizar histórico de manutenção e identificar ano, versão e aplicação antes de consultar kits. Evitar transformar opiniões de fóruns em diagnóstico.",
+        "Testar distribuição regional em Minas Gerais e entorno, com links rastreáveis por conteúdo; solicitar autorização dos administradores antes de qualquer divulgação em grupos."
+      ]
+    },
+    {
+      "model": "Troller",
+      "assessment": "Prioridade editorial alta como hipótese de afinidade: existem estruturas de clube, encontros e produção de conhecimento. A evidência recente localizada é regional e de 2025; não sustenta afirmar crescimento nacional em 2026.",
+      "sources": [
+        {
+          "title": "Setur-RJ e TurisRio anunciam Festival Sabores do Vale do Café com exposição do Troller Clube RJ",
+          "url": "https://www.turismo.rj.gov.br/noticias/secretaria-de-estado-de-turismo-e-turisrio-levam-festival-de-gastronomia-e-entretenimento-a-regiao-do-vale-do-cafe/",
+          "eventDate": "2025-02-14 a 2025-02-16",
+          "publicationDate": "2025-02-14, 13:33",
+          "evidence": "Órgão realizador do festival anuncia exposição do Troller Clube RJ em Ipiabas. A inserção do clube em um evento turístico é um sinal concreto de organização e participação comunitária fora do ambiente digital.",
+          "limitations": "É anúncio de programação. O público do festival inclui atrações musicais e gastronomia; nunca atribuir a totalidade dos visitantes ao clube ou ao Troller. A abertura direta falhou; conteúdo e data foram recuperados pelo índice de busca."
+        },
+        {
+          "title": "Encontros Monomarcas — Trovão Off Road",
+          "url": "https://trovaooffroad.com.br/encontros-monomarcas/",
+          "eventDate": null,
+          "publicationDate": null,
+          "evidence": "O organizador descreve o Troller Clube como espaço para troca de conhecimentos e experiências e mantém galeria identificada de encontro do grupo. Oferece um ponto de partida concreto para mapear possíveis interlocutores e temas.",
+          "limitations": "Página sem data dos registros; a agenda consultada mostrava nenhum próximo evento. Prova estrutura e memória de encontros, não frequência atual nem tamanho de audiência."
+        },
+        {
+          "title": "T4 Clube Brasil — apresentação e situação do projeto",
+          "url": "https://www.t4clube.com.br/",
+          "eventDate": null,
+          "publicationDate": null,
+          "evidence": "Site dedicado ao Troller reúne história, expedições e conteúdo sobre manutenção; sua apresentação explicita a iniciativa de um proprietário e o apoio de colaboradores. A própria página informa que o T4 Clube Brasil está em pausa.",
+          "limitations": "Não apresentar como clube atualmente ativo. Contadores de membros, seguidores e visualizações não têm data ou metodologia e não foram usados para comparação. A pausa é um exemplo de por que presença digital acumulada não equivale a engajamento recente."
+        }
+      ],
+      "strategy": [
+        "Falar de pertencimento, conservação e memória do veículo: histórias de estrada, registros de viagens e organização da documentação de peças.",
+        "Explicar como distinguir ano e versão ao procurar kits, sem presumir que todo Troller usa a mesma aplicação.",
+        "Criar artigos sobre como escolher passeios organizados e o que perguntar ao responsável sobre terreno, apoio e regras do grupo.",
+        "Validar atividade recente do clube e regras de participação antes de propor parceria; evitar usar números antigos como justificativa para investimento."
+      ]
+    },
+      {
+      "model": "Hilux",
+      "assessment": "Prioridade editorial alta para teste de alcance qualificado: eventos brasileiros organizados por concessionárias oferecem evidência recente de interesse em aventura e convivência. Essa rede comercial de eventos não deve ser confundida com um único clube independente de proprietários.",
+      "sources": [
+        {
+          "title": "Hilux Expedition 2025 — Mercosul Toyota",
+          "url": "https://www.youtube.com/watch?v=0X_AuGkeTuI",
+          "eventDate": "2025, em Lages; dia exato não informado na descrição",
+          "publicationDate": "2025-09-23",
+          "evidence": "Vídeo publicado pela própria Mercosul Toyota relata uma edição do Hilux Expedition em Lages e agradece aos clientes participantes. É registro posterior do organizador de uma experiência presencial vinculada ao modelo.",
+          "limitations": "A descrição é promocional. Não há base pública para medir participantes ativos, recorrência ou conversão. Visualizações e seguidores vistos no índice não foram usados, pois são instantâneos e não comparáveis aos de outras fontes."
+        },
+        {
+          "title": "Weiand Toyota Hilux Expedition — Muçum Turismo, anúncio do organizador na Sympla",
+          "url": "https://www.sympla.com.br/evento/weiand-toyota-hilux-expedition-mucum-turismo/3311978",
+          "eventDate": "2026-03-28, 07h–16h",
+          "publicationDate": null,
+          "evidence": "A página apresenta evento em Muçum, RS, com foco em família, natureza e convivência; o nome Hilux Expedition permanece como proposta de mobilização em 2026.",
+          "limitations": "O anúncio explicita que o desafio era multimarca. Não se pode atribuir todos os inscritos à Hilux. A indicação automática de evento encerrado não prova realização nem público efetivo."
+        },
+        {
+          "title": "Experiência Hilux Expedition: a aventura dos sonhos — Toyota Sulpar",
+          "url": "https://blog.toyotasulpar.com.br/experiencia-hilux-expedition-a-aventura-dos-sonhos/",
+          "eventDate": "Data exata do evento não identificada",
+          "publicationDate": "2023-12-12",
+          "evidence": "A concessionária descreve uma experiência organizada para novos proprietários da Hilux Weekend. Serve como antecedente do formato e do interesse em integrar proprietários por experiências presenciais.",
+          "limitations": "Fonte histórica de 2023, incluída para contexto; não é prova de atividade atual em 2025–2026. Não usar para comparar volume de comunidades."
+        }
+      ],
+      "strategy": [
+        "Combinar rotina de trabalho e lazer: organização do veículo para sair do uso cotidiano e participar de um passeio em família.",
+        "Criar pautas que ensinem a avaliar o perfil de uma expedição antes da inscrição, usando a existência dos eventos como contexto e sem recomendar um roteiro sem checar condições.",
+        "Produzir um guia de identificação da Hilux antes de comprar peças: ano, versão e conjunto atendido; não equiparar Hilux e SW4 automaticamente.",
+        "Separar nos testes os leitores interessados em propriedade e manutenção dos interessados apenas em novidades de lançamentos. Medir consultas qualificadas de aplicação e cliques nos kits."
+      ]
+    },
+    {
+      "model": "L200",
+      "assessment": "Prioridade editorial alta para teste: há identidade própria de proprietários da Triton e registros de participação esportiva em 2026. Comunidade de uso diário, lazer e competição são segmentos diferentes, que precisam de conteúdos e produtos apropriados.",
+      "sources": [
+        {
+          "title": "História — Triton 4x4 Club",
+          "url": "https://www.triton4x4club.com.br/historia/",
+          "eventDate": "Narrativa histórica iniciada em 2010; encontro de fábrica citado em 2018",
+          "publicationDate": null,
+          "evidence": "O clube descreve sua origem a partir de proprietários da L200 Triton, encontros, viagens e ralis, além de identidade compartilhada entre participantes. A história mostra afinidade construída em torno do modelo, com vocabulário e símbolos próprios.",
+          "limitations": "Relato do próprio clube sem data editorial recente; não comprova calendário de encontros em 2026 nem número atual de membros. Loja e produtos de identidade reforçam a existência do projeto, não permitem medir vendas ou engajamento."
+        },
+        {
+          "title": "Sócios do RPMC representam o clube na Mitsubishi Cup em Canitar",
+          "url": "https://rallyclube.com.br/rpmc/2026/09/28/socios-do-rpmc-representam-o-clube-na-mitsubishi-cup-em-canitar/",
+          "eventDate": "2026-09-25 a 2026-09-26",
+          "publicationDate": "2026-09-28",
+          "evidence": "O Rallye Pista Motor Clube relata participação de seus associados em categorias L200 Triton Sport R e L200 Triton RS na Mitsubishi Cup em Canitar. É evidência recente de mobilização esportiva associada ao modelo e de relações familiares na competição.",
+          "limitations": "Veículos e categorias de competição não representam automaticamente a L200 de rua. Não sugerir que os kits de catálogo atendem carros de corrida ou inferir audiência nacional do modelo a partir da participação de associados. A abertura direta falhou; o texto foi recuperado pelo índice de busca."
+        },
+        {
+          "title": "1ª Etapa Mitsubishi Motorsports Goiânia 2026 — resultado da categoria Light",
+          "url": "https://storage.googleapis.com/bw8-mit-uploads/steps/349/results/349_2026_MMS_Resultados_ET1_LGH.pdf",
+          "eventDate": "2026-04-11",
+          "publicationDate": "Documento emitido em 2026-04-11 às 18:07",
+          "evidence": "O resultado identifica L200 Triton Sport, L200 Savana e outras versões entre os participantes. Ajuda a mostrar que diferentes gerações e versões aparecem em atividades organizadas, além das categorias de velocidade.",
+          "limitations": "Amostra limitada a uma categoria e etapa. Presença não é medida de lealdade, tamanho de comunidade ou demanda por peças; cada aplicação comercial precisa de conferência própria."
+        }
+      ],
+      "strategy": [
+        "Explorar o vínculo dos tritonzeiros com uso, viagens e histórias familiares, apoiando relatos voluntários de proprietários.",
+        "Criar conteúdo para identificar a geração e versão da L200 antes de consultar buchas e kits; diferenciar L200 antiga, Triton e Triton Sport conforme o catálogo.",
+        "Usar competição como curiosidade cultural, explicando que não autoriza copiar soluções de carros de prova para veículos de rua.",
+        "Testar pautas sobre organização da manutenção e planejamento de viagens, mensurando consultas de aplicação por geração em vez de apenas curtidas."
+      ]
+    }
+  ],
+  "recommendedMeasurement": [
+    "Comparar cliques orgânicos e consultas qualificadas por artigo/modelo durante a mesma janela de tempo, com mesma definição de conversão.",
+    "Registrar modelo, ano, versão e dúvida trazida pelo cliente; não considerar curtida ou visualização como pedido de orçamento.",
+    "Em futuras parcerias autorizadas, usar parâmetros UTM por comunidade e registrar conversões sem expor dados pessoais.",
+    "Revisar atividade e regras de cada grupo antes de investir; não usar contadores históricos nem público de evento multimarca para ranquear modelos."
+  ]
+}

@@ -4,7 +4,6 @@ Disallow: /private/
 Disallow: /interno/
 Disallow: /expedicao/
 Disallow: /.tmp/
-Disallow: /catalogo.html
 Disallow: /scripts/
 Disallow: /content/
 
