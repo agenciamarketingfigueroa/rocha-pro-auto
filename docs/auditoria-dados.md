@@ -1,5 +1,12 @@
 # Auditoria dos dados e fotos
 
+## Atualização de fotos — 26/11/2026
+
+- Reprocessadas as fotos de `assets/img/Fotos dos Kits/`, preservando os cadastros e as composições existentes.
+- Os kits `KIT10022`, `KIT10173`, `KIT10190` e `KIT10216` passaram a ter fotos: 10, 5, 5 e 6 imagens, respectivamente. As galerias de `KIT10002` e `KIT10288` passaram a ter 13 e 14 imagens.
+- Dos 437 produtos ativos, 138 têm fotos e 299 continuam sem fotos identificadas. O catálogo reúne 1.045 imagens WebP, 43 a mais que na atualização anterior.
+- Nenhum produto perdeu seu vínculo com fotos. `KIT234 (Conferir nome do kit)` continua pendente; a pasta específica `KIT234` mantém as cinco imagens já vinculadas.
+
 ## Atualização de fotos — 20/11/2026
 
 - Reprocessadas as pastas diretamente em `assets/img/Fotos dos Kits/`, respeitando os códigos corrigidos e sem alterar títulos, descrições ou composições dos cadastros existentes.

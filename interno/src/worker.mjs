@@ -23,8 +23,6 @@ const centeredLayout = `
   .layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .actions, .row-actions { justify-content: center; align-items: center; flex-wrap: wrap; }
   .actions h2 { width: 100%; margin-bottom: 0; }
-  .matches li { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  .matches li > div { width: 100%; }
   .photos { flex-wrap: wrap; justify-content: center; }
   .list { padding-left: 0; list-style-position: inside; }
   .order-row { grid-template-columns: repeat(3, minmax(0, 1fr)); justify-items: center; }
