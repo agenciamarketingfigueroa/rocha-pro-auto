@@ -19,7 +19,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'output/pdf/folders-rochapro'
 OUT.mkdir(parents=True, exist_ok=True)
-TMP = ROOT / 'tmp/pdfs/folders'
+TMP = ROOT / '.tmp/pdfs/folders'
 TMP.mkdir(parents=True, exist_ok=True)
 URL = 'https://rochaproauto.com.br/links/'
 RED = '#E10606'
