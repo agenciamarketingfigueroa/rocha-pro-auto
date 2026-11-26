@@ -1,5 +1,11 @@
 # Auditoria dos dados e fotos
 
+## Ajuste do kit 361 — 26/11/2026
+
+- `KIT10361` passou de 13 para 3 fotos, conforme os arquivos atuais de `KIT361`. O catálogo e a consulta interna foram atualizados, removendo somente as imagens derivadas excedentes.
+- O catálogo mantém 138 produtos com fotos, agora com 1.035 imagens WebP. Nome, descrição e composição do kit 361 foram preservados.
+- O novo kit está sem nome e descrição, e seu código ainda será conferido pela equipe. As pastas `KIT970` (13 fotos) e `KIT 970` (5 fotos) permanecem preservadas, sem criar cadastro ou vincular imagens até a confirmação.
+
 ## Atualização de fotos — 26/11/2026
 
 - Reprocessadas as fotos de `assets/img/Fotos dos Kits/`, preservando os cadastros e as composições existentes.
