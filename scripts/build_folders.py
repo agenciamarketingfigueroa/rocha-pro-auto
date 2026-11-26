@@ -2,6 +2,9 @@
 from pathlib import Path
 import json
 import zipfile
+import shutil
+import subprocess
+import sys
 from reportlab.pdfgen import canvas
 from reportlab.lib import colors
 from reportlab.lib.units import mm
@@ -220,10 +223,28 @@ def bleed(src):
     from pypdf.generic import RectangleObject
     dest=OUT/src.name.replace('-normal.pdf','-grafica-sangria-3mm.pdf')
     bg=TMP/'bleed.pdf'
+    renderer=shutil.which('pdftoppm')
+    if not renderer:
+        bundled=Path(sys.executable).parents[1]/'native/poppler/Library/bin/pdftoppm.exe'
+        if bundled.exists():renderer=str(bundled)
+    if not renderer:raise RuntimeError('Poppler pdftoppm is required to extend print bleed.')
+    prefix=TMP/(src.stem+'-bleed-source')
+    subprocess.run([renderer,'-r','300','-png','-singlefile',str(src),str(prefix)],check=True)
+    im=Image.open(prefix.with_suffix('.png')).convert('RGB')
+    # Poppler rounds the physical page upward to whole pixels. Omit the last
+    # partially covered row/column so their white canvas cannot enter the bleed.
+    im=im.crop((0,0,im.width-1,im.height-1))
+    pad=round(3*300/25.4);iw,ih=im.size
+    extended=Image.new('RGB',(iw+2*pad,ih+2*pad))
+    extended.paste(im,(pad,pad))
+    extended.paste(im.crop((0,0,1,ih)).resize((pad,ih)),(0,pad))
+    extended.paste(im.crop((iw-1,0,iw,ih)).resize((pad,ih)),(iw+pad,pad))
+    ew,eh=extended.size
+    extended.paste(extended.crop((0,pad,ew,pad+1)).resize((ew,pad)),(0,0))
+    extended.paste(extended.crop((0,pad+ih-1,ew,pad+ih)).resize((ew,pad)),(0,pad+ih))
+    # Extend actual edge colors into the bleed; retain the vector master inside TrimBox.
     c=canvas.Canvas(str(bg),pagesize=(106*mm,156*mm))
-    c.setFillColor(colors.HexColor(BLACK));c.rect(0,0,106*mm,156*mm,fill=1,stroke=0)
-    if src.name.startswith('orientacoes'):
-        c.setFillColor(colors.white);c.rect(0,(156-3-112.8)*mm,106*mm,76.8*mm,fill=1,stroke=0)
+    c.drawImage(ImageReader(extended),0,0,106*mm,156*mm)
     c.save()
     w=PdfWriter();p=w.add_page(PdfReader(str(bg)).pages[0])
     p.merge_transformed_page(PdfReader(str(src)).pages[0],Transformation().translate(3*mm,3*mm))
